@@ -43,13 +43,13 @@
                     <option value="title">Title</option>
                     <option value="size">File size</option>
                 </select>
-                <div class="flex border-l-0 w-full border-indigo-200 rounded-r-md border items-center pr-2">
+                <div class="flex border-l-0 w-full border-indigo-200 rounded-r-md border items-center bg-stone-50 pr-2">
                     <input
                         id="searchQuery" 
                         name="searchQuery" 
                         type="text" 
                         placeholder="Enter search term..."
-                        class="mr-2 w-full px-4 py-2 bg-stoe-50 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        class="mr-2 w-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     />
 
                     <IconSearch />
