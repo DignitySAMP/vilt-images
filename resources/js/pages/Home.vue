@@ -1,6 +1,8 @@
 <template>
     <Layout>
 
+        <SearchBar/>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             <ImageCard v-for="image in publicImages" :key="image.id" :image="image"/>
         </div>
@@ -11,6 +13,7 @@
 <script setup>
 
     import Layout from '@/layouts/Layout.vue';
+    import SearchBar from '@/pages/HomePartials/SearchBar.vue';
     import ImageCard from '@/pages/HomePartials/ImageCard.vue';
     import Pagination from '@/components/Pagination.vue';
 
