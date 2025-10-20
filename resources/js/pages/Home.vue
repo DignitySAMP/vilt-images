@@ -46,7 +46,6 @@
             id: 1,
             name: 'sunset.png',
             size: 54321,
-            url: 'https://via.placeholder.com/256',
             uploadedAt: '01/01/1970',
             author: 'John Doe'
         },
@@ -54,7 +53,6 @@
             id: 2,
             name: 'mountains.jpg',
             size: 123456,
-            url: 'https://via.placeholder.com/256',
             uploadedAt: '12/12/2022',
             author: 'Jane Smith'
         },
@@ -62,7 +60,6 @@
             id: 3,
             name: 'sunset.png',
             size: 54321,
-            url: 'https://via.placeholder.com/256',
             uploadedAt: '01/01/1970',
             author: 'John Doe'
         },
@@ -70,7 +67,6 @@
             id: 4,
             name: 'mountains.jpg',
             size: 123456,
-            url: 'https://via.placeholder.com/256',
             uploadedAt: '12/12/2022',
             author: 'Jane Smith'
         },
@@ -78,7 +74,6 @@
             id: 5,
             name: 'sunset.png',
             size: 54321,
-            url: 'https://via.placeholder.com/256',
             uploadedAt: '01/01/1970',
             author: 'John Doe'
         },
@@ -86,7 +81,6 @@
             id: 6,
             name: 'mountains.jpg',
             size: 123456,
-            url: 'https://via.placeholder.com/256',
             uploadedAt: '12/12/2022',
             author: 'Jane Smith'
         },

@@ -75,27 +75,17 @@
 
                     <span>{{ image.name }}</span>
                     <div class="flex">
-                        <span class="bg-indigo-100 h-32 w-32 text-indigo-700 rounded-md flex items-center justify-center">
+                        <span class="bg-indigo-100 h-64 w-64 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
                             Placeholder
                         </span>
                     </div>
-                    <div class="grid grid-rows-3 gap-1 w-full">
 
-                        <div class="flex gap-1  items-center w-full bg-indigo-50 border border-indigo-200 text-indigo-700 justify-between px-2 py-0.5 rounded">
-                            <IconDate/>
-                            <span>{{ image.uploadedAt }}</span>
-                        </div>
-                        
-                        <div class="flex gap-1  items-center w-full bg-amber-50 border border-amber-200 text-amber-700 justify-between px-2 py-0.5 rounded">
-                            <IconFilesize/>
-                            <span>{{ image.size }} kb</span>
-                        </div>
-
-                        <div v-if="image.album !== null" class="flex gap-1  items-center w-full bg-sky-50 border border-sky-200 text-sky-700 justify-between px-2 py-0.5 rounded">
-                            <IconPhoto/>
-                            <span>{{ image.album }}</span>
-                        </div>
-                        <div v-else></div>
+                    <div 
+                        :class="image.album === null ? 'bg-red-50 border-red-200 text-red-700' : 'bg-sky-50 border-sky-200 text-sky-700'"
+                        class="flex gap-1 items-center w-full border justify-between px-2 py-0.5 rounded"
+                    >
+                        <IconPhoto/>
+                        <span>{{ image.album === null ? 'No album' : image.album }}</span>
                     </div>
                 </div>
             </div>

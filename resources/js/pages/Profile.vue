@@ -1,15 +1,8 @@
 <template>
 
     <Layout tab="Profile">
-
         <div class="grid grid-cols-[1fr_auto] gap-4">
-
-
             <Images/>
-
-
-
-            
             <Details/>
         </div> 
     </Layout>
