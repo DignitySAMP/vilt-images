@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <div v-else-if="showFilterBar" class="grid grid-cols-1 md:grid-cols-[auto_auto_auto_1fr_auto] gap-4 items-center bg-white rounded-lg p-4 border border-stone-200">
+    <div v-else-if="showFilterBar" class="grid grid-cols-1 md:grid-cols-[auto_auto_auto_1fr_auto] gap-4 items-center bg-white rounded-md p-4 border border-stone-200">
         <button
             class="flex gap-6 items-center bg-rose-500 text-white text-sm px-4 py-2 rounded-md hover:bg-rose-600 transition duration-200 cursor-pointer"
             @click="showFilterBar = false"
@@ -26,7 +26,7 @@
             class="bg-slate-50 text-sm rounded-md w-fit border border-slate-300 text-slate-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
             <option>Sort by latest photos (public)</option>
-            <option>Sort by lldest photos (public)</option>
+            <option>Sort by oldest photos (public)</option>
             <option>Sort by largest file size</option>
             <option>Sort by lmallest file size</option>
         </select>

@@ -12,7 +12,7 @@
                 @dragover="onStartDraggingOver" 
                 @dragleave="onStopDraggingOver" 
                 @drop="onFileDropped"
-                class="w-128 p-8 bg-stone-50 border border-indigo-300 text-indigo-800 rounded-lg shadow-md cursor-copy"
+                class="w-128 p-8 bg-stone-50 border border-indigo-300 text-indigo-800 rounded-md shadow-md cursor-copy"
             >
 
                 <input type="file" name="file" id="fileInput" ref="file" multiple accept=".gif, .jpg, .jpeg, .png" @change="onInputUploadChange" class="hidden" />
@@ -30,7 +30,7 @@
 
                     <div
                         v-for="file in files" :key="file.name" 
-                        class="grid grid-cols-[auto_1fr_auto] gap-2 items-center p-2 border-1 border-indigo-300 rounded-lg bg-indigo-50"
+                        class="grid grid-cols-[auto_1fr_auto] gap-2 items-center p-2 border-1 border-indigo-300 rounded-md bg-indigo-50"
                     >
                         <img 
                             @click="scalePreviewImage[files.indexOf(file)] = !scalePreviewImage[files.indexOf(file)];"
