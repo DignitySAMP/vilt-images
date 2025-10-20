@@ -3,7 +3,7 @@
     <div class="w-screen h-screen bg-stone-200">
         <div class="container mx-auto pt-4">
             
-            <Header/>
+            <Header :active_tab="tab"/>
 
             <div class="mt-4 flex flex-col gap-4">
                 <slot/>
@@ -14,4 +14,11 @@
 </template>
 <script setup>
     import Header from '@/layouts/Partials/Header.vue'
+
+    const props = defineProps({
+        tab: {
+            type: String,
+            default: 'Home',
+        }
+    })
 </script>

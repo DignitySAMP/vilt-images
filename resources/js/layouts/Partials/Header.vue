@@ -6,24 +6,9 @@
 
         <div class="px-4 flex items-center gap-2">
 
-            <span class="flex gap-4 px-3 py-1 rounded text-indigo-800 hover:bg-green-100 hover:text-green-800 cursor-pointer transition duration-300">
-                <IconUpload/>
-                Upload
-            </span>
-
-            <span class="flex gap-4 bg-indigo-500 px-3 py-1 rounded text-white font-semibold hover:bg-indigo-600 cursor-pointer  transition duration-300">
-                <IconPublic/>
-                Public
-            </span>
-
-            <span class="flex gap-4 px-3 py-1 rounded text-indigo-800 hover:bg-indigo-50 cursor-pointer transition duration-300">
-                <IconYourFiles/>
-                Profile 
-            </span>
-
-            <span class="flex gap-4 px-3 py-1 rounded text-indigo-800 hover:bg-red-100 hover:text-red-800 cursor-pointer transition duration-300">
-                <IconLogout/>
-                Logout
+            <span v-for="items in navItems" class="flex gap-4 px-3 py-1 rounded cursor-pointer transition duration-300" :class="props.active_tab === items.label ? items.active_style : items.style">
+                <component :is="items.icon"/>
+                {{ items.label }}
             </span>
         </div>
     </div>
@@ -35,4 +20,36 @@
     import IconPublic from '@/icons/IconPublic.vue';
     import IconUpload from '@/icons/IconUpload.vue';
     import IconYourFiles from '@/icons/IconYourFiles.vue';
+
+    const props = defineProps({
+        active_tab: {
+            type: String,
+            required: true
+        }
+    });
+
+    const navItems = [
+        {
+            label: 'Upload',
+            icon: IconUpload,
+            style: 'text-indigo-800 hover:bg-green-100 hover:text-green-800',
+        },
+        {
+            label: 'Public',
+            icon: IconPublic,
+            style: 'text-indigo-800 hover:bg-indigo-50',
+            active_style: 'bg-indigo-500 text-white hover:bg-indigo-600',
+        },
+        {
+            label: 'Profile',
+            icon: IconYourFiles,
+            style: 'text-indigo-800 hover:bg-indigo-50',
+            active_style: 'bg-indigo-500 text-white hover:bg-indigo-600',
+        },
+        {
+            label: 'Logout',
+            icon: IconLogout,
+            style: 'text-indigo-800 hover:bg-red-100 hover:text-red-800'
+        },
+    ]
 </script>
