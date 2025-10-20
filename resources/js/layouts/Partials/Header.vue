@@ -1,8 +1,6 @@
 <template>
     <div class="flex py-1 justify-between bg-white rounded">
-        <span class="px-4 text-lg text-transparent bg-clip-text font-extrabold bg-gradient-to-br from-indigo-700 to-indigo-500 p-2">
-            {{ usePage().props.app.name }}
-        </span>
+        <AppLogo/>
 
         <div class="px-4 flex items-center gap-2">
 
@@ -21,8 +19,8 @@
     </div>
 </template>
 <script setup>
-    import { usePage, Link } from '@inertiajs/vue3';
-
+    import { Link } from '@inertiajs/vue3';
+    import AppLogo from '@/components/AppLogo.vue';
     import IconLogout from '@/icons/IconLogout.vue';
     import IconPublic from '@/icons/IconPublic.vue';
     import IconUpload from '@/icons/IconUpload.vue';

@@ -2,9 +2,8 @@
     <div class="w-screen h-screen bg-stone-200">
         <div class="w-full h-full flex flex-col justify-center items-center">
             <div class="flex w-full justify-center items-center text-center mb-8">
-                <span class="text-4xl text-transparent bg-clip-text font-extrabold bg-gradient-to-br from-indigo-700 to-indigo-500 p-2">
-                    {{ usePage().props.app.name }}
-                </span>
+
+                <AppLogo/>
             </div>
 
 
@@ -69,8 +68,8 @@
     </div>
 </template>
 <script setup>
-import { usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import AppLogo from '@/components/AppLogo.vue';
 
 const isDraggingDetected = ref(false);
 const onStartDraggingOver = (e) => {
