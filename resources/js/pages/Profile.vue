@@ -8,12 +8,12 @@
                 <!-- album space -->
             </div>
 
-            <div class="">
-                <!-- profile space-->
-            </div>
+            
+            <AccountDetails/>
         </div> 
     </Layout>
 </template>
 <script setup lang="js">
     import Layout from '@/layouts/Layout.vue';
+    import AccountDetails from '@/pages/ProfilePartials/AccountDetails.vue';
 </script>
