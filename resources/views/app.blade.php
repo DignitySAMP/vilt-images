@@ -8,7 +8,7 @@
     @inertiaHead
     @routes
   </head>
-  <body>
+  <body class="bg-stone-200">
     @inertia
   </body>
 </html>
