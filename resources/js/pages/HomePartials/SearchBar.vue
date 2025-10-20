@@ -1,18 +1,5 @@
 <template>
-
-    <div v-if="!showFilterBar" class="flex">
-        <button
-            class="flex w-fit justify-between items-center bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200"
-            @click="showFilterBar = true"
-        >
-            <IconFilter/>
-            <span>
-                Show filter options
-            </span>
-        </button>
-    </div>
-
-    <div v-else-if="showFilterBar" class="grid grid-cols-1 md:grid-cols-[auto_auto_auto_1fr_auto] gap-4 items-center bg-white rounded-md p-4 border border-stone-200">
+    <div class="grid grid-cols-1 md:grid-cols-[auto_auto_auto_1fr_auto] gap-4 items-center bg-white rounded-md p-4 border border-stone-200">
         <button
             class="flex gap-6 items-center bg-rose-500 text-white text-sm px-4 py-2 rounded-md hover:bg-rose-600 transition duration-200 cursor-pointer"
             @click="showFilterBar = false"
@@ -65,13 +52,8 @@
 
     </div>
 </template>
-<script setup>
-    import { ref } from 'vue';
-
+<script setup lang="js">
     import IconClick from '@/icons/IconClick.vue';
-    import IconFilter from '@/icons/IconFilter.vue';
     import IconFilterRemove from '@/icons/IconFilterRemove.vue';
     import IconSearch from '@/icons/IconSearch.vue';
-
-    const showFilterBar = ref(false);
 </script>
