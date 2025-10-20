@@ -6,3 +6,9 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home');
 });
+
+
+
+Route::get('/upload', function () {
+    return Inertia::render('Upload');
+});
