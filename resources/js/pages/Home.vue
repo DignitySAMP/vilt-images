@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <Layout tab="Public">
 
         <SearchBar/>
 
