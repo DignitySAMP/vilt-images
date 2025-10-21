@@ -33,7 +33,9 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Image/Create/View');
+        return Inertia::render('Image/Create/View', [
+            'albums' => Auth::user()?->albums ?? []
+        ]);
     }
 
     /**
@@ -45,10 +47,23 @@ class ImageController extends Controller
         $validated = $request->validate([
             'files' => 'required|array',
             'files.*' => 'file|image|max:5120',
+            'album_id' => 'nullable|exists:albums,id',
+            'new_album_name' => 'nullable|required_with:new_album_description|string|max:255',
+            'new_album_description' => 'nullable|required_with:new_album_name|string|max:255',
         ]);
     
         $user_id = Auth::id();
         $dateOfToday = now()->format('Y-m-d');
+        $album_id = $validated['album_id'] ?? null;
+
+        if (!empty($validated['new_album_name']) && !empty($validated['new_album_description'])) {
+            $album = \App\Models\Album::create([
+                'user_id' => $user_id,
+                'name' => $validated['new_album_name'],
+                'description' => $validated['new_album_description'],
+            ]);
+            $album_id = $album->id;
+        }
     
         // ensure that the folder structure exists (uploads/{user_id}/{date_of_today}/thumbnails/)
         $storagePath = "uploads/{$user_id}/{$dateOfToday}";
@@ -72,6 +87,7 @@ class ImageController extends Controller
             $image->save(Storage::disk('public')->path("{$storagePath}/thumbnails/{$fileName}"));
 
             Image::create([
+                'album_id' => $album_id,
                 'publisher_id' => $user_id,
                 'description' => pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME),
                 'file_name' => $fileName,
@@ -101,6 +117,7 @@ class ImageController extends Controller
 
         return Inertia::render('Image/Edit/View', [
             'image' => $image,
+            'albums' => Auth::user()->albums
         ]);
     }
 
@@ -110,10 +127,12 @@ class ImageController extends Controller
 
         $request->validate([
             'description' => 'required|string|max:255',
+            'album_id' => 'nullable|exists:albums,id',
         ]);
 
         $image->update([
             'description' => $request->description,
+            'album_id' => $request->album_id,
         ]);
 
         return redirect()->route('image.show', $image)->with('success', 'Image updated successfully.');

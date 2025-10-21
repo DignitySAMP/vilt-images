@@ -29,6 +29,19 @@
                     />
                 </div>
 
+                <div class="w-full">
+                    <label class="text-sm text-stone-700">Album</label>
+                    <select 
+                        v-model="form.album_id"
+                        class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    >
+                        <option :value="null">No album</option>
+                        <option v-for="album in usePage().props.albums" :key="album.id" :value="album.id">
+                            {{ album.name }}
+                        </option>
+                    </select>
+                </div>
+
                 <div class="flex gap-2">
                     <button 
                         type="submit" 
@@ -57,10 +70,11 @@
 
     const form = useForm({
         description: usePage().props.image.description,
+        album_id: usePage().props.image.album_id,
     });
 
     const submit = () => {
-        form.put(route('image.update', usePage().props.image.id));
+        form.patch(route('image.update', usePage().props.image.id));
     };
 </script>
 
