@@ -12,31 +12,28 @@
                     </span>
                     
                     <div class="w-full">
-                        <label for="email" class="text-sm text-stone-700">
-                            E-mail address
-                        </label>
-                        <input
+                        <InputText
                             id="email" 
                             name="email" 
-                            v-model="form.email"
+                            label="E-mail address"
                             type="email" 
                             placeholder="your@email.com"
-                            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             autocomplete="email"
+                            v-model="form.email"
+                            :errors="form.errors.email"
                         />
                     </div>
                     <div class="w-full">
-                        <label for="password" class="text-sm text-stone-700">
-                            Password
-                        </label>
-                        <input
-                            id="password" 
+
+                        <InputText
+                            id="empasswordail" 
                             name="password" 
-                            v-model="form.password"
+                            label="Password"
                             type="password" 
-                            placeholder="********"
-                            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="***"
                             autocomplete="password"
+                            v-model="form.password"
+                            :errors="form.errors.password"
                         />
                     </div>
 
@@ -104,6 +101,7 @@
     import { useForm, usePage, Link } from '@inertiajs/vue3';
     import IconLoadingAnimated from '@/icons/IconLoadingAnimated.vue'
     import IconClick from '@/icons/IconClick.vue'
+    import InputText from '@/components/Form/InputText.vue';
 
     const form = useForm({
         email: '',
