@@ -19,7 +19,7 @@
                 class="w-full min-h-32"
             />
 
-            <div class="flex gap-2 w-full text-sm">
+            <div class="flex flex-wrap gap-2 w-full text-sm">
                 <div class="flex justify-between w-full bg-sky-50 border border-sky-200 text-sky-700 px-2 py-1 rounded items-center gap-1">
                     <IconOwner class="w-4 h-4"/>
                     <span class="truncate">{{ props.album.user?.name ?? 'Unknown user' }}</span>
