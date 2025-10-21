@@ -16,6 +16,7 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
+        'album_id',
         'publisher_id',
         'description',
         'file_name',

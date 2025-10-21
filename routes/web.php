@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ImageController::class, 'index'])->name('home');
 Route::get('/image/{image}', [ImageController::class, 'show'])->name('image.show');
+Route::get('/image/{image}/edit', [ImageController::class, 'edit'])->name('image.edit');
+Route::put('/image/{image}', [ImageController::class, 'update'])->name('image.update');
+Route::delete('/image/{image}', [ImageController::class, 'destroy'])->name('image.destroy');
 Route::get('/upload', [ImageController::class, 'create'])->name('image.create');
 Route::post('/upload', [ImageController::class, 'store'])->name('image.store');
 

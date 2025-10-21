@@ -42,7 +42,7 @@ class ImageController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'files' => 'required|array',
             'files.*' => 'file|image|max:5120',
         ]);
@@ -95,27 +95,41 @@ class ImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Image $image)
+    public function edit(Image $image): InertiaResponse
     {
-        //
         $this->authorize('update', $image);
+
+        return Inertia::render('Image/Edit/View', [
+            'image' => $image,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Image $image)
     {
-        //
         $this->authorize('update', $image);
+
+        $request->validate([
+            'description' => 'required|string|max:255',
+        ]);
+
+        $image->update([
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('image.show', $image)->with('success', 'Image updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Image $image)
     {
-        //
+        
         $this->authorize('delete', $image);
+        dd($image);
+        
+        Storage::disk('public')->delete("{$image->path}/{$image->file_name}");
+        Storage::disk('public')->delete("{$image->path}/thumbnails/{$image->file_name}");
+
+        $image->delete();
+
+        return redirect()->route('home');
     }
 }
