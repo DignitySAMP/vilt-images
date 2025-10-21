@@ -29,7 +29,7 @@
                 <Link 
                     v-for="image in usePage().props.images.data"
                     as="div"
-                    class="cursor-pointer h-fit flex flex-col justify-center items-center gap-4 p-4 bg-stone-50 border border-white rounded-md"     
+                    class="cursor-pointer h-fit flex flex-col justify-center items-center gap-2 p-4 bg-stone-50 border border-white rounded-md"     
                     :href="route('image.show', image)"
                 >
                     <span class="w-full text-center truncate">
@@ -39,7 +39,7 @@
                         <AppImage
                             :url="image.thumbnail_url"
                             :alt="image.file_name"
-                            class="size-96 md:size-48 2xl:size-52"
+                            class="size-full md:size-48 2xl:size-60"
                         />
                     </div>
 
