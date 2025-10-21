@@ -49,6 +49,7 @@
     import IconUpload from '@/icons/IconUpload.vue';
     import IconYourFiles from '@/icons/IconYourFiles.vue';
     import IconLogin from '@/icons/IconLogin.vue';
+    import IconPhoto from '@/icons/IconPhoto.vue';
 
     const props = defineProps({
         active_tab: {
@@ -70,6 +71,14 @@
             label: 'Public',
             icon: IconPublic,
             url: route('home'),
+            style: 'text-indigo-800 hover:bg-indigo-50',
+            active_style: 'bg-indigo-500 text-white hover:bg-indigo-600',
+            auth: null
+        },
+        {
+            label: 'Albums',
+            icon: IconPhoto,
+            url: route('album.index'),
             style: 'text-indigo-800 hover:bg-indigo-50',
             active_style: 'bg-indigo-500 text-white hover:bg-indigo-600',
             auth: null

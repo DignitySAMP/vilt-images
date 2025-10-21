@@ -4,62 +4,77 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+
+use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
+
+use Illuminate\Support\Facades\Auth;
 
 class AlbumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): InertiaResponse
     {
-        //
+        return Inertia::render('Album/Index/View', [
+            'albums' => Album::with(['user', 'images' => function ($query) {
+                $query->limit(1);
+            }])->withCount('images')->paginate(10)
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): InertiaResponse
     {
-        //
+        return Inertia::render('Album/Create/View');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
+
+        Album::create([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('album.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Album $album)
+    public function show(Album $album): InertiaResponse
     {
-        //
+        return Inertia::render('Album/Show/View', [
+            'album' => $album->load('user'),
+            'images' => $album->images()->with('publisher')->paginate(10)
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Album $album)
+    public function edit(Album $album): InertiaResponse
     {
-        //
+        return Inertia::render('Album/Edit/View', [
+            'album' => $album
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Album $album)
+    public function update(Request $request, Album $album): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
+
+        $album->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('album.show', $album);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Album $album)
+    public function destroy(Album $album): RedirectResponse
     {
-        //
+        dd($album);
     }
 }

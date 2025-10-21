@@ -10,7 +10,7 @@
             <AppImage 
                 :url="usePage().props.image.url"
                 :alt="usePage().props.image.file_name"
-                class="w-full min-h-128"
+                class="w-full min-h-128 max-h-164"
             />
             
 

@@ -13,12 +13,15 @@
                     </span>
                 </button>
 
-                <button class="w-fit flex items-center gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer">
+                <Link 
+                    :href="route('album.index')"
+                    class="w-fit flex items-center gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer"
+                >
                     <IconPhoto/>
                     <span class="hidden md:inline-block">
                         View public albums
                     </span>
-                </button>
+                </Link>
             </div>
         </div>
         <SearchBar v-if="showFilterBar"/>
@@ -32,7 +35,7 @@
 </template>
 <script setup lang="js">
     import { ref } from 'vue';
-    import { usePage } from '@inertiajs/vue3';
+    import { usePage, Link } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
     import SearchBar from '@/pages/Image/Index/Partials/SearchBar.vue';

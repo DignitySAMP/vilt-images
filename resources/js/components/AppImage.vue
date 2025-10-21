@@ -4,15 +4,16 @@
         @error="onImageFailsToLoad"
         class="bg-indigo-100 rounded-md border border-indigo-300 text-indigo-700 w-full h-full flex items-center justify-center"
     />
-    <span 
+    <div 
         v-else 
-        class="bg-indigo-100 rounded-md border border-indigo-300 text-indigo-700 w-full h-full flex items-center justify-center"
+        class="bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-md border border-indigo-300 text-indigo-400 w-full h-full flex items-center justify-center"
     >
-        Image could not be loaded
-    </span>
+        <IconPhoto class="w-16 h-16"/>
+    </div>
 </template>
 <script setup lang="js">
     import { ref } from 'vue';
+    import IconPhoto from '@/icons/IconPhoto.vue';
 
     const props = defineProps({
         url: {
