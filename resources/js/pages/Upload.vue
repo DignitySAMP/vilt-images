@@ -1,22 +1,16 @@
 <template>
-    <div class="w-screen h-screen bg-stone-200">
+    <Layout tab="Upload">
         <div class="w-full h-full flex flex-col justify-center items-center">
-            <div class="flex w-full justify-center items-center text-center mb-8">
-
-                <AppLogo/>
-            </div>
-
-
             <div 
                 @dragover="onStartDraggingOver" 
                 @dragleave="onStopDraggingOver" 
                 @drop="onFileDropped"
-                class="w-128 p-8 bg-stone-50 border border-indigo-300 text-indigo-800 rounded-md shadow-md cursor-copy"
+                class="w-full min-h-128 p-8 bg-white text-indigo-800 rounded-md flex flex-col justify-center items-center"
             >
 
                 <input type="file" name="file" id="fileInput" ref="file" multiple accept=".gif, .jpg, .jpeg, .png" @change="onInputUploadChange" class="hidden" />
 
-                <label for="fileInput" class=" cursor-copy w-full text-center">
+                <label for="fileInput" class=" cursor-copy w-full h-full text-center">
                     <div v-if="isDraggingDetected">
                         Release to drop files here.
                     </div>
@@ -25,7 +19,7 @@
                     </div>
                 </label>
 
-                <div v-if="files.length" class="mt-4 flex flex-col gap-2 px-4 py-2 rounded border-2 bg-white border-dotted border-indigo-300 cursor-default">
+                <div v-if="files.length" class="w-full mt-4 flex flex-col gap-2 px-4 py-2 rounded border-2 bg-white border-dotted border-indigo-300 cursor-default">
 
                     <div
                         v-for="file in files" :key="file.name" 
@@ -59,17 +53,17 @@
                         Upload image
                     </span>
 
-                    <span class="w-full text-center">
-                        {{ files.length }} files with a total size of {{ getTotalSize() }} kb.
+                    <span class="w-full text-center py-2 px-4 bg-sky-200 border border-sky-500 text-sky-800 rounded">
+                        You will upload {{ files.length }} files with a total size of {{ getTotalSize() }} kb.
                     </span>
                 </div>
             </div>
         </div>
-    </div>
+    </Layout>
 </template>
 <script setup>
 import { ref } from 'vue';
-import AppLogo from '@/components/AppLogo.vue';
+import Layout from '@/layouts/Layout.vue'
 
 const isDraggingDetected = ref(false);
 const onStartDraggingOver = (e) => {
@@ -117,10 +111,11 @@ const appendFileToList = (uploadedFiles) => {
 
 const getCleanFileName = (file) => {
     const name = file.name;
-    if(file.name.length > (8 + 4)) {
+    const NAME_LIMIT = 32; // 32 characters
+    if(file.name.length > (NAME_LIMIT + 4)) {
         const lastDotIndex = name.lastIndexOf('.');
 
-        const prefix = name.substring(0, lastDotIndex).slice(0, 8);
+        const prefix = name.substring(0, lastDotIndex).slice(0, NAME_LIMIT);
         const extension = name.substring(lastDotIndex);
         
         return `${prefix}... ${extension}`;
