@@ -45,7 +45,11 @@
         </div>
 
         <div class="grid grid-cols-6 gap-4 h-full w-full">
-            <div class="bg-white rounded p-4 flex flex-col gap-2 w-full h-full text-indigo-600" v-for="image in usePage().props.related_images">
+            <Link 
+                v-for="image in usePage().props.related_images"
+                :href="route('image.show', image.id)"
+                class="bg-white rounded p-4 flex flex-col gap-2 w-full h-full text-indigo-600"
+            >
                 <div class="bg-indigo-100 rounded-md border border-indigo-300 text-indigo-700 min-h-32 flex items-center justify-center">
                     Related Image #{{ image.id }}
                 </div>
@@ -53,14 +57,14 @@
                     <iconYourFiles class="w-6 h-6"/>
                     <span>{{ 'No album' }}</span>
                 </div>
-            </div>
+            </Link>
             
         </div>
     </Layout>
 </template>
 <script setup lang="js">
     import Layout from '@/layouts/Layout.vue'
-    import { usePage } from '@inertiajs/vue3';
+    import { usePage, Link } from '@inertiajs/vue3';
 
     import IconOwner from '@/icons/IconOwner.vue'
     import IconDate from '@/icons/IconDate.vue'
