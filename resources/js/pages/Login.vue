@@ -109,22 +109,11 @@
         remember: false
     });
 
-
     const submit = () => {
-
-        form.post(route('login'), 
-        {
-            onSuccess: () => {
-                form.reset();
-            },
-
-            onError: (errors) => {
-                console.log(errors);
-            },
-
-            onFinish: () => {
-                form.reset('password');
-            }
+        form.post(route('login'), {
+            onSuccess: () => form.reset(),
+            onError: (errors) => console.log(errors),
+            onFinish: () => form.reset('password'),
         });
     };
 </script>
