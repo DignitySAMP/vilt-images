@@ -2,8 +2,9 @@
 
     <Layout tab="Login">
         <div class="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-white rounded p-6">
-                <form @submit.prevent="submit" class="flex flex-col gap-4">
+
+            <div class="bg-white min-h-196 rounded p-6 flex flex-col justify-center items-center">
+                <form @submit.prevent="submit" class="flex flex-col gap-4 w-full px-8">
                     <span class="w-fit text-lg text-indigo-500 font-bold">
                         Authenticate
                     </span>

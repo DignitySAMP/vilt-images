@@ -19,6 +19,8 @@
     - add a proper page for this (i.e. 'this image is private')
     - make it so only those with the link can see it (signed URLs)
 
+  - add forgot your password page
+
   - add proper filtering on index and profile page
   - add profile editing and deleting
     - deleting purges all images

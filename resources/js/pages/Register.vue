@@ -21,14 +21,14 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded p-6">
+            <div class="bg-white min-h-196 rounded p-6 flex flex-col justify-center items-center">
 
-                <form @submit.prevent="submit" class="flex flex-col gap-4">
+                <form @submit.prevent="submit" class="flex flex-col gap-4 w-full px-16">
                     <span class="w-fit text-lg text-indigo-500 font-bold">
                         Registration
                     </span>
                     
-                    <div class="w-full">
+                    <div class="w-full flex flex-col gap-2">
                         <InputText 
                             label="Nametag"
                             id="name" 
@@ -39,6 +39,9 @@
                             v-model="form.name"
                             :errors="form.errors.name"
                         />
+                        <span class="text-sm text-stone-400">
+                            Refrain from using any real life references in your nametag, since it will be visible publically.
+                        </span>
                     </div>
 
                     <div class="w-full">
@@ -54,7 +57,7 @@
                         />
                     </div>
 
-                    <div class="w-full">
+                    <div class="w-full flex flex-col gap-2">
                         <InputText 
                             label="Desired password"
                             id="password" 
@@ -65,6 +68,10 @@
                             v-model="form.password"
                             :errors="form.errors.password"
                         />
+
+                        <span class="text-sm text-stone-400">
+                            At least 8 characters, one lowercase, one uppercase, one number and one symbol are required.
+                        </span>
                     </div>
 
                     <div class="w-full">
