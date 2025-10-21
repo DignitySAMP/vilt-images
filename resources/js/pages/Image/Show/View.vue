@@ -24,7 +24,7 @@
 
                     <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-emerald-700  bg-emerald-50 border border-emerald-200">
                         <IconYourFiles/>
-                        {{'No album' }}
+                        {{ usePage().props.image.album.name }}
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                 />
                 <div class="bg-emerald-50 border border-emerald-300 text-emerald-700 py-1 rounded flex justify-between px-4">
                     <iconYourFiles class="w-6 h-6"/>
-                    <span>{{ 'No album' }}</span>
+                    <span>{{ image.album.name}}</span>
                 </div>
             </Link>
             

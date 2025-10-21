@@ -7,13 +7,13 @@
         class="flex flex-col gap-2 items-center p-4 bg-stone-50 border text-indigo-700 border-white hover:border-indigo-500 rounded-md  hover:shadow-md cursor-pointer transition duration-300"
         :class="isAnyImageHovered() && !isImageHovered[props.image.id] ? 'grayscale' : 'grayscale-0'"
     >
-        <span class="w-full truncate">
+        <span class="w-full text-center truncate">
             {{ props.image.description }}
         </span>
 
         <div class="flex">
             <AppImage 
-                :src="props.image.thumbnail_url"
+                :url="props.image.thumbnail_url"
                 :alt="props.image.file_name"
                 class="ize-96 sm:size-48 xl:size-52 2xl:size-64"
             />

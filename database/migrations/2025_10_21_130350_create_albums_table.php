@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('albums', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('album_id')->nullable()->constrained('albums')->cascadeOnDelete();
-            $table->foreignId('publisher_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->string('name');
             $table->string('description');
-            $table->string('file_name');
-            $table->string('path');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('albums');
     }
 };

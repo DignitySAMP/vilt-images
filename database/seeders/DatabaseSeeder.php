@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Album;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('test@example.com')
         ]);
 
+        Album::factory(3)->create();
         Image::factory(15)->create();
     }
 }

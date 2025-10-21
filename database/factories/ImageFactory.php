@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Album;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,6 +19,8 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
+
+            'album_id' => Album::inRandomOrder()->first()?->id,
             'publisher_id' => User::inRandomOrder()->first()?->id,
             'description' => fake()->word(),
             'file_name' => fake()->word() . fake()->fileExtension(),

@@ -32,21 +32,22 @@ class Image extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function album(): BelongsTo {
+        return $this->belongsTo(Album::class);
+    }
    
     /**
      * Builds a collection of random images with similar values (file_name, description, publisher.name)
-     *
-     * @return Collection
      */
-
     public function similar(): Collection
     {
-        return self::with('publisher')
+        return self::with(['publisher', 'album'])
             ->where( 'id', '!=', $this->id)
             ->where(
                 column: function ($query): void {
                     $query->where( 'file_name', $this->file_name)
                     ->orWhere( 'description', $this->description )
+                    ->orWhere( 'album_id', $this->album_id)
                     ->orWhereHas( 'publisher',  function ($q): void {
                         $q->where( 'name',  $this->publisher?->name);
                     }
