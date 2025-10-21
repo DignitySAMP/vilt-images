@@ -1,8 +1,8 @@
 <template>
 
-    <Layout>
+    <Layout tab="Login">
         
-        <div class="w-full h-full grid grid-cols-2 gap-4">
+        <div class="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <div class="bg-white rounded p-6">
 
@@ -76,7 +76,7 @@
                 
             </div>
 
-            <div class="bg-indigo-500 rounded w-full h-full flex flex-col justify-center items-center p-12">
+            <div class="hidden md:flex bg-indigo-500 rounded w-full h-full flex-col justify-center items-center p-12">
 
                 <span class="w-32 h-32 text-indigo-400">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h8v2H5v14h14v-7h2v7q0 .825-.587 1.413T19 21zm1-4h12l-3.75-5l-3 4L9 13zm12-7V5.825L16.4 7.4L15 6l4-4l4 4l-1.4 1.4L20 5.825V10z"/></svg>

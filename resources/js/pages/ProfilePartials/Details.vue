@@ -3,7 +3,7 @@
         <span class="w-full text-lg text-indigo-500 font-bold">
             Update Profile
         </span>
-        <form @submit.prevent="submit" class="flex flex-col gap-4">
+        <form @submit.prevent="submit" class="flex flex-col gap-4 w-full">
             <div class="w-full">
                 <label for="nametag" class="text-sm text-stone-700">
                     Nametag

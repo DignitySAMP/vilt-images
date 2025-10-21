@@ -8,14 +8,14 @@
             <div class="flex gap-2">
                 <button class="w-fit flex items-center gap-6 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer" @click="showFilterBar = !showFilterBar">
                     <IconFilter/>
-                    <span>
+                    <span class="hidden md:inline-block">
                         {{ showFilterBar ? 'Hide' : 'Show' }} filter
                     </span>
                 </button>
 
                 <button class="w-fit flex items-center gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer">
                     <IconPhoto/>
-                    <span>
+                    <span class="hidden md:inline-block">
                         View public albums
                     </span>
                 </button>

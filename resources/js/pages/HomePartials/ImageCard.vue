@@ -8,7 +8,7 @@
         {{ props.image.name }}
 
         <div class="flex">
-            <span class="bg-indigo-100 h-64 w-64 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
+            <span class="bg-indigo-100 size-96 sm:size-48 xl:size-52 2xl:size-64 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
                 Placeholder
             </span>
         </div>

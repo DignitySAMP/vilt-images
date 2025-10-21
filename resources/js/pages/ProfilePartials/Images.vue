@@ -7,14 +7,14 @@
             <div class="flex gap-2">
                 <button class="w-fit flex items-center gap-6 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer" @click="showFilterBar = !showFilterBar">
                     <IconFilter/>
-                    <span>
+                    <span class="hidden md:inline-block">
                         {{ showFilterBar ? 'Hide' : 'Show' }} filter
                     </span>
                 </button>
 
                 <button class="w-fit flex items-center gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer">
                     <IconPhoto/>
-                    <span>
+                    <span class="hidden md:inline-block">
                         View your albums
                     </span>
                 </button>
@@ -25,14 +25,14 @@
 
         <div ref="imageContainer" class="flex flex-col gap-4 mt-4">
 
-            <div class="grid grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 <div
                     v-for="image in images"
                     class="h-fit flex flex-col justify-center items-center gap-4 p-4 bg-stone-50 border border-white rounded-md"     
                 >
                     <span>{{ image.name }}</span>
                     <div class="flex">
-                        <span class="bg-indigo-100 h-64 w-64 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
+                        <span class="bg-indigo-100 size-96 md:size-48 2xl:size-52 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
                             Placeholder
                         </span>
                     </div>

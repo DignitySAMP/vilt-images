@@ -1,7 +1,7 @@
 <template>
 
     <div class="w-screen h-screen bg-stone-200">
-        <div class="container mx-auto pt-4">
+        <div class="container mx-auto pt-2 md:pt-4">
             
             <Header :active_tab="tab"/>
 

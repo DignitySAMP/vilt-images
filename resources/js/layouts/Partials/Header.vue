@@ -1,9 +1,8 @@
 <template>
-    <div class="flex py-1 justify-between bg-white rounded">
+    <div class="flex py-1 justify-between items-center bg-white rounded">
         <AppLogo/>
 
-        <div class="px-4 flex items-center gap-2">
-
+        <div class="hidden md:flex px-4 items-center gap-2">
             <span v-for="items in navItems">
                 <Link 
                     v-if="items.auth === null || (items.auth !== true && usePage().props.auth.user === null) || (items.auth === true && usePage().props.auth.user !== null)"
@@ -15,14 +14,36 @@
                     <component :is="items.icon"/>
                     {{ items.label }}
                 </Link>
-
             </span>
+        </div>
+        <div class="relative flex justify-end md:hidden px-4 text-indigo-500 w-full">
+
+            <IconHeaderBreadcrumbs class="w-10 h-10" @click="showMobileHeader = !showMobileHeader"/>
+            <div v-if="showMobileHeader"  class="absolute bg-white border border-stone-200 shadow-lg min-w-48 rounded p-2 right-1 top-8 z-50 flex flex-col">
+                <span v-for="items in navItems">
+                    <Link 
+                        v-if="items.auth === null || (items.auth !== true && usePage().props.auth.user === null) || (items.auth === true && usePage().props.auth.user !== null)"
+                        :method="items.method !== null ? items.method : 'GET'" 
+                        :href="items.url" 
+                        class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300"
+                        :class="props.active_tab === items.label ? items.active_style : items.style"
+                    >
+                        <component :is="items.icon"/>
+                        {{ items.label }}
+                    </Link>
+                </span>
+            </div>
         </div>
     </div>
 </template>
 <script setup>
     import { Link, usePage } from '@inertiajs/vue3';
+    import { ref } from 'vue';
     import AppLogo from '@/components/AppLogo.vue';
+
+    import IconHeaderBreadcrumbs from '@/icons/IconHeaderBreadcrumbs.vue';
+    const showMobileHeader = ref(false);
+
     import IconLogout from '@/icons/IconLogout.vue';
     import IconPublic from '@/icons/IconPublic.vue';
     import IconUpload from '@/icons/IconUpload.vue';
