@@ -61,7 +61,7 @@
         </div>
     </Layout>
 </template>
-<script setup>
+<script setup lang="js">
 import { ref } from 'vue';
 import Layout from '@/layouts/Layout.vue'
 

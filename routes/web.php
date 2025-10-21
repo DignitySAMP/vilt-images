@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [ImageController::class, 'index'])->name('home');
+Route::get('/image/{image}', [ImageController::class, 'show'])->name('image.show');
+Route::get('/upload', [ImageController::class, 'create'])->name('image.upload');
 
-Route::get('/upload', function () {
-    return Inertia::render('Upload');
-})->name('upload');
 
 Route::get('/profile', function () {
     return Inertia::render('Profile');

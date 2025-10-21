@@ -14,8 +14,8 @@ class ImageController extends Controller
      */
     public function index(): InertiaResponse
     {
-        return Inertia::render('Home', [
-            'images' => Image::paginate(10)
+        return Inertia::render('Image/Index/View', [
+            'images' => Image::with('publisher')->paginate(10)
         ]);
     }
 
@@ -24,7 +24,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Image/Create/View');
     }
 
     /**
@@ -38,9 +38,11 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Image $image)
+    public function show(Image $image): InertiaResponse
     {
-        //
+        return Inertia::render('Image/Show/View', [
+            'image' => $image->with('publisher')->first()
+        ]);
     }
 
     /**
