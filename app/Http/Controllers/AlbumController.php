@@ -53,6 +53,8 @@ class AlbumController extends Controller
 
     public function edit(Album $album): InertiaResponse
     {
+        $this->authorize('update', $album);
+
         return Inertia::render('Album/Edit/View', [
             'album' => $album
         ]);
@@ -60,6 +62,8 @@ class AlbumController extends Controller
 
     public function update(Request $request, Album $album): RedirectResponse
     {
+        $this->authorize('update', $album);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
@@ -75,6 +79,8 @@ class AlbumController extends Controller
 
     public function destroy(Album $album): RedirectResponse
     {
+        $this->authorize('delete', $album);
+
         dd($album);
     }
 }

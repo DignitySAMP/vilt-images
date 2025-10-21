@@ -3,9 +3,21 @@
 
         <div class="bg-white w-full h-full p-6 flex flex-col justify-center items-center gap-2">
             
-            <span class="w-full flex justify-center text-lg text-indigo-700 font-bold">
-                {{ usePage().props.image.description }}
-            </span>
+            <div class="w-full flex justify-between items-center">
+                <span class="text-lg text-indigo-700 font-bold">
+                    {{ usePage().props.image.description }}
+                </span>
+                
+                <div v-if="canEdit" class="flex gap-2">
+                    <Link 
+                        :href="route('image.edit', usePage().props.image.id)"
+                        class="flex items-center gap-2 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer"
+                    >
+                        <IconEdit/>
+                        <span class="hidden md:inline-block">Edit</span>
+                    </Link>
+                </div>
+            </div>
 
             <AppImage 
                 :url="usePage().props.image.url"
@@ -24,7 +36,7 @@
 
                     <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-emerald-700  bg-emerald-50 border border-emerald-200">
                         <IconYourFiles/>
-                        {{ usePage().props.image.album.name }}
+                        {{ usePage().props.image?.album?.name ?? 'Unknown album' }}
                     </div>
                 </div>
 
@@ -68,7 +80,8 @@
     </Layout>
 </template>
 <script setup lang="js">
-    import { usePage, Link } from '@inertiajs/vue3';
+    import { computed } from 'vue';
+    import { usePage, Link, router } from '@inertiajs/vue3';
 
     import Layout from '@/layouts/Layout.vue'
     import AppImage from '@/components/AppImage.vue'
@@ -77,6 +90,11 @@
     import IconDate from '@/icons/IconDate.vue'
     import IconFilesize from '@/icons/IconFilesize.vue'
     import IconYourFiles from '@/icons/IconYourFiles.vue'
+    import IconEdit from '@/icons/IconEdit.vue'
 
-
+    const canEdit = computed(() => {
+        const user = usePage().props.auth.user;
+        const image = usePage().props.image;
+        return user && user.id === image.publisher_id;
+    });
 </script>

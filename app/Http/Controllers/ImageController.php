@@ -98,6 +98,7 @@ class ImageController extends Controller
     public function edit(Image $image)
     {
         //
+        $this->authorize('update', $image);
     }
 
     /**
@@ -106,6 +107,7 @@ class ImageController extends Controller
     public function update(Request $request, Image $image)
     {
         //
+        $this->authorize('update', $image);
     }
 
     /**
@@ -114,5 +116,6 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         //
+        $this->authorize('delete', $image);
     }
 }

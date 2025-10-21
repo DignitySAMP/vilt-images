@@ -20,7 +20,7 @@
                 <span class="text-indigo-600 text-center"> {{ usePage().props.album.description }} </span>
             </div>
 
-            <div class="flex gap-2 h-fit justify-self-end">
+            <div v-if="canEdit" class="flex gap-2 h-fit justify-self-end">
                 <Link 
                     :href="route('album.edit', usePage().props.album.id)"
                     class="flex items-center gap-2 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer"
@@ -40,6 +40,7 @@
     </Layout>
 </template>
 <script setup lang="js">
+    import { computed } from 'vue';
     import { usePage, Link } from '@inertiajs/vue3';
 
     import Layout from '@/layouts/Layout.vue';
@@ -49,5 +50,12 @@
     import IconOwner from '@/icons/IconOwner.vue';
     import IconDate from '@/icons/IconDate.vue';
     import IconEdit from '@/icons/IconEdit.vue';
+
+    const canEdit = computed(() => {
+        const user = usePage().props.auth.user;
+        const album = usePage().props.album;
+        return user && user.id === album.user_id;
+    });
+
 </script>
 
