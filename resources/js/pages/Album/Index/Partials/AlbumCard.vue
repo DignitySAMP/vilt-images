@@ -8,7 +8,7 @@
         :class="isAnyAlbumHovered() && !isAlbumHovered[props.album.id] ? 'grayscale' : 'grayscale-0'"
     >
         <span class="w-full text-center text-lg font-bold truncate">
-            {{ props.album.name }}
+            {{ props.album?.name ?? 'Unknown album' }}
         </span>
 
         <div class="grid grid-rows-[auto_1fr_auto] gap-4 items-center w-full">
@@ -22,7 +22,7 @@
             <div class="flex gap-2 w-full text-sm">
                 <div class="flex justify-between w-full bg-sky-50 border border-sky-200 text-sky-700 px-2 py-1 rounded items-center gap-1">
                     <IconOwner class="w-4 h-4"/>
-                    <span class="truncate">{{ props.album.user?.name ?? 'Unknown' }}</span>
+                    <span class="truncate">{{ props.album.user?.name ?? 'Unknown user' }}</span>
                 </div>
                 <div class="flex justify-between w-full bg-emerald-50 border border-emerald-200 text-emerald-700 px-2 py-1 rounded items-center gap-1">
                     <IconYourFiles class="w-4 h-4"/>

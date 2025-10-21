@@ -72,7 +72,7 @@
                 />
                 <div class="bg-emerald-50 border border-emerald-300 text-emerald-700 py-1 rounded flex justify-between px-4">
                     <iconYourFiles class="w-6 h-6"/>
-                    <span>{{ image.album.name}}</span>
+                    <span>{{ image.album?.name ?? 'Unknown album'}}</span>
                 </div>
             </Link>
             
