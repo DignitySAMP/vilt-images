@@ -94,6 +94,7 @@
             icon: IconLogin,
             url: route('login'),
             style: 'text-sky-800 hover:bg-sky-100 hover:text-sky-800',
+            active_style: 'bg-indigo-500 text-white hover:bg-indigo-600',
             auth: false
         },
     ]
