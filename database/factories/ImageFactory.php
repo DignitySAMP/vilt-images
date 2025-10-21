@@ -20,8 +20,8 @@ class ImageFactory extends Factory
         return [
             'publisher_id' => User::inRandomOrder()->first()?->id,
             'description' => fake()->word(),
-            'file_name' => fake()->word() . '' . fake()->fileExtension()
-
+            'file_name' => fake()->word() . fake()->fileExtension(),
+            'path' => fake()->word()
         ];
     }
 }

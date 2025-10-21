@@ -10,9 +10,12 @@
         {{ props.image.description }}
 
         <div class="flex">
-            <span class="bg-indigo-100 size-96 sm:size-48 xl:size-52 2xl:size-64 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
-                {{ props.image.file_name }}
-            </span>
+            <AppImage 
+                :src="props.image.url"
+                :alt="props.image.file_name"
+                class="ize-96 sm:size-48 xl:size-52 2xl:size-64"
+            />
+            
         </div>
 
     </Link>
@@ -20,6 +23,7 @@
 <script setup lang="js">
     import { reactive } from 'vue';
     import { Link } from '@inertiajs/vue3';
+    import AppImage from '@/components/AppImage.vue';
 
     const isImageHovered = reactive({});
     const isAnyImageHovered = () => Object.values(isImageHovered).some(v => v === true);

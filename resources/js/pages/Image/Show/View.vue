@@ -7,9 +7,12 @@
                 {{ usePage().props.image.description }}
             </span>
 
-            <div class="bg-indigo-100 rounded-md border border-indigo-300 text-indigo-700 w-full min-h-128 flex items-center justify-center">
-                {{ usePage().props.image.file_name }}
-            </div>
+            <AppImage 
+                :url="usePage().props.image.url"
+                :alt="usePage().props.image.file_name"
+                class="w-full min-h-128"
+            />
+            
 
             <div class="flex w-full gap-2 flex-wrap md:flex-nowrap md:gap-4">
 
@@ -50,9 +53,11 @@
                 :href="route('image.show', image.id)"
                 class="bg-white rounded p-4 flex flex-col gap-2 w-full h-full text-indigo-600"
             >
-                <div class="bg-indigo-100 rounded-md border border-indigo-300 text-indigo-700 min-h-32 flex items-center justify-center">
-                    Related Image #{{ image.id }}
-                </div>
+                <AppImage
+                    :url="image.url"
+                    :alt="image.file_name"
+                    class="min-h-32"
+                />
                 <div class="bg-emerald-50 border border-emerald-300 text-emerald-700 py-1 rounded flex justify-between px-4">
                     <iconYourFiles class="w-6 h-6"/>
                     <span>{{ 'No album' }}</span>
@@ -63,12 +68,15 @@
     </Layout>
 </template>
 <script setup lang="js">
-    import Layout from '@/layouts/Layout.vue'
     import { usePage, Link } from '@inertiajs/vue3';
+
+    import Layout from '@/layouts/Layout.vue'
+    import AppImage from '@/components/AppImage.vue'
 
     import IconOwner from '@/icons/IconOwner.vue'
     import IconDate from '@/icons/IconDate.vue'
     import IconFilesize from '@/icons/IconFilesize.vue'
     import IconYourFiles from '@/icons/IconYourFiles.vue'
-    import IconPhoto from '@/icons/IconPhoto.vue'
+
+
 </script>

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\User;
 
@@ -17,7 +18,13 @@ class Image extends Model
     protected $fillable = [
         'publisher_id',
         'description',
-        'file_name'
+        'file_name',
+        'path',
+    ];
+    
+    protected $appends = [
+        'url', 
+        'thumbnail_url'
     ];
 
     public function publisher(): BelongsTo {
@@ -47,6 +54,20 @@ class Image extends Model
             ->inRandomOrder()
             ->limit(6)
             ->get();
+    }
+
+    public function getUrlAttribute(): string
+    {
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+        return $disk->url("{$this->path}/{$this->file_name}");
+    }
+
+    public function getThumbnailUrlAttribute(): string
+    {
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+        return $disk->url("{$this->path}/thumbnails/{$this->file_name}");
     }
 
 }
