@@ -64,7 +64,7 @@
     });
 
     const submit = () => {
-        form.put(route('album.update', usePage().props.album.id));
+        form.patch(route('album.update', usePage().props.album.id));
     };
 </script>
 
