@@ -6,7 +6,7 @@
 
             <span v-for="items in navItems">
                 <Link 
-                    v-if="items.auth === null || (items.auth !== true && usePage().props.auth.user === null)"
+                    v-if="items.auth === null || (items.auth !== true && usePage().props.auth.user === null) || (items.auth === true && usePage().props.auth.user !== null)"
                     :method="items.method !== null ? items.method : 'GET'" 
                     :href="items.url" 
                     class="flex gap-4 px-3 py-1 rounded cursor-pointer transition duration-300"
@@ -42,6 +42,7 @@
             icon: IconUpload,
             url: route('upload'),
             style: 'text-indigo-800 hover:bg-green-100 hover:text-green-800',
+            auth: null
         },
         {
             label: 'Public',
@@ -49,6 +50,7 @@
             url: route('home'),
             style: 'text-indigo-800 hover:bg-indigo-50',
             active_style: 'bg-indigo-500 text-white hover:bg-indigo-600',
+            auth: null
         },
         {
             label: 'Profile',
