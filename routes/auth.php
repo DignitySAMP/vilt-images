@@ -18,7 +18,7 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 Route::get('/profile', function () {
     $user = Auth::user();
-    $owned_images = $user->images()->paginate(8);
+    $owned_images = $user->images()->with('album')->paginate(8);
     return Inertia::render('Profile',[
         'images' => $owned_images
     ]

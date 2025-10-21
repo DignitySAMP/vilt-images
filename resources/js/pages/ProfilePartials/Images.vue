@@ -51,7 +51,7 @@
                         class="flex gap-1 items-center w-full border justify-between px-2 py-0.5 rounded"
                     >
                         <IconPhoto/>
-                        <span>{{ (image.album === undefined || image.album === null) ? 'No album' : image.album }}</span>
+                        <span class="text-sm truncate">{{ ( image.album === null) ? 'No album' : image.album.name }}</span>
                     </div>
                 </Link>
             </div>
