@@ -24,14 +24,15 @@
         <SearchBar v-if="showFilterBar"/>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <ImageCard v-for="image in publicImages" :key="image.id" :image="image"/>
+            <ImageCard v-for="image in usePage().props.images.data" :key="image.id" :image="image"/>
         </div>
 
-        <Pagination :links="fakePagination"/>
+        <Pagination :links="usePage().props.images"/>
     </Layout>
 </template>
 <script setup lang="js">
     import { ref } from 'vue';
+    import { usePage } from '@inertiajs/vue3';
     import Layout from '@/layouts/Layout.vue';
     import SearchBar from '@/pages/HomePartials/SearchBar.vue';
     import ImageCard from '@/pages/HomePartials/ImageCard.vue';

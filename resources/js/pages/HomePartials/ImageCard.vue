@@ -5,11 +5,11 @@
         @mouseleave="isImageHovered[props.image.id] = false"
         :class="isAnyImageHovered() && !isImageHovered[props.image.id] ? 'grayscale' : 'grayscale-0'"
     >
-        {{ props.image.name }}
+        {{ props.image.description }}
 
         <div class="flex">
             <span class="bg-indigo-100 size-96 sm:size-48 xl:size-52 2xl:size-64 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
-                Placeholder
+                {{ props.image.file_name }}
             </span>
         </div>
 

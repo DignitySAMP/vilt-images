@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->name('home');
+Route::get('/', [ImageController::class, 'index'])->name('home');
 
 Route::get('/upload', function () {
     return Inertia::render('Upload');
