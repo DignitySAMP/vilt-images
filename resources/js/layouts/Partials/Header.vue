@@ -61,7 +61,7 @@
         {
             label: 'Upload',
             icon: IconUpload,
-            url: route('image.upload'),
+            url: route('image.create'),
             style: 'text-indigo-800 hover:bg-green-100 hover:text-green-800',
             active_style: 'bg-green-500 text-white hover:bg-green-600',
             auth: null

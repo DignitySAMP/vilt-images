@@ -32,7 +32,11 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'files' => 'array|required',
+        ]);
+
+        dd($request);
     }
 
     /**
