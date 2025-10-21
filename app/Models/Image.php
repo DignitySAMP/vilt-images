@@ -24,7 +24,8 @@ class Image extends Model
     
     protected $appends = [
         'url', 
-        'thumbnail_url'
+        'thumbnail_url',
+        'file_size'
     ];
 
     public function publisher(): BelongsTo {
@@ -70,4 +71,16 @@ class Image extends Model
         return $disk->url("{$this->path}/thumbnails/{$this->file_name}");
     }
 
+    public function getFileSizeAttribute(): int
+    {
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+        $filePath = "{$this->path}/{$this->file_name}";
+
+        if ($disk->exists($filePath)) {
+            return $disk->size($filePath);
+        }
+
+        return 0; // no size
+    }
 }

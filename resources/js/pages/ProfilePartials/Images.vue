@@ -26,15 +26,21 @@
         <div ref="imageContainer" class="flex flex-col gap-4 mt-4">
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <div
-                    v-for="image in images"
-                    class="h-fit flex flex-col justify-center items-center gap-4 p-4 bg-stone-50 border border-white rounded-md"     
+                <Link 
+                    v-for="image in usePage().props.images.data"
+                    as="div"
+                    class="cursor-pointer h-fit flex flex-col justify-center items-center gap-4 p-4 bg-stone-50 border border-white rounded-md"     
+                    :href="route('image.show', image)"
                 >
-                    <span>{{ image.name }}</span>
+                    <span class="w-full text-center truncate">
+                        {{ image.description }}
+                    </span>
                     <div class="flex">
-                        <span class="bg-indigo-100 size-96 md:size-48 2xl:size-52 text-indigo-700 border border-indigo-200 rounded-md flex items-center justify-center">
-                            Placeholder
-                        </span>
+                        <AppImage
+                            :url="image.thumbnail_url"
+                            :alt="image.file_name"
+                            class="size-96 md:size-48 2xl:size-52"
+                        />
                     </div>
 
                     <div 
@@ -42,97 +48,26 @@
                         class="flex gap-1 items-center w-full border justify-between px-2 py-0.5 rounded"
                     >
                         <IconPhoto/>
-                        <span>{{ image.album === null ? 'No album' : image.album }}</span>
+                        <span>{{ (image.album === undefined || image.album === null) ? 'No album' : image.album }}</span>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
 
-        <Pagination :links="fakePagination" class="mt-4"/>
+        <Pagination :links="usePage().props.images" class="mt-4"/>
  
     </div>
 </template>
 <script setup lang="js">
     import { ref } from 'vue';
+    import { usePage, Link } from '@inertiajs/vue3';
 
     import Pagination from '@/components/Pagination.vue'
+    import AppImage from '@/components/AppImage.vue'
 
-    import IconDate from '@/icons/IconDate.vue'
-    import IconFilesize from '@/icons/IconFilesize.vue'
     import IconPhoto from '@/icons/IconPhoto.vue'
-    import IconUpload from '@/icons/IconUpload.vue'
-    import IconSearch from '@/icons/IconSearch.vue'
     import IconFilter from '@/icons/IconFilter.vue'
     import ImagesSearchBar from '@/pages/ProfilePartials/ImagesSearchBar.vue';
 
     const showFilterBar = ref(false);
-
-    const images = [
-    {
-            id: 1,
-            name: 'sunset.png',
-            size: 54321,
-            url: 'https://via.placeholder.com/256',
-            uploadedAt: '01/01/1970',
-            author: 'John Doe',
-            album: 'John\'s Album'
-        },
-        {
-            id: 3,
-            name: 'sunset.png',
-            size: 54321,
-            url: 'https://via.placeholder.com/256',
-            uploadedAt: '01/01/1970',
-            author: 'John Doe',
-            album: 'John\'s Album'
-        },
-        {
-            id: 5,
-            name: 'sunset.png',
-            size: 54321,
-            url: 'https://via.placeholder.com/256',
-            uploadedAt: '01/01/1970',
-            author: 'John Doe',
-            album: null
-        },
-        {
-            id: 1,
-            name: 'sunset.png',
-            size: 54321,
-            url: 'https://via.placeholder.com/256',
-            uploadedAt: '01/01/1970',
-            author: 'John Doe',
-            album: 'John\'s Album'
-        },
-        {
-            id: 3,
-            name: 'sunset.png',
-            size: 54321,
-            url: 'https://via.placeholder.com/256',
-            uploadedAt: '01/01/1970',
-            author: 'John Doe',
-            album: null
-        },
-        {
-            id: 5,
-            name: 'sunset.png',
-            size: 54321,
-            url: 'https://via.placeholder.com/256',
-            uploadedAt: '01/01/1970',
-            author: 'John Doe',
-            album: 'John\'s Album'
-        }
-    ];
-
-
-    const fakePagination = {
-        links: [
-            { url: null, label: "&laquo; Previous", active: false }, // disabled previous
-            { url: "/page/1", label: "1", active: false },
-            { url: "/page/2", label: "2", active: true }, // active
-            { url: "/page/3", label: "3", active: false },
-            { url: "/page/4", label: "4", active: false },
-            { url: "/page/3", label: "Next &raquo;", active: false },
-        ],
-    };
 </script>

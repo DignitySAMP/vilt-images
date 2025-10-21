@@ -35,7 +35,7 @@
                     </div>
                     <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-rose-700 bg-rose-50 border border-rose-200">
                         <IconFilesize/>
-                        {{ 'NaN kb' }}
+                        {{ usePage().props.image.file_size || 'Onbekend'}} kb
                     </div>
                 </div>
             </div>

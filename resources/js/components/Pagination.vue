@@ -15,7 +15,7 @@
                 </div>
                 <div v-else>
                     <Link as="button"
-                        class="px-4 py-3 mr-1 text-sm leading-4 rounded  border border-indigo-100 transition duration-300"
+                        class="px-4 py-3 mr-1 text-sm leading-4 rounded  border border-indigo-100 transition duration-300 cursor-pointer"
                         :class="link.active == true ? 
                             'bg-indigo-500 text-white hover:bg-indigo-400' : 
                             'bg-white text-indigo-700  hover:bg-indigo-50'

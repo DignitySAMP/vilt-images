@@ -48,6 +48,6 @@ class User extends Authenticatable
     }
 
     public function images(): HasMany {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'publisher_id', 'id');
     }
 }
