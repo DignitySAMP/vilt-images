@@ -9,8 +9,8 @@ Route::get('/image/{image}', [ImageController::class, 'show'])->name('image.show
 Route::get('/image/{image}/edit', [ImageController::class, 'edit'])->name('image.edit');
 Route::patch('/image/{image}', [ImageController::class, 'update'])->name('image.update');
 Route::delete('/image/{image}', [ImageController::class, 'destroy'])->name('image.destroy');
-Route::get('/upload', [ImageController::class, 'create'])->name('image.create');
-Route::post('/upload', [ImageController::class, 'store'])->name('image.store');
+Route::get('/upload', [ImageController::class, 'create'])->middleware('auth')->name('image.create');
+Route::post('/upload', [ImageController::class, 'store'])->middleware('auth')->name('image.store');
 
 Route::get('/albums', [AlbumController::class, 'index'])->name('album.index');
 Route::get('/album/create', [AlbumController::class, 'create'])->name('album.create');

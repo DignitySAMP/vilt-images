@@ -23,4 +23,4 @@ Route::get('/profile', function () {
         'images' => $owned_images
     ]
 );
-})->name('profile');
+})->middleware('auth')->name('profile');
