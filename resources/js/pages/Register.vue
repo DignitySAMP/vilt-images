@@ -29,62 +29,54 @@
                     </span>
                     
                     <div class="w-full">
-                        <label for="nametag" class="text-sm text-stone-700">
-                            Nametag
-                        </label>
-                        <input
-                            id="nametag" 
-                            name="nametag" 
-                            v-model="form.nametag"
+                        <InputText 
+                            label="Nametag"
+                            id="name" 
+                            name="name" 
                             type="text" 
                             placeholder="Nametag that is visible to others"
-                            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            autocomplete="username"
+                            autocomplete="name"
+                            v-model="form.name"
+                            :errors="form.errors.name"
                         />
                     </div>
 
                     <div class="w-full">
-                        <label for="nametag" class="text-sm text-stone-700">
-                            E-mail address
-                        </label>
-                        <input
+                        <InputText 
+                            label="E-mail address"
                             id="email" 
                             name="email" 
-                            v-model="form.email"
                             type="email" 
                             placeholder="your@email.com"
-                            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             autocomplete="email"
+                            v-model="form.email"
+                            :errors="form.errors.email"
                         />
                     </div>
 
                     <div class="w-full">
-                        <label for="nametag" class="text-sm text-stone-700">
-                            New Password
-                        </label>
-                        <input
-                            id="new-password" 
-                            name="new-password" 
-                            v-model="form.new_password"
+                        <InputText 
+                            label="Desired password"
+                            id="password" 
+                            name="password" 
                             type="password" 
-                            placeholder="********"
-                            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            autocomplete="new-password"
+                            placeholder="***"
+                            autocomplete="password"
+                            v-model="form.password"
+                            :errors="form.errors.password"
                         />
                     </div>
 
                     <div class="w-full">
-                        <label for="nametag" class="text-sm text-stone-700">
-                            Confirm New Password
-                        </label>
-                        <input
-                            id="confirm-new-password" 
-                            name="confirm-new-password" 
-                            v-model="form.confirm_new_password"
+                        <InputText 
+                            label="Confirm password"
+                            id="password_confirmation" 
+                            name="password_confirmation" 
                             type="password" 
-                            placeholder="********"
-                            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            autocomplete="confirm-new-password"
+                            placeholder="***"
+                            autocomplete="password_confirmation"
+                            v-model="form.password_confirmation"
+                            :errors="form.errors.password_confirmation"
                         />
                     </div>
 
@@ -109,19 +101,25 @@
 
 </template>
 <script setup lang="js">
-    import Layout from '@/layouts/Layout.vue'
     import { useForm, usePage, Link } from '@inertiajs/vue3';
+    import Layout from '@/layouts/Layout.vue'
+    import InputText from '@/components/Form/InputText.vue';
+
     import IconLoadingAnimated from '@/icons/IconLoadingAnimated.vue'
     import IconClick from '@/icons/IconClick.vue'
 
     const form = useForm({
-        nametag: '',
+        name: '',
         email: '',
-        new_password: '',
-        confirm_new_password: '',
-        current_password: ''
+        password: '',
+        password_confirmation: ''
     });
 
-
-    const submit = () => {};
+    const submit = () => {
+        form.post(route('register'), {
+            onSuccess: () => form.reset(),
+            onError: (errors) => console.log(errors),
+            onFinish: () => form.reset('password', 'password_confirmation'),
+        });
+    };
 </script>
