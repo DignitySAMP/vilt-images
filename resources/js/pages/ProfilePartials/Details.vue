@@ -34,8 +34,6 @@
                 />
             </div>
 
-
-
             <div class="w-full">
                 <label for="nametag" class="text-sm text-stone-700">
                     New Password

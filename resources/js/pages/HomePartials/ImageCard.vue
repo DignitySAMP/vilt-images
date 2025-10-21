@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-col gap-2 items-center p-4 bg-stone-50 border text-indigo-700 border-white rounded-md  hover:shadow-md cursor-pointer hover:scale-105 transition duration-300"
+        class="flex flex-col gap-2 items-center p-4 bg-stone-50 border text-indigo-700 border-white hover:border-indigo-500 rounded-md  hover:shadow-md cursor-pointer transition duration-300"
         @mouseenter="isImageHovered[props.image.id] = true"
         @mouseleave="isImageHovered[props.image.id] = false"
         :class="isAnyImageHovered() && !isImageHovered[props.image.id] ? 'grayscale' : 'grayscale-0'"
