@@ -24,6 +24,12 @@
     - deleting purges all images
 
   - ability to make albums private or public
+  - add filter component to albums
+
+  - make filters work
+  - properly test filters using debugbar 
+    -> avoid n+1 and other inefficient collections
+        -> implement resources if necessary
 
   - image tags?
     - can be used for better 'similar' images?
