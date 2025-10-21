@@ -15,6 +15,5 @@ Route::get('/profile', function () {
     return Inertia::render('Profile');
 })->name('profile');
 
-Route::get('/logout', function () {
-    return Inertia::render('Home');
-})->name('logout');
+
+require __DIR__.'/auth.php';
