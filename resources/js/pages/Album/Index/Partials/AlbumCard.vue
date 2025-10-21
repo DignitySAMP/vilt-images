@@ -8,7 +8,7 @@
         :class="isAnyAlbumHovered() && !isAlbumHovered[props.album.id] ? 'grayscale' : 'grayscale-0'"
     >
         <span class="w-full text-center text-lg font-bold truncate">
-            {{ props.album?.name ?? 'Unknown album' }}
+            {{ props.album?.name ?? 'No album' }}
         </span>
 
         <div class="grid grid-rows-[auto_1fr_auto] gap-4 items-center w-full">
