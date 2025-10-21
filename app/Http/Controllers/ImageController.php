@@ -41,7 +41,8 @@ class ImageController extends Controller
     public function show(Image $image): InertiaResponse
     {
         return Inertia::render('Image/Show/View', [
-            'image' => $image->with('publisher')->first()
+            'image' => $image->load('publisher'),
+            'related_images' => $image->similar()
         ]);
     }
 

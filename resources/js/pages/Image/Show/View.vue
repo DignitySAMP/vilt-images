@@ -45,13 +45,13 @@
         </div>
 
         <div class="grid grid-cols-6 gap-4 h-full w-full">
-            <div class="bg-white rounded p-4 flex flex-col gap-2 w-full h-full text-indigo-600" v-for="index, image in 6">
+            <div class="bg-white rounded p-4 flex flex-col gap-2 w-full h-full text-indigo-600" v-for="image in usePage().props.related_images">
                 <div class="bg-indigo-100 rounded-md border border-indigo-300 text-indigo-700 min-h-32 flex items-center justify-center">
-                    Related Image #{{ index }}
+                    Related Image #{{ image.id }}
                 </div>
                 <div class="bg-emerald-50 border border-emerald-300 text-emerald-700 py-1 rounded flex justify-between px-4">
                     <iconYourFiles class="w-6 h-6"/>
-                    <span>Album name here</span>
+                    <span>{{ 'No album' }}</span>
                 </div>
             </div>
             
