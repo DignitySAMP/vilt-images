@@ -83,9 +83,6 @@ php artisan storage:link
 ## todo
   - add forgot your password page
   - make components for select, checkboxes
-  - deletealbum needs inputtext
-  - add component for cancel <Link> with return icon.
-    - <Link button, i.e. 'create album' is a Link!
   - add toasts using toastify
   - move auth login/register/profile into it's own Auth/ folder with proper folder and pages
 
