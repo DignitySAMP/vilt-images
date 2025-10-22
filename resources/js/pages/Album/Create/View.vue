@@ -54,23 +54,26 @@
                         Create album
                     </InputButton>
 
-                    <Link 
+                    <InputLink
                         :href="route('album.index')"
-                        class="w-full lg:w-fit flex bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
+                        :icon="IconReturn"
+                        colors="bg-slate-500 hover:bg-slate-600 text-white"
                     >
                         Cancel
-                    </Link>
+                    </InputLink>
                 </div>
             </form>
         </div>
     </Layout>
 </template>
 <script setup lang="js">
-    import { useForm, Link } from '@inertiajs/vue3';
+    import { useForm } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputLink from '@/components/form/InputLink.vue';
+    import IconReturn from '@/icons/IconReturn.vue';
 
     const form = useForm({
         name: '',

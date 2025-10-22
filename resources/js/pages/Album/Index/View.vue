@@ -15,26 +15,26 @@
                     {{ showFilterBar ? 'Hide' : 'Show' }} filter
                 </InputButton>
 
-                <Link 
+                <InputLink
                     v-if="usePage().props.auth?.user !== null && usePage().props.showOwnedAlbums"
                     :href="route('album.index')"
-                    class="w-fit flex items-center gap-6 bg-amber-500 text-white text-sm px-4 py-2 rounded-md hover:bg-amber-600 transition duration-200 cursor-pointer"
+                    :icon="IconPhoto"
+                    colors="bg-amber-500 hover:bg-amber-600 text-white"
                 >
-                    <IconPhoto/>
                     <span class="hidden md:inline-block">
                         View all albums
                     </span>
-                </Link>
-                <Link 
+                </InputLink>
+                <InputLink
                     v-if="usePage().props.auth?.user !== null"
                     :href="route('album.create')"
-                    class="w-fit flex items-center gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer"
+                    :icon="IconPlus"
+                    colors="bg-indigo-500 hover:bg-indigo-600 text-white"
                 >
-                    <IconPlus/>
                     <span class="hidden md:inline-block">
                         Create new album
                     </span>
-                </Link>
+                </InputLink>
             </div>
         </div>
 
@@ -52,13 +52,14 @@
 </template>
 <script setup lang="js">
     import { ref } from 'vue';
-    import { usePage, Link } from '@inertiajs/vue3';
+    import { usePage } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
     import AlbumCard from '@/pages/Album/Index/Partials/AlbumCard.vue';
     import Pagination from '@/components/Pagination.vue';
     import SearchBar from '@/pages/Album/Index/Partials/SearchBar.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputLink from '@/components/form/InputLink.vue';
 
     import IconPlus from '@/icons/IconPlus.vue';
     import IconPhoto from '@/icons/IconPhoto.vue';

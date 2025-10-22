@@ -86,17 +86,13 @@
                         Update image
                     </InputButton>
                     
-                    <Link 
+                    <InputLink
                         :href="route('image.show', usePage().props.image.id)"
-                        class="flex  gap-6 w-full lg:w-fit bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
+                        :icon="IconReturn"
+                        colors="bg-slate-500 hover:bg-slate-600 text-white"
                     >
-                        <span class="w-6 h-6">
-                            <IconReturn/>
-                        </span>
-                        <span>
-                            Cancel
-                        </span>
-                    </Link>
+                        Cancel
+                    </InputLink>
                 </div>
             </form>
 
@@ -105,11 +101,12 @@
     </Layout>
 </template>
 <script setup lang="js">
-    import { useForm, usePage, Link } from '@inertiajs/vue3';
+    import { useForm, usePage } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputLink from '@/components/form/InputLink.vue';
     import AppImage from '@/components/AppImage.vue';
     import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
 

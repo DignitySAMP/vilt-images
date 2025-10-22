@@ -24,13 +24,13 @@
             </div>
 
             <div v-if="canEdit" class="flex gap-2 w-full lg:w-fit h-fit justify-self-end">
-                <Link 
+                <InputLink
                     :href="route('album.edit', usePage().props.album.id)"
-                    class="flex w-full items-center gap-2 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer"
+                    :icon="IconEdit"
+                    colors="bg-slate-500 hover:bg-slate-600 text-white"
                 >
-                    <IconEdit/>
                     <span class="w-full text-center">Edit</span>
-                </Link>
+                </InputLink>
             </div>
 
         </div>
@@ -44,11 +44,12 @@
 </template>
 <script setup lang="js">
     import { computed } from 'vue';
-    import { usePage, Link } from '@inertiajs/vue3';
+    import { usePage } from '@inertiajs/vue3';
 
     import Layout from '@/layouts/Layout.vue';
     import ImageCard from '@/pages/Image/Index/Partials/ImageCard.vue';
     import Pagination from '@/components/Pagination.vue';
+    import InputLink from '@/components/form/InputLink.vue';
 
     import IconOwner from '@/icons/IconOwner.vue';
     import IconDate from '@/icons/IconDate.vue';
