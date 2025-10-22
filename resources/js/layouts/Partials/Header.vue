@@ -17,7 +17,7 @@
             </span>
             <span
                 @click="toggleDarkMode"
-                class="flex gap-4 px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800  dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
+                class="flex gap-4 px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800 dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
                 aria-label="Toggle dark mode"
             >
                 <IconMoon v-if="!isDark" class="w-6 h-6" />
@@ -44,7 +44,7 @@
                 </span>
                 <span
                     @click="toggleDarkMode"
-                    class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800  dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
+                    class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800 dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
                     aria-label="Toggle dark mode"
                 >
                     <IconMoon v-if="!isDark" class="w-6 h-6" />

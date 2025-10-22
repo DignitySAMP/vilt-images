@@ -15,7 +15,7 @@
             <AppImage 
                 :url="props.image.thumbnail_url"
                 :alt="props.image.file_name"
-                class="ize-96 sm:size-48 xl:size-52 2xl:size-64"
+                class="size-96 sm:size-48 xl:size-52 2xl:size-64"
             />
             
         </div>

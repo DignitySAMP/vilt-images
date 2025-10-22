@@ -4,9 +4,9 @@
             type="button"
             @click="handleReset"
             :icon="IconFilterRemove"
-            colors="bg-rose-500 hover:bg-rose-500 text-white"
+            colors="bg-rose-500 hover:bg-rose-600 text-white"
         >
-            Clear Filter
+            Reset Filters
         </InputButton>
 
         <select 
