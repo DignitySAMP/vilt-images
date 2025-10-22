@@ -48,31 +48,47 @@ php artisan storage:link
 
 ## ✨ Features
 
+### Authentication
+ - Users can register or login, based on the default Laravel user class
+ - Users can edit their profile (name, email, password)
+ - Users can delete their account (deletes all associated relationships, i.e. image, album, ...)
+
+### Images
 - Upload images via drag & drop  
-  - Add metadata and select album before upload  
-  - Auto-thumbnail + image optimization  
+- Add metadata (name, description) and select album during upload  
+- Thumbnails are automatically generated with Intervention post upload
+- Images are automatically optimized with Spatie's imageOptimizer post upload
+- Storage per user, per date. Filenames use `Str::uuid()` to avoid overwrites.
+- Ability to sort (most recent => oldest => largest size => smallest size) images
+- Ability to filter (by author => title => description) images
+- Similar images (comparing author, title, description, album) are shown when viewing a single image
 
-- Public / private albums and images
-  - Privacy inherited from album  
+### Albums
+- Serves as a parent category for images
+- Can be assigned during image upload
+- Ability to sort (most recent => oldest => most images => least images) albums
+- Ability to filter (by author => title => description) albums
+- Migrations set to cascade images if albums get deleted
 
-- Manage or create albums and assign images  
+### Privacy
+ - Ability to make images and albums 'private' or 'public'
+ - Uses policies and guard (+ a `->visible()` scope util)
+ - Images automatically inherit parent album privacy setting
+ - Collections are built with the privacy setting in mind
 
-- Sort & filter (by author, title, description)  
-
-- Similar images shown on image view  
-
-- Basic auth (register/login) and profile management
-
-- Delete owned images, albums or profiles
-
-- UX / UI:
+### UX / UI:
+  - Built entirely using Tailwind 4
   - Entirely responsive (mobile, tablet, desktop)
   - Dark mode according to latest Tailwind 4 standards
   - Reusable form components `InputButton, InputText, InputCheck`
   - Reusable icons (pass them as a property or import normally)
 
-
-
+### Unit and feature tests
+  - Tests model relationships
+  - Tests scopes and private images/albums, 
+  - Tests image accesors (image url, thumbnail url, file_size)
+  - Tests user authorization (guest vs. authenticated)
+  - Tests image authorization (image and album privacy rules / privacy inheritance)
 
 
 
@@ -83,6 +99,9 @@ php artisan storage:link
 ## todo
   - add forgot your password page
   - make components for select, checkboxes
+    - make search partials use the custom inputtext component
+    - add Inertia <head> seo, meta and titles in each page (app_name | page_title)
+    - add favicon (take applogo icon, change to indigo-500, convert to favicon)
   - add toasts using toastify
   - move auth login/register/profile into it's own Auth/ folder with proper folder and pages
 
