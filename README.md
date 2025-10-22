@@ -1,65 +1,80 @@
-##
+# Image Uploader (VILT Stack)
+
+A simple image uploading platform built with the **VILT** stack. Open source and designed as a showcase of my current full-stack skills.
+
+You can access the demo here `url_here` and authenticate using `test@example.com / test@example.com`.
+
+> The demo is automatically wiped every two hours. Any data uploaded is per-user to avoid abuse. The code for this is also included in the `demo` branch.
+
+---
+
+## 📦 Stack
+
+- **Laravel** 12.x  
+- **Inertia.js** 2.x  
+- **Vue** 3.x (Composition API)  
+- **Tailwind CSS** 4.x  
 
 
-This project is a base implementation of an image uploading platform. It is a reflection of my current prowess using the VILT stack.
+## 📦 Dependencies
 
-## Setup
+- **Intervention Image** – Thumbnail generation  
+- **Spatie Image Optimizer** – Image optimization  
+- **Toastify (Vue)** – Toast notifications  
+- **Ziggy** – Laravel route access in Vue  
 
-Stack installation:
+
+## 🔧 Setup
+
+Install dependencies:
+
+```bash
+npm install && composer install
+cp .env.example .env
+php artisan key:generate
 ```
-  npm install && composer install
 
-  cp .env.example .env
-  php artisan key:generate
+Run database setup:
+
+```bash
+php artisan migrate # type 'yes' when prompted to create database.sqlite
+php artisan db:seed # seeds mock data and test user
 ```
 
-Database setup:
-```
-  php artisan migrate
-    -> 'yes' when prompted to make database.sqlite
-
-  php artisan db:seed
-    -> generates mock data and mock user
+Link storage:
+```bash
+php artisan storage:link
 ```
 
-Symlink `storage/public` with `public/storage`
-```
-  php artisan storage:link
-```
+## ✨ Features
 
-Test user (with base images / albums):
-`
-test@example.com:test@example.com
-`
+- Upload images via drag & drop  
+  - Add metadata and select album before upload  
+  - Auto-thumbnail + image optimization  
 
-## Stack
- - Laravel 12.x
- - Vue 3.x (Composition API)
- - Inertia 2.x
- - Tailwind 4.x
+- Public / private albums and images
+  - Privacy inherited from album  
 
-## Dependencies
- - Invervention (to generate thumbnails)
- - Spatie's Image Optimizer (to optimize images post upload)
- - Toastify for Vue (show toasts across the application)
- - Ziggy.js (laravel routes in vue)
+- Manage or create albums and assign images  
+
+- Sort & filter (by author, title, description)  
+
+- Similar images shown on image view  
+
+- Basic auth (register/login) and profile management
+
+- Delete owned images, albums or profiles
+
+- Responsive + dark mode  
 
 
-## Features
 
- - Component and partial driven UX (cross-page components in `/component/`, per page components in `/page/partials/`)
- - Basic responsiveness (mobile first design principles) and darkmode
- - Multi drag and drop image uploading 
-   - Preselect the album and configure metadata during upload
-   - Images are optimized when uploaded and thumbnails are automatically created when uploaded
- - Create, browse through manage, and assign albums to images. 
- - Public and private images and albums using policies and guards.
- - Images inherit their privacy from the album they belong to.
- - Sort images or albums (oldest => newest or smallest => largest)
- - Filter images or albums (author => title => description)
- - Similar images (determined by title, description, album or author) are shown when viewing an image
- - Basic authentication (register and login) with basic throttle protection
- - Profile management (change name, email, password) or delete profile (purges all image data)
+
+
+
+
+
+
 
 
 ## todo
@@ -75,5 +90,3 @@ test@example.com:test@example.com
     - only show uploads to the user who uploaded them
       - make a config setting for this (protect_demo_application)
       
-  - template
-    - dark mode
