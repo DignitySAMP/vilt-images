@@ -26,7 +26,7 @@
         </div>
         <div class="relative flex justify-end lg:hidden px-4 text-indigo-500 dark:text-stone-300 w-full">
 
-            <IconHeaderBreadcrumbs class="w-10 h-10" @click="showMobileHeader = !showMobileHeader"/>
+            <IconHeaderBreadcrumbs class="w-10 h-10 dark:text-indigo-500" @click="showMobileHeader = !showMobileHeader"/>
             <div v-if="showMobileHeader"  class="absolute bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-lg min-w-48 rounded p-2 right-1 top-8 z-50 flex flex-col">
                 <span v-for="items in navItems">
                     <Link 
@@ -44,7 +44,7 @@
                 </span>
                 <button
                     @click="toggleDarkMode"
-                    class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800  dark:text-stone-200 hover:bg-indigo-50 dark:hover:bg-stone-700"
+                    class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800  dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
                     aria-label="Toggle dark mode"
                 >
                     <IconMoon v-if="!isDark" class="w-6 h-6" />
