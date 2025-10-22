@@ -22,7 +22,8 @@ class ImageFactory extends Factory
 
             'album_id' => Album::inRandomOrder()->first()?->id,
             'publisher_id' => User::inRandomOrder()->first()?->id,
-            'description' => fake()->word(),
+            'name' => fake()->word(),
+            'description' => fake()->sentence(3),
             'file_name' => fake()->word() . fake()->fileExtension(),
             'path' => fake()->word()
         ];

@@ -4,9 +4,15 @@
         <div class="bg-white w-full h-full p-6 flex flex-col justify-center items-center gap-2">
             
             <div class="w-full flex justify-between items-center">
-                <span class="text-lg text-indigo-700 font-bold">
-                    {{ usePage().props.image.description }}
-                </span>
+                <div class="flex flex-col w-full">
+                    <span class="text-lg text-indigo-700 font-bold">
+                        {{ usePage().props.image.name }}
+                    </span>
+                                
+                    <span class="text-indigo-700 truncate">
+                        {{ usePage().props.image.description ?? 'No description added.'}}
+                    </span>
+                </div>
                 
                 <div v-if="canEdit" class="flex gap-2">
                     <Link 
@@ -18,40 +24,61 @@
                     </Link>
                 </div>
             </div>
-
+        </div>
+        <div class="bg-white w-full h-full p-6 flex flex-col justify-center items-center gap-2">
+            
             <AppImage 
                 :url="usePage().props.image.url"
                 :alt="usePage().props.image.file_name"
                 class="w-full min-h-128 max-h-164"
             />
-            
-
-            <div class="flex w-full gap-2 flex-wrap md:flex-nowrap md:gap-4">
-
-                <div class="flex flex-col gap-2 w-full">
-                    <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-sky-700 bg-sky-50 border border-sky-200">
-                        <IconOwner/>
-                        {{ usePage().props.image.publisher.name ?? 'Unknown' }}
-                    </div>
-
-                    <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-emerald-700  bg-emerald-50 border border-emerald-200">
-                        <IconYourFiles/>
-                        {{ usePage().props.image?.album?.name ?? 'No album' }}
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-2 w-full">
-                    <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-amber-700 bg-amber-50 border border-amber-200">
-                        <IconDate/>
-                        {{ new Date(usePage().props.image.created_at).toLocaleString() ?? 'Unknown' }}
-                    </div>
-                    <div class="min-w-32 w-full flex justify-between px-2 py-1 rounded text-rose-700 bg-rose-50 border border-rose-200">
-                        <IconFilesize/>
-                        {{ usePage().props.image.file_size || 'Onbekend'}} kb
-                    </div>
-                </div>
-            </div>
         </div>
+        <div class="bg-white w-full p-6 flex flex-col gap-2">
+            <h2 class="text-lg font-semibold text-indigo-800">Extra information</h2>
+
+            <ul class="flex flex-col divide-y divide-indigo-200 text-sm text-indigo-700">
+                <li class="flex items-center justify-between py-2">
+                    <div class="flex items-center gap-2">
+                        <IconOwner class="w-4 h-4 text-indigo-500" />
+                        <span class="text-indigo-500">Uploaded by</span>
+                    </div>
+                    <span class="font-medium text-indigo-800">
+                        {{ usePage().props.image.publisher.name ?? 'Unknown' }}
+                    </span>
+                </li>
+
+                <li class="flex items-center justify-between py-2">
+                    <div class="flex items-center gap-2">
+                        <IconYourFiles class="w-4 h-4 text-indigo-500" />
+                        <span class="text-indigo-500">Belongs to</span>
+                    </div>
+                    <span class="font-medium text-indigo-800">
+                        {{ usePage().props.image?.album?.name ?? 'No album' }}
+                    </span>
+                </li>
+
+                <li class="flex items-center justify-between py-2">
+                    <div class="flex items-center gap-2">
+                        <IconDate class="w-4 h-4 text-indigo-500" />
+                        <span class="text-indigo-500">Published on</span>
+                    </div>
+                    <span class="font-medium text-indigo-800">
+                        {{ new Date(usePage().props.image.created_at).toLocaleString() ?? 'Unknown date' }}
+                    </span>
+                </li>
+
+                <li class="flex items-center justify-between py-2">
+                    <div class="flex items-center gap-2">
+                        <IconFilesize class="w-4 h-4 text-indigo-500" />
+                        <span class="text-indigo-500">File size</span>
+                    </div>
+                    <span class="font-medium text-indigo-800">
+                        {{ usePage().props.image.file_size || 'Unknown' }} kb
+                    </span>
+                </li>
+            </ul>
+        </div>
+
 
         <div class="bg-white p-2 rounded">
             <span class="w-full text-lg text-indigo-700 font-bold px-4">

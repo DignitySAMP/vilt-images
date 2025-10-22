@@ -57,8 +57,12 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($imageData as $index => $data) {
-            $userId = $users[$index % 3]->id;
-            $albumId = $albums[$index % 5]->id;
+            $userId = $users[array_rand($users)]->id;
+
+            $ownedAlbums = array_filter($albums, fn($album) => $album->user_id === $userId); // only get albums the fake user should owrn
+            $ownedAlbums = array_values($ownedAlbums); // reindex the array
+            
+            $albumId = $ownedAlbums[array_rand($ownedAlbums)]->id;
             
             $dateOfToday = now()->subDays(rand(0, 30))->format('Y-m-d');
             $storagePath = "uploads/{$userId}/{$dateOfToday}";
@@ -81,7 +85,7 @@ class DatabaseSeeder extends Seeder
             Image::create([
                 'album_id' => $albumId,
                 'publisher_id' => $userId,
-                'description' => $data['name'],
+                'name' => $data['name'],
                 'file_name' => $fileName,
                 'path' => $storagePath
             ]);

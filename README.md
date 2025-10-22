@@ -9,9 +9,11 @@
 
 
 ## todo
-  - add image names and descriptions
-    - render this in a way that doesnt break the design, perhaps only show description on individual /show/ page.
-    - 'description' will become 'name'. 
+  - view your albums link to all albums
+
+  - add an intuitive way to declare the desired image name/description for every (multiple) upload(s)
+
+
   - add a way to delete images if you own them
     - under 'edit' render it conditionally
 

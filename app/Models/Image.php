@@ -18,6 +18,7 @@ class Image extends Model
     protected $fillable = [
         'album_id',
         'publisher_id',
+        'name',
         'description',
         'file_name',
         'path',

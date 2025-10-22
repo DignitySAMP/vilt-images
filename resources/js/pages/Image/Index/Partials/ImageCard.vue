@@ -8,7 +8,7 @@
         :class="isAnyImageHovered() && !isImageHovered[props.image.id] ? 'grayscale' : 'grayscale-0'"
     >
         <span class="w-full text-center truncate">
-            {{ props.image.description }}
+            {{ props.image.name }}
         </span>
 
         <div class="flex">

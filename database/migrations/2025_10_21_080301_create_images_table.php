@@ -16,7 +16,8 @@ return new class extends Migration
 
             $table->foreignId('album_id')->nullable()->constrained('albums')->cascadeOnDelete();
             $table->foreignId('publisher_id')->nullable()->constrained('users')->cascadeOnDelete();
-            $table->string('description');
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->string('file_name');
             $table->string('path');
             $table->timestamps();

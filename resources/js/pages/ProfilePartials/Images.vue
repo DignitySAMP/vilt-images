@@ -36,7 +36,7 @@
                     :href="route('image.show', image)"
                 >
                     <span class="w-full text-center truncate">
-                        {{ image.description }}
+                        {{ image.name }}
                     </span>
                     <div class="flex">
                         <AppImage

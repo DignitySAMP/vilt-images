@@ -19,6 +19,16 @@
 
                 <div class="w-full">
                     <InputText 
+                        label="Name"
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Enter image name"
+                        v-model="form.name"
+                        :errors="form.errors.name"
+                    />
+
+                    <InputText 
                         label="Description"
                         id="description"
                         name="description"
@@ -69,8 +79,9 @@
     import AppImage from '@/components/AppImage.vue';
 
     const form = useForm({
+        name: usePage().props.image.name,
         description: usePage().props.image.description,
-        album_id: usePage().props.image.album_id,
+        album_id: usePage().props.image.album_id || null,
     });
 
     const submit = () => {
