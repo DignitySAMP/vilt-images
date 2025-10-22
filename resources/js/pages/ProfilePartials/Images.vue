@@ -24,7 +24,10 @@
             </div>
         </div>
 
-        <ImagesSearchBar v-if="showFilterBar"/>
+        <ImagesSearchBar 
+            v-if="showFilterBar"
+            :filters="usePage().props.filters || {}"
+        />
 
         <div ref="imageContainer" class="flex flex-col gap-4 mt-4">
 
@@ -67,10 +70,10 @@
 
     import Pagination from '@/components/Pagination.vue'
     import AppImage from '@/components/AppImage.vue'
+    import ImagesSearchBar from '@/pages/ProfilePartials/ImagesSearchBar.vue'
 
     import IconPhoto from '@/icons/IconPhoto.vue'
     import IconFilter from '@/icons/IconFilter.vue'
-    import ImagesSearchBar from '@/pages/ProfilePartials/ImagesSearchBar.vue';
 
     const showFilterBar = ref(false);
 </script>

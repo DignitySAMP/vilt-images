@@ -26,9 +26,42 @@ class AlbumController extends Controller
             $query->visible();
         }
 
+        // input-based filtering
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $searchType = $request->input('search_type', 'name');
+
+            switch ($searchType) {
+                case 'author': {
+                    $query->whereHas('user', function ($q) use ($searchTerm) {
+                        $q->where('name', 'like', "%{$searchTerm}%");
+                    });
+                    break;
+                }
+
+                case 'name': $query->where('name', 'like', "%{$searchTerm}%"); break;
+                case 'description': $query->where('description', 'like', "%{$searchTerm}%"); break;
+            }
+        }
+
+        // sorting dropdown filtering
+        $sortBy = $request->input('sort', 'latest');
+        switch ($sortBy) {
+            case 'latest': $query->orderBy('created_at', 'desc'); break;
+            case 'oldest': $query->orderBy('created_at', 'asc'); break;
+            case 'most_images': $query->withCount('images')->orderBy('images_count', 'desc'); break;
+            case 'fewest_images': $query->withCount('images')->orderBy('images_count', 'asc'); break;
+            default: $query->orderBy('created_at', 'desc'); break;
+        }
+
         return Inertia::render('Album/Index/View', [
-            'albums' => $query->withCount('images')->paginate(10),
+            'albums' => $query->withCount('images')->paginate(10)->withQueryString(),
             'showOwnedAlbums' => $request->boolean('owned_albums'),
+            'filters' => [
+                'search' => $request->search,
+                'search_type' => $request->search_type,
+                'sort' => $request->sort,
+            ],
         ]);
     }
 

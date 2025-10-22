@@ -24,7 +24,10 @@
                 </Link>
             </div>
         </div>
-        <SearchBar v-if="showFilterBar"/>
+        <SearchBar 
+            v-if="showFilterBar"
+            :filters="usePage().props.filters || {}"
+        />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             <ImageCard v-for="image in usePage().props.images.data" :key="image.id" :image="image"/>

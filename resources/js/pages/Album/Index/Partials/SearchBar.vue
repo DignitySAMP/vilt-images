@@ -15,8 +15,8 @@
         >
             <option value="latest">Sort by latest</option>
             <option value="oldest">Sort by oldest</option>
-            <option value="largest">Sort by largest file size</option>
-            <option value="smallest">Sort by smallest file size</option>
+            <option value="most_images">Sort by most images</option>
+            <option value="fewest_images">Sort by fewest images</option>
         </select>
 
         <div class="w-full text-indigo-800">
@@ -25,7 +25,7 @@
                     v-model="localFilters.search_type"
                     class="bg-indigo-50 text-sm border rounded-l-md border-indigo-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
-                    <option value="album">Album</option>
+                    <option value="author">Author</option>
                     <option value="name">Name</option>
                     <option value="description">Description</option>
                 </select>
