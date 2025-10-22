@@ -5,20 +5,14 @@
             This action cannot be undone. All your images and albums will be deleted.
         </p>
         <form @submit.prevent="submit" class="flex flex-col gap-4">
-            <div class="w-full">
-                <label for="confirm_email" class="text-sm text-stone-700 dark:text-stone-300">
-                    Email Confirmation
-                </label>
-                <input
-                    id="confirm_email" 
-                    name="confirm_email" 
-                    v-model="form.confirm_email"
-                    type="email" 
-                    placeholder="Enter your email"
-                    class="w-full px-4 py-2 bg-stone-50 dark:bg-stone-700 dark:text-stone-200 border border-stone-200 dark:border-stone-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                <span v-if="form.errors.confirm_email" class="text-sm text-red-500">{{ form.errors.confirm_email }}</span>
-            </div>
+            <InputText
+                label="Email Confirmation"
+                name="confirm_email"
+                type="email"
+                placeholder="Enter your email"
+                v-model="form.confirm_email"
+                :errors="form.errors.confirm_email"
+            />
             <div class="flex gap-2 justify-end">
                 <InputButton
                     colors="bg-slate-500 hover:bg-slate-600 text-white"
@@ -44,6 +38,7 @@
     import { useForm } from '@inertiajs/vue3';
     import Modal from '@/components/Modal.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputText from '@/components/form/InputText.vue';
     import IconReturn from '@/icons/IconReturn.vue';
 
     const props = defineProps({

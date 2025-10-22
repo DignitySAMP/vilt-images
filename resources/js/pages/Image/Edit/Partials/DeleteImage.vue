@@ -18,20 +18,14 @@
                 This will permanently delete this image. Type the image name to confirm.
             </p>
             <form @submit.prevent="submit" class="flex flex-col gap-4">
-                <div class="w-full">
-                    <label for="confirm_name" class="text-sm text-stone-700 dark:text-stone-300">
-                        Image Name Confirmation
-                    </label>
-                    <input
-                        id="confirm_name" 
-                        name="confirm_name" 
-                        v-model="form.confirm_name"
-                        type="text" 
-                        :placeholder="image.name"
-                        class="w-full px-4 py-2 bg-stone-50 dark:bg-stone-700 dark:text-stone-200 border border-stone-200 dark:border-stone-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                    <span v-if="form.errors.confirm_name" class="text-sm text-red-500">{{ form.errors.confirm_name }}</span>
-                </div>
+                <InputText
+                    label="Image Name Confirmation"
+                    name="confirm_name"
+                    type="text"
+                    :placeholder="image.name"
+                    v-model="form.confirm_name"
+                    :errors="form.errors.confirm_name"
+                />
                 <div class="flex gap-2 justify-end">
                     <InputButton
                         colors="bg-slate-500 hover:bg-slate-600 text-white"
@@ -59,6 +53,7 @@
     import { useForm } from '@inertiajs/vue3';
     import Modal from '@/components/Modal.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputText from '@/components/form/InputText.vue';
     import IconReturn from '@/icons/IconReturn.vue';
 
     const props = defineProps({
