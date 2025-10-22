@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
@@ -18,7 +19,7 @@ class AlbumController extends Controller
         return Inertia::render('Album/Index/View', [
             'albums' => Album::with([ 'user',  'images' => function ($query) {
                 $query->visible()->limit(1);
-            }])->withCount('images')->paginate(10),
+            }])->visible()->withCount('images')->paginate(10),
         ]);
     }
 
@@ -45,6 +46,12 @@ class AlbumController extends Controller
 
     public function show(Album $album): InertiaResponse
     {
+        $response = Gate::inspect('show', $album);
+
+        if (! $response->allowed()) {
+            abort(403, 'This album is private.');
+        }
+
         $user = auth()->user();
     
         $images = $album->images()
@@ -80,11 +87,13 @@ class AlbumController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
+            'is_hidden' => 'nullable|boolean'
         ]);
 
         $album->update([
             'name' => $request->name,
             'description' => $request->description,
+            'is_hidden' => $request->is_hidden
         ]);
 
         return redirect()->route('album.show', $album);

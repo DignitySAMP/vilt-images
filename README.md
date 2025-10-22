@@ -11,11 +11,7 @@
 ## todo
   - view your albums link to all albums
   - add an intuitive way to declare the desired image name/description for every (multiple) upload(s)
-
-  - if album is hidden, all images automatically inherit this value
-    - add is_hidden to albums table
-    - update AlbumController::show() to check album visibility
-    - update ImagePolicy::show() to inherit album hidden status
+  - add option for albums / images to be made private on creation
 
   - add forgot your password page
 

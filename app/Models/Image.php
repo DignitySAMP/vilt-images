@@ -73,7 +73,13 @@ class Image extends Model
     
     public function scopeVisible($query)
     {
-        return $query->where('is_hidden', 0);
+        return $query->where('is_hidden', 0)
+            ->where(function ($q) {
+                $q->whereHas('album', function ($query) {
+                    $query->where('is_hidden', 0);
+                })
+                ->orWhereNull('album_id');
+            });
     }
 
     /** 

@@ -106,7 +106,7 @@ class ImageController extends Controller
         $response = Gate::inspect('show', $image);
 
         if (! $response->allowed()) {
-            abort(403, 'This image is private.');
+            abort(403, 'This image, or the album it belongs to, is private.');
         }
         
         return Inertia::render('Image/Show/View', [

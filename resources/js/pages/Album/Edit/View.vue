@@ -33,6 +33,20 @@
                     />
                 </div>
 
+                <div class="w-full flex items-center gap-2">
+                    <input 
+                        id="is_hidden"
+                        name="is_hidden"
+                        v-model="form.is_hidden"
+                        type="checkbox"
+                        class="w-4 h-4 bg-stone-50 border border-stone-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 active:accent-sky-900 transition duration-300"
+                    />
+
+                    <label for="is_hidden" class="text-sm text-stone-700">
+                        Make album private
+                    </label>
+                </div>
+
                 <div class="flex gap-2">
                     <button 
                         type="submit" 
@@ -61,6 +75,7 @@
     const form = useForm({
         name: usePage().props.album.name,
         description: usePage().props.album.description,
+        is_hidden: usePage().props.album.is_hidden === 1 ? true : false
     });
 
     const submit = () => {
