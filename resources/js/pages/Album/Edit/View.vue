@@ -37,13 +37,13 @@
                     <button 
                         type="submit" 
                         :disabled="form.processing"
-                        class="flex-1 bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
+                        class="flex bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
                     >
                         Update album
                     </button>
                     <Link 
                         :href="route('album.show', usePage().props.album.id)"
-                        class="flex-1 bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
+                        class="flex bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
                     >
                         Cancel
                     </Link>
