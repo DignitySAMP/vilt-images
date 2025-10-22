@@ -22,6 +22,7 @@ class Image extends Model
         'description',
         'file_name',
         'path',
+        'is_hidden'
     ];
     
     protected $appends = [
@@ -29,6 +30,10 @@ class Image extends Model
         'thumbnail_url',
         'file_size'
     ];
+
+    /** 
+    ** Eloquent relationships
+    */
 
     public function publisher(): BelongsTo {
         return $this->belongsTo(User::class);
@@ -38,9 +43,11 @@ class Image extends Model
         return $this->belongsTo(Album::class);
     }
    
-    /**
-     * Builds a collection of random images with similar values (file_name, description, publisher.name)
-     */
+    /** 
+    ** Custom collections
+    */
+
+    // Builds a collection of random images with similar values (file_name, description, publisher.name)
     public function similar(): Collection
     {
         return self::with(['publisher', 'album'])
@@ -55,11 +62,24 @@ class Image extends Model
                     }
                 );
             })
+            ->visible()
             ->inRandomOrder()
             ->limit(6)
             ->get();
     }
+    /** 
+    ** Scopes
+    */
+    
+    public function scopeVisible($query)
+    {
+        return $query->where('is_hidden', 0);
+    }
 
+    /** 
+    ** Accessors
+    */
+    
     public function getUrlAttribute(): string
     {
         /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */

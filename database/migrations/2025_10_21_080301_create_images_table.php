@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('file_name');
             $table->string('path');
+            $table->integer('is_hidden')->default(0);
             $table->timestamps();
         });
     }

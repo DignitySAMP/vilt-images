@@ -16,9 +16,9 @@ class AlbumController extends Controller
     public function index(): InertiaResponse
     {
         return Inertia::render('Album/Index/View', [
-            'albums' => Album::with(['user', 'images' => function ($query) {
-                $query->limit(1);
-            }])->withCount('images')->paginate(10)
+            'albums' => Album::with([ 'user',  'images' => function ($query) {
+                $query->visible()->limit(1);
+            }])->withCount('images')->paginate(10),
         ]);
     }
 
@@ -45,11 +45,24 @@ class AlbumController extends Controller
 
     public function show(Album $album): InertiaResponse
     {
+        $user = auth()->user();
+    
+        $images = $album->images()
+            ->with('publisher')
+            ->where(function ($query) use ($user) {
+                $query->where('is_hidden', 0); // only show visible images
+    
+                if ($user) { // if user is authenticated and owns the image, include it
+                    $query->orWhere('publisher_id', $user->id);
+                }
+            });
+    
         return Inertia::render('Album/Show/View', [
             'album' => $album->load('user'),
-            'images' => $album->images()->with('publisher')->paginate(10)
+            'images' => $images->paginate(10),
         ]);
     }
+    
 
     public function edit(Album $album): InertiaResponse
     {

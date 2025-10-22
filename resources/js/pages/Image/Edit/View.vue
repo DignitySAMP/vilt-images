@@ -27,7 +27,9 @@
                         v-model="form.name"
                         :errors="form.errors.name"
                     />
+                </div>
 
+                <div class="w-full">
                     <InputText 
                         label="Description"
                         id="description"
@@ -38,6 +40,21 @@
                         :errors="form.errors.description"
                     />
                 </div>
+
+                <div class="w-full flex items-center gap-2">
+                    <input 
+                        id="is_hidden"
+                        name="is_hidden"
+                        v-model="form.is_hidden"
+                        type="checkbox"
+                        class="w-4 h-4 bg-stone-50 border border-stone-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 active:accent-sky-900 transition duration-300"
+                    />
+
+                    <label for="is_hidden" class="text-sm text-stone-700">
+                        Make image private
+                    </label>
+                </div>
+
 
                 <div class="w-full">
                     <label class="text-sm text-stone-700">Album</label>
@@ -68,20 +85,15 @@
                         </span>
                     </button>
 
-
                     <Link 
                         :href="route('image.show', usePage().props.image.id)"
                         class="flex justify-between w-full bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
                     >
-
                         <IconReturn/>
                         <span>
                             Cancel
                         </span>
-
                     </Link>
-            
-
                 </div>
             </form>
 
@@ -121,6 +133,7 @@
         name: usePage().props.image.name,
         description: usePage().props.image.description,
         album_id: usePage().props.image.album_id || null,
+        is_hidden: usePage().props.image.is_hidden === 1 ? true : false
     });
 
     const submit = () => {

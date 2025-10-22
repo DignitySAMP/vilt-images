@@ -12,9 +12,10 @@
   - view your albums link to all albums
   - add an intuitive way to declare the desired image name/description for every (multiple) upload(s)
 
-  - add image public/private switch (to see if people can view it or not)
-    - add a proper page for this (i.e. 'this image is private')
-    - make it so only those with the link can see it (signed URLs)
+  - if album is hidden, all images automatically inherit this value
+    - add is_hidden to albums table
+    - update AlbumController::show() to check album visibility
+    - update ImagePolicy::show() to inherit album hidden status
 
   - add forgot your password page
 

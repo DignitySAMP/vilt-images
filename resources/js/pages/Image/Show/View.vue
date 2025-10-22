@@ -76,6 +76,17 @@
                         {{ usePage().props.image.file_size || 'Unknown' }} kb
                     </span>
                 </li>
+
+                <li class="flex items-center justify-between py-2">
+                    <div class="flex items-center gap-2">
+                        <IconSpy class="w-4 h-4 text-indigo-500" />
+                        <span class="text-indigo-500">Private?</span>
+                    </div>
+                    <span class="font-medium text-indigo-800">
+
+                        <span>{{  usePage().props.image.is_hidden === 1 ? 'Yes' : 'No'}}</span>
+                    </span>
+                </li>
             </ul>
         </div>
 
@@ -118,6 +129,7 @@
     import IconFilesize from '@/icons/IconFilesize.vue'
     import IconYourFiles from '@/icons/IconYourFiles.vue'
     import IconEdit from '@/icons/IconEdit.vue'
+    import IconSpy from '@/icons/IconSpy.vue';
 
     const canEdit = computed(() => {
         const user = usePage().props.auth.user;

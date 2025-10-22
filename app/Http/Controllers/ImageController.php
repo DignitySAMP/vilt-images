@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
@@ -24,10 +25,10 @@ class ImageController extends Controller
     public function index(): InertiaResponse
     {
         return Inertia::render('Image/Index/View', [
-            'images' => Image::with('publisher')->paginate(10)
+            'images' => Image::with('publisher')->visible()->paginate(10),
         ]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -102,6 +103,12 @@ class ImageController extends Controller
      */
     public function show(Image $image): InertiaResponse
     {
+        $response = Gate::inspect('show', $image);
+
+        if (! $response->allowed()) {
+            abort(403, 'This image is private.');
+        }
+        
         return Inertia::render('Image/Show/View', [
             'image' => $image->load('publisher', 'album'),
             'related_images' => $image->similar()
@@ -128,11 +135,13 @@ class ImageController extends Controller
         $request->validate([
             'description' => 'required|string|max:255',
             'album_id' => 'nullable|exists:albums,id',
+            'is_hidden' => 'nullable|boolean'
         ]);
 
         $image->update([
             'description' => $request->description,
             'album_id' => $request->album_id,
+            'is_hidden' => $request->is_hidden
         ]);
 
         return redirect()->route('image.show', $image)->with('success', 'Image updated successfully.');
@@ -140,7 +149,6 @@ class ImageController extends Controller
 
     public function destroy(Request $request, Image $image)
     {
-        
         $this->authorize('delete', $image);
        
         $request->validate([
