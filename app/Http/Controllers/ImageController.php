@@ -46,33 +46,26 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'files' => 'required|array',
-            'files.*' => 'file|image|max:5120',
-            'album_id' => 'nullable|exists:albums,id',
-            'new_album_name' => 'nullable|required_with:new_album_description|string|max:255',
-            'new_album_description' => 'nullable|required_with:new_album_name|string|max:255',
+            'uploads' => 'required|array',
+            'uploads.*.file' => 'required|file|image|max:5120',
+            'uploads.*.name' => 'required|string|max:255',
+            'uploads.*.description' => 'required|string|max:255',
+            'uploads.*.is_hidden' => 'required|boolean',
+            'uploads.*.album_id' => 'nullable|exists:albums,id',
         ]);
     
         $user_id = Auth::id();
         $dateOfToday = now()->format('Y-m-d');
-        $album_id = $validated['album_id'] ?? null;
 
-        if (!empty($validated['new_album_name']) && !empty($validated['new_album_description'])) {
-            $album = \App\Models\Album::create([
-                'user_id' => $user_id,
-                'name' => $validated['new_album_name'],
-                'description' => $validated['new_album_description'],
-            ]);
-            $album_id = $album->id;
-        }
-    
         // ensure that the folder structure exists (uploads/{user_id}/{date_of_today}/thumbnails/)
         $storagePath = "uploads/{$user_id}/{$dateOfToday}";
         if (!Storage::disk('public')->exists("{$storagePath}/thumbnails")) {
             Storage::disk('public')->makeDirectory("{$storagePath}/thumbnails");
         }
     
-        foreach ($request->file('files') as $file) {
+        foreach ($validated['uploads'] as $index => $upload) {
+            $file = $request->file("uploads.{$index}.file");
+            
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
     
             // store the image and relative path
@@ -88,9 +81,11 @@ class ImageController extends Controller
             $image->save(Storage::disk('public')->path("{$storagePath}/thumbnails/{$fileName}"));
 
             Image::create([
-                'album_id' => $album_id,
+                'album_id' => $upload['album_id'],
                 'publisher_id' => $user_id,
-                'description' => pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME),
+                'name' => $upload['name'],
+                'description' => $upload['description'],
+                'is_hidden' => $upload['is_hidden'],
                 'file_name' => $fileName,
                 'path' => $storagePath
             ]);
@@ -133,12 +128,14 @@ class ImageController extends Controller
         $this->authorize('update', $image);
 
         $request->validate([
+            'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'album_id' => 'nullable|exists:albums,id',
             'is_hidden' => 'nullable|boolean'
         ]);
 
         $image->update([
+            'name' => $request->name,
             'description' => $request->description,
             'album_id' => $request->album_id,
             'is_hidden' => $request->is_hidden

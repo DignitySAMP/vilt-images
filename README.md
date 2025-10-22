@@ -10,26 +10,19 @@
 
 ## todo
   - view your albums link to all albums
-  - add an intuitive way to declare the desired image name/description for every (multiple) upload(s)
-  - add option for albums / images to be made private on creation
+
+  - add option for albums to be made private on creation
 
   - add forgot your password page
 
   - add proper filtering on index and profile page
   - add profile editing and deleting
     - deleting purges all images
-
-  - ability to make albums private or public
   - add filter component to albums
 
-  - make filters work
   - properly test filters using debugbar 
     -> avoid n+1 and other inefficient collections
         -> implement resources if necessary
-
-  - image tags?
-    - can be used for better 'similar' images?
-    - show as little cards in the design?
 
   - implement demo mode
     - https://github.com/inertiajs/pingcrm/blob/master/app/Http/Controllers/UsersController.php#L83
@@ -38,6 +31,11 @@
     - only show uploads to the user who uploaded them
       - make a config setting for this (protect_demo_application)
 
+  - image tags?
+    - can be used for better 'similar' images?
+    - show as little cards in the design?
+
   - template
+    - ux friendliness, cta best practices, ...
     - dark mode
     - responsivity
