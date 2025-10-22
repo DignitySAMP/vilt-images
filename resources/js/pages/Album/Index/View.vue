@@ -7,6 +7,7 @@
             </span>
             <div class="flex gap-2">
                 <Link 
+                    v-if="usePage().props.auth?.user !== null"
                     :href="route('album.create')"
                     class="w-fit flex items-center gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer"
                 >

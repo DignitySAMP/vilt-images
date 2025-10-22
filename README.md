@@ -9,8 +9,6 @@
 
 
 ## todo
-  - create album must be protected, auth only
-
   - add image names and descriptions
     - render this in a way that doesnt break the design, perhaps only show description on individual /show/ page.
     - 'description' will become 'name'. 

@@ -1,7 +1,10 @@
 <template>
     <Layout tab="Albums">
 
-        <div class="bg-white w-full h-full px-4 py-2 grid grid-cols-[auto_auto_auto] items-center">
+        <div 
+            class="bg-white w-full h-full px-4 py-2 grid items-center"
+            :class="canEdit ? 'grid-cols-[auto_auto_auto]' : 'grid-cols-[1fr_auto]'"    
+        >
 
             <div class="flex gap-2 h-fit w-full">
                 <div class="w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 bg-sky-50 border border-sky-200">
