@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-[auto_auto_1fr_auto] gap-4 items-center bg-white rounded-md p-4 border border-stone-200">
+    <div class="grid grid-cols-1 lg:grid-cols-[auto_auto_1fr_auto] gap-4 items-center bg-white rounded-md p-4 border border-stone-200">
         <button
             class="flex gap-6 items-center bg-rose-500 text-white text-sm px-4 py-2 rounded-md hover:bg-rose-600 transition duration-200 cursor-pointer"
             @click="handleReset"
@@ -11,7 +11,7 @@
         <select 
             v-model="localFilters.sort"
             @change="handleSearch"
-            class="bg-slate-50 text-sm rounded-md w-fit border border-slate-300 text-slate-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            class="bg-slate-50 text-sm rounded-md w-full lg:w-fit border border-slate-300 text-slate-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
             <option value="latest">Sort by latest</option>
             <option value="oldest">Sort by oldest</option>

@@ -1,7 +1,7 @@
 <template>
 
     <Layout tab="Profile">
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-4">
+        <div class="grid grid-cols-1 2xl:grid-cols-[1fr_auto] gap-4">
             <Images/>
             <Details/>
         </div> 
