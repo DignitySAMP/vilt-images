@@ -10,9 +10,6 @@
 
 ## todo
   - view your albums link to all albums
-
-  - add option for albums to be made private on creation
-
   - add forgot your password page
 
   - add proper filtering on index and profile page

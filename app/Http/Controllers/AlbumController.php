@@ -33,12 +33,14 @@ class AlbumController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
+            'is_hidden' => 'nullable|boolean',
         ]);
 
         Album::create([
             'user_id' => Auth::id(),
             'name' => $request->name,
             'description' => $request->description,
+            'is_hidden' => $request->is_hidden ?? false,
         ]);
 
         return redirect()->route('album.index');
