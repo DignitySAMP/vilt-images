@@ -10,16 +10,7 @@
 
 ## todo
   - add forgot your password page
-
-  - add proper filtering on index and profile page
-  - add profile editing and deleting
-    - deleting purges all images
-  - add filter component to albums
-
-  - properly test filters using debugbar 
-    -> avoid n+1 and other inefficient collections
-        -> implement resources if necessary
-
+  
   - implement demo mode
     - https://github.com/inertiajs/pingcrm/blob/master/app/Http/Controllers/UsersController.php#L83
     - protect demo users and demo images / albums

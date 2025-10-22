@@ -76,3 +76,57 @@ class ProfileController extends Controller
             ],
         ]);
     }
+
+    public function update(Request $request): RedirectResponse
+    {
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id)
+            ],
+            'new_password' => 'nullable|string|min:8|confirmed:confirm_new_password',
+            'confirm_new_password' => 'nullable|string',
+            'current_password' => 'required_with:new_password|current_password',
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+
+        if (!empty($validated['new_password'])) {
+            $user->password = bcrypt($validated['new_password']);
+        }
+
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'confirm_email' => 'required|email|in:' . $user->email,
+        ]);
+
+        $userId = $user->id;
+
+        // delete albums and images
+        $user->albums()->delete();
+        $user->images()->delete();
+
+        // purge entire user folder from storage
+        Storage::disk('public')->deleteDirectory("uploads/{$userId}");
+
+        // destroy session and delete user
+        Auth::logout();
+        $user->delete();
+
+        return redirect()->route('home');
+    }
+}
