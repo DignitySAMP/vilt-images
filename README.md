@@ -10,12 +10,7 @@
 
 ## todo
   - view your albums link to all albums
-
   - add an intuitive way to declare the desired image name/description for every (multiple) upload(s)
-
-
-  - add a way to delete images if you own them
-    - under 'edit' render it conditionally
 
   - add image public/private switch (to see if people can view it or not)
     - add a proper page for this (i.e. 'this image is private')

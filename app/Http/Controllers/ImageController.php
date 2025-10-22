@@ -138,17 +138,20 @@ class ImageController extends Controller
         return redirect()->route('image.show', $image)->with('success', 'Image updated successfully.');
     }
 
-    public function destroy(Image $image)
+    public function destroy(Request $request, Image $image)
     {
         
         $this->authorize('delete', $image);
-        dd($image);
+       
+        $request->validate([
+            'confirm_name' => 'required|string|max:255|in:' . $image->name,
+        ]);
         
         Storage::disk('public')->delete("{$image->path}/{$image->file_name}");
         Storage::disk('public')->delete("{$image->path}/thumbnails/{$image->file_name}");
 
         $image->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('profile');
     }
 }
