@@ -9,7 +9,6 @@
 
 
 ## todo
-  - view your albums link to all albums
   - add forgot your password page
 
   - add proper filtering on index and profile page

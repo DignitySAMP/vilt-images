@@ -14,12 +14,21 @@ use Illuminate\Support\Facades\Auth;
 
 class AlbumController extends Controller
 {
-    public function index(): InertiaResponse
+    public function index(Request $request): InertiaResponse
     {
+        $query = Album::with(['user', 'images' => function ($query) {
+            $query->visible()->limit(1);
+        }]);
+
+        if ($request->boolean('owned_albums')) {
+            $query->where('user_id', Auth::id());
+        } else {
+            $query->visible();
+        }
+
         return Inertia::render('Album/Index/View', [
-            'albums' => Album::with([ 'user',  'images' => function ($query) {
-                $query->visible()->limit(1);
-            }])->visible()->withCount('images')->paginate(10),
+            'albums' => $query->withCount('images')->paginate(10),
+            'showOwnedAlbums' => $request->boolean('owned_albums'),
         ]);
     }
 

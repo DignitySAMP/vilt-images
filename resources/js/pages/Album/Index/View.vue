@@ -3,9 +3,19 @@
 
         <div class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 border border-white rounded-md">
             <span class="w-fit text-lg text-indigo-500 font-bold">
-                All albums
+                {{ usePage().props.showOwnedAlbums ? 'Your albums' : 'All albums' }}
             </span>
             <div class="flex gap-2">
+                <Link 
+                    v-if="usePage().props.auth?.user !== null && usePage().props.showOwnedAlbums"
+                    :href="route('album.index')"
+                    class="w-fit flex items-center gap-6 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer"
+                >
+                    <IconPhoto/>
+                    <span class="hidden md:inline-block">
+                        View all albums
+                    </span>
+                </Link>
                 <Link 
                     v-if="usePage().props.auth?.user !== null"
                     :href="route('album.create')"
@@ -34,5 +44,6 @@
     import Pagination from '@/components/Pagination.vue';
 
     import IconPlus from '@/icons/IconPlus.vue';
+    import IconPhoto from '@/icons/IconPhoto.vue';
 </script>
 
