@@ -7,6 +7,7 @@
             type="text"
             placeholder="Enter image name"
             v-model="model.name"
+            :errors="getErrorKey('name')"
         />
         
         <InputText 
@@ -16,20 +17,28 @@
             type="text"
             placeholder="Enter image description"
             v-model="model.description"
+            :errors="getErrorKey('description')"
         />
     </div>
 
     <div class="w-full">
-        <label class="text-sm text-stone-700">Album</label>
+        <label :for="'album_' + props.index" class="text-sm" :class="getErrorKey('album_id') ? 'text-red-500' : 'text-stone-700'">
+            Album
+        </label>
         <select 
+            :id="'album_' + props.index"
             v-model="model.album_id"
-            class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            class="w-full px-4 py-2 bg-stone-50 border rounded text-sm focus:outline-none focus:ring-2"
+            :class="getErrorKey('album_id') ? 'border-red-500 focus:ring-red-600' : 'border-stone-200 focus:ring-indigo-500'"
         >
             <option :value="null">No album</option>
             <option v-for="album in props.albums" :key="album.id" :value="album.id">
                 {{ album.name }}
             </option>
         </select>
+        <span v-if="getErrorKey('album_id')" class="text-sm text-red-500">
+            {{ getErrorKey('album_id') }}
+        </span>
     </div>
 
     <div class="flex items-center gap-2">
@@ -57,9 +66,14 @@
         albums: {
             type: Array,
             required: true
+        },
+        errors: {
+            type: Object,
+            default: () => ({})
         }
     });
 
     const model = defineModel();
+    const getErrorKey = (field) => props.errors[`uploads.${props.index}.${field}`];
 </script>
 

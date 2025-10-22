@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Album;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -52,9 +54,30 @@ class ImageController extends Controller
             'uploads.*.description' => 'required|string|max:255',
             'uploads.*.is_hidden' => 'required|boolean',
             'uploads.*.album_id' => 'nullable|exists:albums,id',
+        ], [
+            'uploads.*.file.required' => 'Please select an image file.',
+            'uploads.*.file.image' => 'The file must be an image.',
+            'uploads.*.file.max' => 'The image must not exceed 5MB.',
+            'uploads.*.name.required' => 'Image name is required.',
+            'uploads.*.name.max' => 'Image name must not exceed 255 characters.',
+            'uploads.*.description.required' => 'Image description is required.',
+            'uploads.*.description.max' => 'Image description must not exceed 255 characters.',
+            'uploads.*.album_id.exists' => 'The selected album does not exist.',
         ]);
-    
+
         $user_id = Auth::id();
+
+        foreach ($validated['uploads'] as $index => $upload) {
+            if (!empty($upload['album_id'])) {
+                $album = Album::findOrFail($upload['album_id']);
+                
+                if ($album->user_id !== $user_id) {
+                    return back()->withErrors([
+                        "uploads.{$index}.album_id" => 'You can only upload to albums you own.'
+                    ]);
+                }
+            }
+        }
         $dateOfToday = now()->format('Y-m-d');
 
         // ensure that the folder structure exists (uploads/{user_id}/{date_of_today}/thumbnails/)
@@ -91,7 +114,7 @@ class ImageController extends Controller
             ]);
         }
     
-        return redirect()->back()->with('success', 'Images uploaded and processed.');
+        return redirect()->route('profile');
     }
     /**
      * Display the specified resource.
@@ -127,18 +150,34 @@ class ImageController extends Controller
     {
         $this->authorize('update', $image);
 
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'album_id' => 'nullable|exists:albums,id',
             'is_hidden' => 'nullable|boolean'
+        ], [
+            'name.required' => 'Image name is required.',
+            'name.max' => 'Image name must not exceed 255 characters.',
+            'description.required' => 'Image description is required.',
+            'description.max' => 'Image description must not exceed 255 characters.',
+            'album_id.exists' => 'The selected album does not exist.',
         ]);
 
+        if (!empty($validated['album_id'])) {
+            $album = Album::findOrFail($validated['album_id']);
+            
+            if ($album->user_id !== Auth::id()) {
+                return back()->withErrors([
+                    'album_id' => 'You can only move images to albums you own.'
+                ]);
+            }
+        }
+
         $image->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'album_id' => $request->album_id,
-            'is_hidden' => $request->is_hidden
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'album_id' => $validated['album_id'],
+            'is_hidden' => $validated['is_hidden']
         ]);
 
         return redirect()->route('image.show', $image)->with('success', 'Image updated successfully.');

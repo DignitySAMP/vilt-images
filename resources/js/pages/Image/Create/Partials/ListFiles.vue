@@ -52,6 +52,7 @@
                 <EditFile 
                     :index="index"
                     :albums="props.albums"
+                    :errors="props.errors"
                     v-model="model[index]"
                 />
             </div>
@@ -66,6 +67,10 @@
         albums: {
             type: Array,
             required: true
+        },
+        errors: {
+            type: Object,
+            default: () => ({})
         }
     });
 

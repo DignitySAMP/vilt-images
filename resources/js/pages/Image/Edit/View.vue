@@ -57,16 +57,23 @@
 
 
                 <div class="w-full">
-                    <label class="text-sm text-stone-700">Album</label>
+                    <label for="album_id" class="text-sm" :class="form.errors.album_id ? 'text-red-500' : 'text-stone-700'">
+                        Album
+                    </label>
                     <select 
+                        id="album_id"
                         v-model="form.album_id"
-                        class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        class="w-full px-4 py-2 bg-stone-50 border rounded text-sm focus:outline-none focus:ring-2"
+                        :class="form.errors.album_id ? 'border-red-500 focus:ring-red-600' : 'border-stone-200 focus:ring-indigo-500'"
                     >
                         <option :value="null">No album</option>
                         <option v-for="album in usePage().props.albums" :key="album.id" :value="album.id">
                             {{ album.name }}
                         </option>
                     </select>
+                    <span v-if="form.errors.album_id" class="text-sm text-red-500">
+                        {{ form.errors.album_id }}
+                    </span>
                 </div>
 
                 <div class="flex w-full gap-4">

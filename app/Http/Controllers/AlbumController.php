@@ -34,6 +34,11 @@ class AlbumController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'is_hidden' => 'nullable|boolean',
+        ], [
+            'name.required' => 'Album name is required.',
+            'name.max' => 'Album name must not exceed 255 characters.',
+            'description.required' => 'Album description is required.',
+            'description.max' => 'Album description must not exceed 255 characters.',
         ]);
 
         Album::create([
@@ -90,6 +95,11 @@ class AlbumController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'is_hidden' => 'nullable|boolean'
+        ], [
+            'name.required' => 'Album name is required.',
+            'name.max' => 'Album name must not exceed 255 characters.',
+            'description.required' => 'Album description is required.',
+            'description.max' => 'Album description must not exceed 255 characters.',
         ]);
 
         $album->update([

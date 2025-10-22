@@ -22,7 +22,7 @@
                     <span class="w-full text-lg text-indigo-700 font-bold">
                         Pending files:
                     </span>
-                    <ListFiles v-model="uploadQueue" :albums="usePage().props.albums"/>
+                    <ListFiles v-model="uploadQueue" :albums="usePage().props.albums" :errors="form.errors || {}"/>
        
                     <button type="submit" class="bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer flex flex-col">
                         <span class="font-bold">Upload</span>
@@ -111,6 +111,7 @@ const submit = () => {
         onSuccess: () => {
             form.reset();
             uploadQueue.value = [];
+            alert('todo: add toast');
         },
         onError: (errors) => console.log(errors)
     });

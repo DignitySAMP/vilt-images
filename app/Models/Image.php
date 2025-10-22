@@ -102,7 +102,6 @@ class Image extends Model
 
     public function getFileSizeAttribute(): int
     {
-        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
         $disk = Storage::disk('public');
         $filePath = "{$this->path}/{$this->file_name}";
 
