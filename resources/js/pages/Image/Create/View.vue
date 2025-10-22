@@ -6,10 +6,10 @@
                 @dragover="onStartDraggingOver" 
                 @dragleave="onStopDraggingOver" 
                 @drop="onFileDropped"
-                class="w-full p-8 bg-white text-indigo-800 rounded-md flex flex-col justify-center items-center"
+                class="w-full p-8 bg-white dark:bg-stone-800 text-indigo-800 dark:text-indigo-300 rounded-md flex flex-col justify-center items-center"
             >
                 <input type="file" name="file" id="fileInput" ref="file" multiple accept=".gif, .jpg, .jpeg, .png" @change="onInputUploadChange" class="hidden" />
-                <label for="fileInput" class=" cursor-copy w-full h-full text-center rounded-lg border-4 border-dotted border-indigo-200 min-h-96 flex justify-center items-center">
+                <label for="fileInput" class=" cursor-copy w-full h-full text-center rounded-lg border-4 border-dotted border-indigo-200 dark:border-stone-700 min-h-96 flex justify-center items-center">
                     <div v-if="isDraggingDetected">
                         Release to drop files here.
                     </div>
@@ -19,7 +19,7 @@
                 </label>
 
                 <div v-if="uploadQueue.length" class="w-full mt-4 flex flex-col gap-2 rounded cursor-default">
-                    <span class="w-full text-lg text-indigo-700 font-bold">
+                    <span class="w-full text-lg text-indigo-700 dark:text-indigo-400 font-bold">
                         Pending files:
                     </span>
                     <ListFiles v-model="uploadQueue" :albums="usePage().props.albums" :errors="form.errors || {}"/>

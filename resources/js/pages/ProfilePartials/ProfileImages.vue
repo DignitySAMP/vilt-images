@@ -1,7 +1,7 @@
 <template>
-    <div class="text-indigo-700">
-        <div ref="headerBar" class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 border border-white rounded-md">
-            <span class="w-fit text-lg text-indigo-500 font-bold">
+    <div class="text-indigo-700 dark:text-indigo-400">
+        <div ref="headerBar" class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 dark:bg-stone-800 border border-white dark:border-stone-700 rounded-md">
+            <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
                 Manage your images
             </span>
             <div class="flex gap-2">
@@ -35,10 +35,10 @@
                 <Link 
                     v-for="image in usePage().props.images.data"
                     as="div"
-                    class="cursor-pointer h-fit flex flex-col justify-center items-center gap-2 p-4 bg-stone-50 border border-white rounded-md"     
+                    class="cursor-pointer h-fit flex flex-col justify-center items-center gap-2 p-4 bg-stone-50 dark:bg-stone-800 border border-white dark:border-stone-700 rounded-md"     
                     :href="route('image.show', image)"
                 >
-                    <span class="w-full text-center truncate">
+                    <span class="w-full text-center truncate dark:text-stone-200">
                         {{ image.name }}
                     </span>
                     <div class="flex">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div 
-                        :class="image.album === null ? 'bg-red-50 border-red-200 text-red-700' : 'bg-sky-50 border-sky-200 text-sky-700'"
+                        :class="image.album === null ? 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-400' : 'bg-sky-50 dark:bg-sky-950/30 border-sky-200 dark:border-sky-900/50 text-sky-700 dark:text-sky-400'"
                         class="flex gap-1 items-center w-full border justify-between px-2 py-0.5 rounded"
                     >
                         <IconPhoto/>

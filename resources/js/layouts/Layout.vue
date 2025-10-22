@@ -1,6 +1,6 @@
 <template>
 
-    <div class="w-screen h-screen bg-stone-200">
+    <div class="w-screen h-screen bg-stone-200 dark:bg-stone-900">
         <div class="container mx-auto pt-2 md:pt-4">
             
             <Header :active_tab="tab"/>

@@ -1,8 +1,8 @@
 <template>
     <Layout tab="Albums">
 
-        <div class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 border border-white rounded-md">
-            <span class="w-fit text-lg text-indigo-500 font-bold">
+        <div class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 dark:bg-stone-800 border border-white dark:border-stone-700 rounded-md">
+            <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
                 {{ usePage().props.showOwnedAlbums ? 'Your albums' : 'All albums' }}
             </span>
             <div class="flex gap-2">

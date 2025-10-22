@@ -1,7 +1,7 @@
 <template>
 
     <div class="w-full">
-        <label :for="props.name" class="text-sm" :class="props.errors ? 'text-red-500' : 'text-stone-700'">
+        <label :for="props.name" class="text-sm" :class="props.errors ? 'text-red-500' : 'text-stone-700 dark:text-stone-300'">
             {{ props.label }}
         </label>
         <div class="relative flex items-center">
@@ -12,12 +12,12 @@
                 :type="(props.type === 'password' && showPassword) ? 'text' : props.type" 
                 :placeholder="props.placeholder"
                 v-bind="attributes"
-                class="w-full px-4 py-2 bg-stone-50 border  rounded text-sm focus:outline-none focus:ring-2"
-                :class="props.errors ? 'border-red-500 focus:ring-red-600 placeholder:text-red-300' : 'border-stone-200 focus:ring-indigo-500'"
+                class="w-full px-4 py-2 bg-stone-50 dark:bg-stone-700 dark:text-stone-200 border rounded text-sm focus:outline-none focus:ring-2"
+                :class="props.errors ? 'border-red-500 focus:ring-red-600 placeholder:text-red-300' : 'border-stone-200 dark:border-stone-600 focus:ring-indigo-500'"
             />
             <div v-if="props.type === 'password'" @click="showPassword = !showPassword">
-                <IconPasswordHidden v-if="!showPassword" class="absolute top-2 right-1 text-stone-400"/>
-                <IconPasswordShown v-else-if="showPassword" class="absolute top-2 right-1 text-stone-700"/>
+                <IconPasswordHidden v-if="!showPassword" class="absolute top-2 right-1 text-stone-400 dark:text-stone-500"/>
+                <IconPasswordShown v-else-if="showPassword" class="absolute top-2 right-1 text-stone-700 dark:text-stone-300"/>
             </div>
         </div>
         <span v-if="props.errors" class="text-sm text-red-500">

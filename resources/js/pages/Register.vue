@@ -21,10 +21,10 @@
                 </div>
             </div>
 
-            <div class="bg-white min-h-196 rounded p-6 flex flex-col justify-center items-center">
+            <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">
 
                 <form @submit.prevent="submit" class="flex flex-col gap-4 w-full lg:px-8">
-                    <span class="w-fit text-lg text-indigo-500 font-bold">
+                    <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
                         Registration
                     </span>
                     
@@ -39,7 +39,7 @@
                             v-model="form.name"
                             :errors="form.errors.name"
                         />
-                        <span class="text-sm text-stone-400">
+                        <span class="text-sm text-stone-400 dark:text-stone-500">
                             Refrain from using any real life references in your nametag, since it will be visible publically.
                         </span>
                     </div>
@@ -69,7 +69,7 @@
                             :errors="form.errors.password"
                         />
 
-                        <span class="text-sm text-stone-400">
+                        <span class="text-sm text-stone-400 dark:text-stone-500">
                             At least 8 characters, one lowercase, one uppercase, one number and one symbol are required.
                         </span>
                     </div>
@@ -97,7 +97,7 @@
                     </button>
 
                     <div class="flex w-full justify-end">
-                        <Link :href="route('login')" class="text-sm underline text-stone-700">
+                        <Link :href="route('login')" class="text-sm underline text-stone-700 dark:text-stone-300">
                             Already have an account?
                         </Link>
                     </div>

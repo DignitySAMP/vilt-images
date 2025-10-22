@@ -2,25 +2,25 @@
     <Layout tab="Albums">
 
         <div 
-            class="bg-white w-full h-full px-4 py-2 grid items-center"
+            class="bg-white dark:bg-stone-800 w-full h-full px-4 py-2 grid items-center"
             :class="canEdit ? ' grid-cols-1 gap-4 lg:grid-cols-[auto_auto_auto]' : 'grid-cols-[1fr_auto]'"    
         >
 
             <div class="flex gap-2 h-fit w-full">
-                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 bg-sky-50 border border-sky-200">
+                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
                     <IconOwner class="w-4 h-4"/>
                     <span>{{ usePage().props.album.user?.name ?? 'Unknown' }}</span>
                 </div>
 
-                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-amber-700 bg-amber-50 border border-amber-200">
+                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
                     <IconDate class="w-4 h-4"/>
                     <span>{{ new Date(usePage().props.album.created_at).toLocaleString() }}</span>
                 </div>
             </div>
 
             <div class="flex flex-col w-full justify-self-start">
-                <span class="text-2xl text-indigo-700 font-bold text-center"> {{ usePage().props.album.name }} </span>
-                <span class="text-indigo-600 text-center"> {{ usePage().props.album.description }} </span>
+                <span class="text-2xl text-indigo-700 dark:text-indigo-400 font-bold text-center"> {{ usePage().props.album.name }} </span>
+                <span class="text-indigo-600 dark:text-indigo-300 text-center"> {{ usePage().props.album.description }} </span>
             </div>
 
             <div v-if="canEdit" class="flex gap-2 w-full lg:w-fit h-fit justify-self-end">

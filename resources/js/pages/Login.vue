@@ -3,9 +3,9 @@
     <Layout tab="Login">
         <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-            <div class="bg-white min-h-196 rounded p-6 flex flex-col justify-center items-center">
+            <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">
                 <form @submit.prevent="submit" class="flex flex-col gap-4 w-full lg:px-8">
-                    <span class="w-fit text-lg text-indigo-500 font-bold">
+                    <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
                         Authenticate
                     </span>
                     
@@ -40,10 +40,10 @@
                             name="remember"
                             v-model="form.remember"
                             type="checkbox"
-                            class="w-4 h-4 bg-stone-50 border border-stone-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 active:accent-sky-900 transition duration-300"
+                            class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
                         />
 
-                        <label for="remember" class="text-sm text-stone-700">
+                        <label for="remember" class="text-sm text-stone-700 dark:text-stone-300">
                             Remember me?
                         </label>
                     </div>
@@ -55,11 +55,11 @@
                     </button>
                 
                     <div class="flex justify-between">
-                        <span class="text-sm underline text-stone-700">
+                        <span class="text-sm underline text-stone-700 dark:text-stone-300">
                             Forgot your password?
                         </span>
 
-                        <Link :href="route('register')" class="text-sm underline text-stone-700">
+                        <Link :href="route('register')" class="text-sm underline text-stone-700 dark:text-stone-300">
                             Don't have an account yet?
                         </Link>
                     </div>

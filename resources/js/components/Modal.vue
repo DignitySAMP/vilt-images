@@ -1,6 +1,6 @@
 <template>
-    <div v-if="props.show" class="fixed inset-0 backdrop-blur-sm bg-black/30 flex items-center justify-center z-50" @click="emit('close')">
-        <div class="bg-white rounded-md p-6 max-w-md w-full mx-4" @click.stop>
+    <div v-if="props.show" class="fixed inset-0 backdrop-blur-sm bg-black/30 dark:bg-black/60 flex items-center justify-center z-50" @click="emit('close')">
+        <div class="bg-white dark:bg-stone-800 rounded-md p-6 max-w-md w-full mx-4" @click.stop>
             <slot />
         </div>
     </div>

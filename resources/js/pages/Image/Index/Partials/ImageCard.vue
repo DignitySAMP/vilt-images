@@ -4,10 +4,10 @@
         @mouseenter="isImageHovered[props.image.id] = true"
         @mouseleave="isImageHovered[props.image.id] = false"
         :href="route('image.show', props.image.id)"
-        class="flex flex-col gap-2 items-center p-4 bg-stone-50 border text-indigo-700 border-white hover:border-indigo-500 rounded-md  hover:shadow-md cursor-pointer transition duration-300"
+        class="flex flex-col gap-2 items-center p-4 bg-stone-50 dark:bg-stone-800 border text-indigo-700 dark:text-indigo-400 border-white dark:border-stone-700 hover:border-indigo-500 dark:hover:border-indigo-400 rounded-md hover:shadow-md cursor-pointer transition duration-300"
         :class="isAnyImageHovered() && !isImageHovered[props.image.id] ? 'grayscale' : 'grayscale-0'"
     >
-        <span class="w-full text-center truncate">
+        <span class="w-full text-center truncate dark:text-stone-200">
             {{ props.image.name }}
         </span>
 

@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col gap-2 items-center p-4 bg-stone-50 border border-white rounded-md h-fit w-full xl:w-96">
-        <span class="w-full text-lg text-indigo-500 font-bold">
+    <div class="flex flex-col gap-2 items-center p-4 bg-stone-50 dark:bg-stone-800 border border-white dark:border-stone-700 rounded-md h-fit w-full xl:w-96">
+        <span class="w-full text-lg text-indigo-500 dark:text-indigo-400 font-bold">
             Update Profile
         </span>
         <form @submit.prevent="submit" class="flex flex-col gap-4 w-full">
@@ -70,7 +70,7 @@
             </button>
         </form>
 
-        <div class="w-full border-t border-stone-200 pt-4 mt-2">
+        <div class="w-full border-t border-stone-200 dark:border-stone-700 pt-4 mt-2">
             <button 
                 type="button"
                 @click="showDeleteModal = true"

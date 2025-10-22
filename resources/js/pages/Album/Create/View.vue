@@ -3,9 +3,9 @@
         <div class="w-full h-full flex flex-col justify-center items-center">
             <form 
                 @submit.prevent="submit" 
-                class="w-full p-8 bg-white text-indigo-800 rounded-md flex flex-col gap-4"
+                class="w-full p-8 bg-white dark:bg-stone-800 text-indigo-800 dark:text-indigo-300 rounded-md flex flex-col gap-4"
             >
-                <span class="w-fit text-lg text-indigo-500 font-bold">
+                <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
                     Create new album
                 </span>
 
@@ -39,9 +39,9 @@
                         name="is_hidden"
                         v-model="form.is_hidden"
                         type="checkbox"
-                        class="w-4 h-4 bg-stone-50 border border-stone-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 active:accent-sky-900 transition duration-300"
+                        class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
                     />
-                    <label for="is_hidden" class="text-sm text-stone-700">
+                    <label for="is_hidden" class="text-sm text-stone-700 dark:text-stone-300">
                         Make album private
                     </label>
                 </div>
