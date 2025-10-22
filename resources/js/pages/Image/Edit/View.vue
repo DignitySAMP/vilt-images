@@ -104,35 +104,19 @@
                 </div>
             </form>
 
-            <div class="mt-4 flex gap-4 w-full">
-                <div
-                    @click="showDeleteModal = !showDeleteModal" 
-                    class="flex  w-fit justify-between bg-red-600 px-4 py-2 text-white text-center rounded hover:bg-red-500 cursor-pointer disabled:bg-red-300">
-                    <IconTrash/>
-                    <span>
-                        I want to delete this image
-                    </span>
-                </div>       
-
-            </div>
-
-            <DeletePartial v-if="showDeleteModal" class="mt-4" :image="usePage().props.image"/>
+            <DeleteImage class="mt-4" :image="usePage().props.image" />
         </div>
     </Layout>
 </template>
 <script setup lang="js">
-    import { ref } from 'vue';
     import { useForm, usePage, Link } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
     import AppImage from '@/components/AppImage.vue';
-    
-    import DeletePartial from '@/pages/Image/Edit/Partials/DeletePartial.vue';
-    const showDeleteModal = ref(false);
+    import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
 
     import IconClick from '@/icons/IconClick.vue'
-    import IconTrash from '@/icons/IconTrash.vue'
     import IconReturn from '@/icons/IconReturn.vue'
 
 

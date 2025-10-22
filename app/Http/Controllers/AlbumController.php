@@ -11,6 +11,7 @@ use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -153,10 +154,23 @@ class AlbumController extends Controller
         return redirect()->route('album.show', $album);
     }
 
-    public function destroy(Album $album): RedirectResponse
+    public function destroy(Request $request, Album $album): RedirectResponse
     {
         $this->authorize('delete', $album);
 
-        dd($album);
+        $request->validate([
+            'confirm_name' => 'required|string|max:255|in:' . $album->name,
+        ]);
+
+        // delete all images in the album
+        foreach ($album->images as $image) {
+            Storage::disk('public')->delete("{$image->path}/{$image->file_name}");
+            Storage::disk('public')->delete("{$image->path}/thumbnails/{$image->file_name}");
+        }
+
+        $album->images()->delete();
+        $album->delete();
+
+        return redirect()->route('profile');
     }
 }

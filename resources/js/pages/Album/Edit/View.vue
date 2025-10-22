@@ -1,9 +1,9 @@
 <template>
     <Layout tab="Albums">
-        <div class="w-full h-full flex flex-col justify-center items-center">
+        <div class="w-full h-full flex flex-col justify-center items-center p-8 bg-white">
             <form 
                 @submit.prevent="submit" 
-                class="w-full p-8 bg-white text-indigo-800 rounded-md flex flex-col gap-4"
+                class="w-full text-indigo-800 rounded-md flex flex-col gap-4"
             >
                 <span class="w-fit text-lg text-indigo-500 font-bold">
                     Edit album
@@ -63,6 +63,8 @@
                     </Link>
                 </div>
             </form>
+
+            <DeleteAlbum :album="usePage().props.album" class="mt-4" />
         </div>
     </Layout>
 </template>
@@ -71,6 +73,7 @@
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
+    import DeleteAlbum from '@/pages/Album/Edit/Partials/DeleteAlbum.vue';
 
     const form = useForm({
         name: usePage().props.album.name,
