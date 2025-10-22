@@ -97,7 +97,7 @@
             </span>
         </div>
 
-        <div class="grid grid-cols-6 gap-4 h-full w-full">
+        <div class="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 h-full w-full">
             <Link 
                 v-for="image in usePage().props.related_images"
                 :href="route('image.show', image.id)"
@@ -108,9 +108,9 @@
                     :alt="image.file_name"
                     class="min-h-32"
                 />
-                <div class="bg-emerald-50 border border-emerald-300 text-emerald-700 py-1 rounded flex justify-between px-4">
-                    <iconYourFiles class="w-6 h-6"/>
-                    <span>{{ image.album?.name ?? 'No album'}}</span>
+                <div class="bg-emerald-50 border border-emerald-300 text-emerald-700 py-1 gap-4 rounded flex items-center justify-between px-4">
+                    <iconYourFiles class="hidden md:block w-6 h-6"/>
+                    <span class="text-sm truncate">{{ image.album?.name ?? 'No album'}}</span>
                 </div>
             </Link>
             

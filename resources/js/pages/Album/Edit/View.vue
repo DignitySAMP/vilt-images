@@ -47,19 +47,29 @@
                     </label>
                 </div>
 
-                <div class="flex gap-2">
+                <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full justify-end">
                     <button 
                         type="submit" 
                         :disabled="form.processing"
-                        class="flex bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
+                        class="flex gap-6 w-full lg:w-fit bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
                     >
-                        Update album
+                        <span class="w-6 h-6">
+                            <IconClick/>
+                        </span>
+                        <span>
+                            Update album
+                        </span>
                     </button>
                     <Link 
                         :href="route('album.show', usePage().props.album.id)"
-                        class="flex bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
+                        class="flex gap-6 w-full lg:w-fit bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
                     >
-                        Cancel
+                    <span class="w-6 h-6">
+                            <IconReturn/>
+                        </span>
+                        <span>
+                            Cancel
+                        </span>
                     </Link>
                 </div>
             </form>
@@ -74,6 +84,9 @@
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
     import DeleteAlbum from '@/pages/Album/Edit/Partials/DeleteAlbum.vue';
+
+    import IconClick from '@/icons/IconClick.vue'
+    import IconReturn from '@/icons/IconReturn.vue'
 
     const form = useForm({
         name: usePage().props.album.name,

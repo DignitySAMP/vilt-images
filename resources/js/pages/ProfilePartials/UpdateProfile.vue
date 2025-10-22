@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-2 items-center p-4 bg-stone-50 border border-white rounded-md h-fit">
+    <div class="flex flex-col gap-2 items-center p-4 bg-stone-50 border border-white rounded-md h-fit w-full xl:w-96">
         <span class="w-full text-lg text-indigo-500 font-bold">
             Update Profile
         </span>

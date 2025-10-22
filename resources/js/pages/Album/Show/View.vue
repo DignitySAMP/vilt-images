@@ -3,16 +3,16 @@
 
         <div 
             class="bg-white w-full h-full px-4 py-2 grid items-center"
-            :class="canEdit ? 'grid-cols-[auto_auto_auto]' : 'grid-cols-[1fr_auto]'"    
+            :class="canEdit ? ' grid-cols-1 gap-4 lg:grid-cols-[auto_auto_auto]' : 'grid-cols-[1fr_auto]'"    
         >
 
             <div class="flex gap-2 h-fit w-full">
-                <div class="w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 bg-sky-50 border border-sky-200">
+                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 bg-sky-50 border border-sky-200">
                     <IconOwner class="w-4 h-4"/>
                     <span>{{ usePage().props.album.user?.name ?? 'Unknown' }}</span>
                 </div>
 
-                <div class="w-fi flex gap-2 text-center items-center p-1 text-sm rounded text-amber-700 bg-amber-50 border border-amber-200">
+                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-amber-700 bg-amber-50 border border-amber-200">
                     <IconDate class="w-4 h-4"/>
                     <span>{{ new Date(usePage().props.album.created_at).toLocaleString() }}</span>
                 </div>
@@ -23,13 +23,13 @@
                 <span class="text-indigo-600 text-center"> {{ usePage().props.album.description }} </span>
             </div>
 
-            <div v-if="canEdit" class="flex gap-2 h-fit justify-self-end">
+            <div v-if="canEdit" class="flex gap-2 w-full lg:w-fit h-fit justify-self-end">
                 <Link 
                     :href="route('album.edit', usePage().props.album.id)"
-                    class="flex items-center gap-2 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer"
+                    class="flex w-full items-center gap-2 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer"
                 >
                     <IconEdit/>
-                    <span class="hidden md:inline-block">Edit</span>
+                    <span class="w-full text-center">Edit</span>
                 </Link>
             </div>
 

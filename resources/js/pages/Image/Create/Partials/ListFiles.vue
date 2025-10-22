@@ -3,7 +3,7 @@
         v-for="(item, index) in model" :key="item.file.name + index"
         class="flex flex-col gap-3 p-4 border border-indigo-300 rounded-md bg-indigo-50"
     >
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center gap-4">
             <img 
                 @click="scalePreviewImage[index] = !scalePreviewImage[index];"
                 :src="generateUploadPreview(item.file)" 
@@ -14,9 +14,9 @@
                 }"
             />
 
-            <div class="flex-1">
-                <p class="text-sm font-semibold text-indigo-800">
-                    {{ getCleanFileName(item.file) }}
+            <div class="flex gap-4 flex-col md:flex-row w-full md:w-fit">
+                <p class="text-sm truncate font-semibold text-indigo-800">
+                    {{ item.file.name }}
                 </p>
                 <p class="text-xs text-indigo-600">
                     {{ Math.round(item.file.size / 1000) }} kb

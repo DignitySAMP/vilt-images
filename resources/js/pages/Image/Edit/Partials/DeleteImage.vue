@@ -7,7 +7,7 @@
         <button 
             type="button"
             @click="showModal = true"
-            class="px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
+            class="w-full md:w-fit  px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
         >
             Delete Image
         </button>

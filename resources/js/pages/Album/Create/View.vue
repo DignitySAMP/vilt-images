@@ -46,17 +46,17 @@
                     </label>
                 </div>
 
-                <div class="flex gap-2">
+                <div class="flex flex-col lg:flex-row w-full lg:justify-end gap-2">
                     <button 
                         type="submit" 
                         :disabled="form.processing"
-                        class="flex bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
+                        class="w-full lg:w-fit flex bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
                     >
                         Create album
                     </button>
                     <Link 
                         :href="route('album.index')"
-                        class="flex bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
+                        class="w-full lg:w-fit flex bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
                     >
                         Cancel
                     </Link>
