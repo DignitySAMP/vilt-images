@@ -23,7 +23,7 @@
 
             <div class="bg-white min-h-196 rounded p-6 flex flex-col justify-center items-center">
 
-                <form @submit.prevent="submit" class="flex flex-col gap-4 w-full px-16">
+                <form @submit.prevent="submit" class="flex flex-col gap-4 w-full px-8">
                     <span class="w-fit text-lg text-indigo-500 font-bold">
                         Registration
                     </span>
