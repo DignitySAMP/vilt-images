@@ -1,12 +1,13 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-[auto_auto_1fr_auto] gap-4 items-center bg-white dark:bg-stone-800 rounded-md p-4 border border-stone-200 dark:border-stone-700">
-        <button
-            class="flex gap-6 items-center bg-rose-500 text-white text-sm px-4 py-2 rounded-md hover:bg-rose-600 transition duration-200 cursor-pointer"
+        <InputButton
+            colors="bg-rose-500 hover:bg-rose-600 text-white"
+            :icon="IconFilterRemove"
             @click="handleReset"
+            type="button"
         >
-            <IconFilterRemove/>
             Reset Filters
-        </button>
+        </InputButton>
 
         <select 
             v-model="localFilters.sort"
@@ -42,19 +43,20 @@
             </div>
         </div>
 
-        <button 
+        <InputButton
             @click="handleSearch"
-            class="flex items-center w-full gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer"
+            :icon="IconClick"
+            type="button"
         >
-            <IconClick/>
-            <span>Search</span>
-        </button>
+            Search
+        </InputButton>
     </div>
 </template>
 
 <script setup lang="js">
     import { ref, watch } from 'vue';
     import { router } from '@inertiajs/vue3';
+    import InputButton from '@/components/form/InputButton.vue';
     import IconClick from '@/icons/IconClick.vue';
     import IconFilterRemove from '@/icons/IconFilterRemove.vue';
     import IconSearch from '@/icons/IconSearch.vue';

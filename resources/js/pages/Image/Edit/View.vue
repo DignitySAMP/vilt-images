@@ -77,22 +77,18 @@
                 </div>
 
                 <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full justify-end">
-                    <button 
-                        type="submit" 
-                        :disabled="form.processing"
-                        class="flex gap-6 w-full md:w-fit bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
+                    <InputButton
+                        :processing="form.processing"
+                        :icon="IconClick"
+                        type="submit"
+                        colors="bg-indigo-600 hover:bg-indigo-500 text-white disabled:bg-indigo-300"
                     >
-
-                        <span class="w-6 h-6">
-                            <IconClick/>
-                        </span>
-                        <span>
-                            Update image
-                        </span>
-                    </button>
+                        Update image
+                    </InputButton>
+                    
                     <Link 
                         :href="route('image.show', usePage().props.image.id)"
-                        class="flex  gap-6 w-full md:w-fit bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
+                        class="flex  gap-6 w-full lg:w-fit bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
                     >
                         <span class="w-6 h-6">
                             <IconReturn/>
@@ -113,6 +109,7 @@
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
+    import InputButton from '@/components/form/InputButton.vue';
     import AppImage from '@/components/AppImage.vue';
     import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
 

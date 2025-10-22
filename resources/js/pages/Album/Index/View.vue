@@ -6,15 +6,15 @@
                 {{ usePage().props.showOwnedAlbums ? 'Your albums' : 'All albums' }}
             </span>
             <div class="flex gap-2">
-                <button 
-                    class="w-fit flex items-center gap-6 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer" 
+                <InputButton
+                    colors="bg-slate-500 hover:bg-slate-600 text-white"
+                    :icon="IconFilter"
                     @click="showFilterBar = !showFilterBar"
+                    type="button"
                 >
-                    <IconFilter/>
-                    <span class="hidden md:inline-block">
-                        {{ showFilterBar ? 'Hide' : 'Show' }} filter
-                    </span>
-                </button>
+                    {{ showFilterBar ? 'Hide' : 'Show' }} filter
+                </InputButton>
+
                 <Link 
                     v-if="usePage().props.auth?.user !== null && usePage().props.showOwnedAlbums"
                     :href="route('album.index')"
@@ -58,6 +58,7 @@
     import AlbumCard from '@/pages/Album/Index/Partials/AlbumCard.vue';
     import Pagination from '@/components/Pagination.vue';
     import SearchBar from '@/pages/Album/Index/Partials/SearchBar.vue';
+    import InputButton from '@/components/form/InputButton.vue';
 
     import IconPlus from '@/icons/IconPlus.vue';
     import IconPhoto from '@/icons/IconPhoto.vue';

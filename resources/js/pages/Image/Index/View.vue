@@ -6,12 +6,16 @@
                 Public images
             </span>
             <div class="flex gap-2">
-                <button class="w-fit flex items-center gap-6 bg-slate-500 text-white text-sm px-4 py-2 rounded-md hover:bg-slate-600 transition duration-200 cursor-pointer" @click="showFilterBar = !showFilterBar">
-                    <IconFilter/>
+                <InputButton
+                    colors="bg-slate-500 hover:bg-slate-600 text-white"
+                    :icon="IconFilter"
+                    @click="showFilterBar = !showFilterBar"
+                    type="button"
+                >
                     <span class="hidden md:inline-block">
                         {{ showFilterBar ? 'Hide' : 'Show' }} filter
                     </span>
-                </button>
+                </InputButton>
 
                 <Link 
                     :href="route('album.index')"
@@ -44,6 +48,7 @@
     import SearchBar from '@/pages/Image/Index/Partials/SearchBar.vue';
     import ImageCard from '@/pages/Image/Index/Partials/ImageCard.vue';
     import Pagination from '@/components/Pagination.vue';
+    import InputButton from '@/components/form/InputButton.vue';
 
     import IconFilter from '@/icons/IconFilter.vue'
     import IconPhoto from '@/icons/IconPhoto.vue'

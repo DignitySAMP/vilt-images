@@ -1,12 +1,13 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-[auto_auto_1fr_auto] gap-4 items-center bg-white dark:bg-stone-800 rounded-md p-4 border border-stone-200 dark:border-stone-700">
-        <button
-            class="flex gap-6 items-center bg-rose-500 text-white text-sm px-4 py-2 rounded-md hover:bg-rose-600 transition duration-200 cursor-pointer"
+        <InputButton
+            type="button"
             @click="handleReset"
+            :icon="IconFilterRemove"
+            colors="bg-rose-500 hover:bg-rose-500 text-white"
         >
-            <IconFilterRemove/>
-            Reset Filters
-        </button>
+            Clear Filter
+        </InputButton>
 
         <select 
             v-model="localFilters.sort"
@@ -42,13 +43,13 @@
             </div>
         </div>
 
-        <button 
+        <InputButton
+            type="button"
             @click="handleSearch"
-            class="flex items-center w-full gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer"
+            :icon="IconFilter"
         >
-            <IconClick/>
-            <span>Search</span>
-        </button>
+            Search
+        </InputButton>
     </div>
 </template>
 
@@ -57,7 +58,9 @@
     import { router } from '@inertiajs/vue3';
     import IconClick from '@/icons/IconClick.vue';
     import IconFilterRemove from '@/icons/IconFilterRemove.vue';
+    import IconFilter from '@/icons/IconFilter.vue'
     import IconSearch from '@/icons/IconSearch.vue';
+    import InputButton from '@/components/form/InputButton.vue';
 
     const props = defineProps({
         filters: {

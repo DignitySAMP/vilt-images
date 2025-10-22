@@ -36,6 +36,7 @@
 <script setup lang="js">
 import { ref } from 'vue';
 import { useForm, usePage } from '@inertiajs/vue3';
+import InputButton from '@/components/form/InputButton.vue'
 
 import Layout from '@/layouts/Layout.vue';
 import ListFiles from '@/pages/Image/Create/Partials/ListFiles.vue';

@@ -20,20 +20,21 @@
                 <span v-if="form.errors.confirm_email" class="text-sm text-red-500">{{ form.errors.confirm_email }}</span>
             </div>
             <div class="flex gap-2 justify-end">
-                <button 
+                <InputButton
+                    colors="bg-slate-500 hover:bg-slate-600 text-white"
+                    :icon="IconReturn"
                     type="button"
                     @click="emit('close')"
-                    class="px-4 py-2 bg-slate-500 text-white text-sm rounded-md hover:bg-slate-600 transition duration-200"
                 >
                     Cancel
-                </button>
-                <button 
+                </InputButton>
+                <InputButton
+                    colors="bg-red-500 hover:bg-red-600 text-white"
+                    :processing="form.processing"
                     type="submit"
-                    class="px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
-                    :disabled="form.processing"
                 >
                     {{ form.processing ? 'Deleting...' : 'Delete Account' }}
-                </button>
+                </InputButton>
             </div>
         </form>
     </Modal>
@@ -42,6 +43,8 @@
 <script setup lang="js">
     import { useForm } from '@inertiajs/vue3';
     import Modal from '@/components/Modal.vue';
+    import InputButton from '@/components/form/InputButton.vue';
+    import IconReturn from '@/icons/IconReturn.vue';
 
     const props = defineProps({
         show: {

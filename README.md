@@ -65,8 +65,11 @@ php artisan storage:link
 
 - Delete owned images, albums or profiles
 
-- Responsive + dark mode  
-
+- UX / UI:
+  - Entirely responsive (mobile, tablet, desktop)
+  - Dark mode according to latest Tailwind 4 standards
+  - Reusable form components `InputButton, InputText, InputCheck`
+  - Reusable icons (pass them as a property or import normally)
 
 
 
@@ -79,7 +82,10 @@ php artisan storage:link
 
 ## todo
   - add forgot your password page
-  - make components for buttons, select, checkboxes
+  - make components for select, checkboxes
+  - deletealbum needs inputtext
+  - add component for cancel <Link> with return icon.
+    - <Link button, i.e. 'create album' is a Link!
   - add toasts using toastify
   - move auth login/register/profile into it's own Auth/ folder with proper folder and pages
 

@@ -87,14 +87,13 @@
                         />
                     </div>
 
-                    <button type="submit" class="flex justify-between items-center w-full gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer">
-                        <IconLoadingAnimated v-if="form.processing"/>
-                        <IconClick v-else/>
-
-                        <span>
-                            Register
-                        </span>
-                    </button>
+                    <InputButton
+                        :processing="form.processing"
+                        :icon="IconClick"
+                        type="submit"
+                    >
+                        Register
+                    </InputButton>
 
                     <div class="flex w-full justify-end">
                         <Link :href="route('login')" class="text-sm underline text-stone-700 dark:text-stone-300">
@@ -111,8 +110,7 @@
     import { useForm, usePage, Link } from '@inertiajs/vue3';
     import Layout from '@/layouts/Layout.vue'
     import InputText from '@/components/Form/InputText.vue';
-
-    import IconLoadingAnimated from '@/icons/IconLoadingAnimated.vue'
+    import InputButton from '@/components/form/InputButton.vue';
     import IconClick from '@/icons/IconClick.vue'
 
     const form = useForm({

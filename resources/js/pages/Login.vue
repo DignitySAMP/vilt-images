@@ -48,11 +48,13 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="flex justify-between items-center w-full gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer">
-                        <IconLoadingAnimated v-if="form.processing"/>
-                        <IconClick v-else/>
-                        <span>Login</span>
-                    </button>
+                    <InputButton
+                        :processing="form.processing"
+                        :icon="IconClick"
+                        type="submit"
+                    >
+                        Login
+                    </InputButton>
                 
                     <div class="flex justify-between">
                         <span class="text-sm underline text-stone-700 dark:text-stone-300">
@@ -88,9 +90,9 @@
 <script setup lang="js">
     import Layout from '@/layouts/Layout.vue'
     import { useForm, usePage, Link } from '@inertiajs/vue3';
-    import IconLoadingAnimated from '@/icons/IconLoadingAnimated.vue'
     import IconClick from '@/icons/IconClick.vue'
     import InputText from '@/components/Form/InputText.vue';
+    import InputButton from '@/components/form/InputButton.vue';
 
     const form = useForm({
         email: '',

@@ -60,24 +60,23 @@
                 autocomplete="current-password"
             />
 
-            <button type="submit" class="flex justify-between items-center w-full gap-6 bg-indigo-500 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-200 cursor-pointer">
-                <IconLoadingAnimated v-if="form.processing"/>
-                <IconClick v-else/>
-
-                <span>
-                    Update Profile
-                </span>
-            </button>
+            <InputButton
+                :processing="form.processing"
+                :icon="IconClick"
+                type="submit"
+            >
+                Update Profile
+            </InputButton>
         </form>
 
         <div class="w-full border-t border-stone-200 dark:border-stone-700 pt-4 mt-2">
-            <button 
+            <InputButton
+                colors="bg-red-500 hover:bg-red-600 text-white"
                 type="button"
                 @click="showDeleteModal = true"
-                class="w-full px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
             >
                 Delete Account
-            </button>
+            </InputButton>
         </div>
 
         <DeleteProfile :show="showDeleteModal" @close="showDeleteModal = false" />
@@ -88,9 +87,9 @@
     import { useForm, usePage } from '@inertiajs/vue3';
 
     import IconClick from '@/icons/IconClick.vue'
-    import IconLoadingAnimated from '@/icons/IconLoadingAnimated.vue';
     import DeleteProfile from '@/pages/ProfilePartials/DeleteProfile.vue';
     import InputText from '@/components/form/InputText.vue';
+    import InputButton from '@/components/form/InputButton.vue';
 
     const user = usePage().props.auth.user;
     const showDeleteModal = ref(false);

@@ -4,13 +4,16 @@
         <p class="text-sm text-red-600 dark:text-red-400 mb-4">
             Deleting this album will also delete all images within it. This action cannot be undone.
         </p>
-        <button 
+
+        <InputButton
             type="button"
             @click="showModal = true"
-            class="w-full md:w-fit px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
+            :icon="IconTrash"
+
+            colors="bg-red-500 hover:bg-red-500 text-white"
         >
             Delete Album
-        </button>
+        </InputButton>
 
         <Modal :show="showModal" @close="showModal = false">
             <h3 class="text-xl font-bold text-red-700 dark:text-red-500 mb-4">Confirm Album Deletion</h3>
@@ -33,20 +36,22 @@
                     <span v-if="form.errors.confirm_name" class="text-sm text-red-500">{{ form.errors.confirm_name }}</span>
                 </div>
                 <div class="flex gap-2 justify-end">
-                    <button 
+
+                    <InputButton
                         type="button"
                         @click="showModal = false"
-                        class="px-4 py-2 bg-slate-500 text-white text-sm rounded-md hover:bg-slate-600 transition duration-200"
+                        :icon="IconReturn"
                     >
                         Cancel
-                    </button>
-                    <button 
+                    </InputButton>
+
+                    <InputButton
                         type="submit"
-                        class="px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
-                        :disabled="form.processing"
+                        :processing="form.processing"
+                        colors="bg-red-500 hover:bg-red-500 text-white"
                     >
                         {{ form.processing ? 'Deleting...' : 'Delete Album' }}
-                    </button>
+                    </InputButton>
                 </div>
             </form>
         </Modal>
@@ -57,6 +62,9 @@
     import { ref } from 'vue';
     import { useForm } from '@inertiajs/vue3';
     import Modal from '@/components/Modal.vue';
+    import IconReturn from '@/icons/IconReturn.vue'
+    import IconTrash from '@/icons/IconTrash.vue'
+    import InputButton from '@/components/form/InputButton.vue';
 
     const props = defineProps({
         album: {

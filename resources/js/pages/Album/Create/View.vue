@@ -47,13 +47,13 @@
                 </div>
 
                 <div class="flex flex-col lg:flex-row w-full lg:justify-end gap-2">
-                    <button 
-                        type="submit" 
-                        :disabled="form.processing"
-                        class="w-full lg:w-fit flex bg-indigo-600 px-4 py-2 text-white text-center rounded hover:bg-indigo-500 cursor-pointer disabled:bg-indigo-300"
+                    <InputButton
+                        :processing="form.processing"
+                        type="submit"
                     >
                         Create album
-                    </button>
+                    </InputButton>
+
                     <Link 
                         :href="route('album.index')"
                         class="w-full lg:w-fit flex bg-slate-500 px-4 py-2 text-white text-center rounded hover:bg-slate-400 cursor-pointer"
@@ -70,6 +70,7 @@
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
+    import InputButton from '@/components/form/InputButton.vue';
 
     const form = useForm({
         name: '',

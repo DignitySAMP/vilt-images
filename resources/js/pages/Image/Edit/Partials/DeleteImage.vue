@@ -4,13 +4,13 @@
         <p class="text-sm text-red-600 dark:text-red-400 mb-4">
             Deleting this image is permanent and cannot be undone.
         </p>
-        <button 
+        <InputButton
+            colors="bg-red-500 hover:bg-red-600 text-white"
             type="button"
             @click="showModal = true"
-            class="w-full md:w-fit  px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
         >
             Delete Image
-        </button>
+        </InputButton>
 
         <Modal :show="showModal" @close="showModal = false">
             <h3 class="text-xl font-bold text-red-700 dark:text-red-500 mb-4">Confirm Image Deletion</h3>
@@ -33,20 +33,21 @@
                     <span v-if="form.errors.confirm_name" class="text-sm text-red-500">{{ form.errors.confirm_name }}</span>
                 </div>
                 <div class="flex gap-2 justify-end">
-                    <button 
+                    <InputButton
+                        colors="bg-slate-500 hover:bg-slate-600 text-white"
+                        :icon="IconReturn"
                         type="button"
                         @click="showModal = false"
-                        class="px-4 py-2 bg-slate-500 text-white text-sm rounded-md hover:bg-slate-600 transition duration-200"
                     >
                         Cancel
-                    </button>
-                    <button 
+                    </InputButton>
+                    <InputButton
+                        colors="bg-red-500 hover:bg-red-600 text-white"
+                        :processing="form.processing"
                         type="submit"
-                        class="px-4 py-2 bg-red-500 text-white text-sm rounded-md hover:bg-red-600 transition duration-200"
-                        :disabled="form.processing"
                     >
                         {{ form.processing ? 'Deleting...' : 'Delete Image' }}
-                    </button>
+                    </InputButton>
                 </div>
             </form>
         </Modal>
@@ -57,6 +58,8 @@
     import { ref } from 'vue';
     import { useForm } from '@inertiajs/vue3';
     import Modal from '@/components/Modal.vue';
+    import InputButton from '@/components/form/InputButton.vue';
+    import IconReturn from '@/icons/IconReturn.vue';
 
     const props = defineProps({
         image: {
