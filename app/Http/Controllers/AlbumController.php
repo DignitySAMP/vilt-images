@@ -15,13 +15,17 @@ use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
-    public function index(Request $request): InertiaResponse
+    public function index(Request $request): mixed
     {
         $query = Album::with(['user', 'images' => function ($query) {
             $query->visible()->limit(1);
         }]);
 
         if ($request->boolean('owned_albums')) {
+            if(!Auth::check()) {
+                return redirect(route('login'));
+            }
+
             $query->where('user_id', Auth::id());
         } else {
             $query->visible();
