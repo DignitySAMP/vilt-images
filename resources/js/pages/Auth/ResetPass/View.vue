@@ -4,9 +4,11 @@
         <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
 
             <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">
+
+                <span v-if="props.status" class="p-2 border border-red-200 bg-red-100 text-red-800 rounded">{{  props.status }}</span>
                 <form @submit.prevent="submit" class="flex flex-col gap-4 w-full lg:px-8">
                     <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
-                        Authenticate
+                        Forgot Password
                     </span>
                     
                     <div class="w-full">
@@ -21,48 +23,46 @@
                             :errors="form.errors.email"
                         />
                     </div>
+
+                                        
                     <div class="w-full">
                         <InputText
-                            id="empasswordail" 
+                            id="password" 
                             name="password" 
-                            label="Password"
+                            label="New Password"
                             type="password" 
-                            placeholder="***"
                             autocomplete="password"
                             v-model="form.password"
                             :errors="form.errors.password"
                         />
                     </div>
 
-                    <div class="w-full flex items-center gap-4">
-                        <input 
-                            id="remember"
-                            name="remember"
-                            v-model="form.remember"
-                            type="checkbox"
-                            class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
+                                    
+                    <div class="w-full">
+                        <InputText
+                            id="password_confirmation" 
+                            name="password_confirmation" 
+                            label="Confirm password"
+                            type="password" 
+                            autocomplete="password"
+                            v-model="form.password_confirmation"
+                            :errors="form.errors.password_confirmation"
                         />
-
-                        <label for="remember" class="text-sm text-stone-700 dark:text-stone-300">
-                            Remember me?
-                        </label>
                     </div>
-
+                   
                     <InputButton
                         :processing="form.processing"
                         :icon="IconClick"
                         type="submit"
+                        class="lg:w-full"
                     >
-                        Login
+                        Reset Password
                     </InputButton>
                 
-                    <div class="flex justify-between">
-                        <Link :href="route('forgot.password')" class="text-sm underline text-stone-700 dark:text-stone-300">
-                            Forgot your password?
-                        </Link>
-
-                        <Link :href="route('register')" class="text-sm underline text-stone-700 dark:text-stone-300">
-                            Don't have an account yet?
+                
+                    <div class="flex justify-end">
+                        <Link :href="route('login')" class="text-sm underline text-stone-700 dark:text-stone-300">
+                            Back to login
                         </Link>
                     </div>
                 </form>
@@ -94,17 +94,25 @@
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
 
+
+    const props = defineProps({
+        token: String,
+        email: String,
+    })
+
     const form = useForm({
-        email: '',
+        token: props.token,
+        email: props.email,
         password: '',
-        remember: false
+        password_confirmation: ''
     });
 
     const submit = () => {
-        form.post(route('login'), {
-            onSuccess: () => form.reset(),
-            onError: (errors) => console.log(errors),
-            onFinish: () => form.reset('password'),
-        });
-    };
+        form.post(route('reset.password.edit'), {
+            preserveScroll: true,
+            onSuccess: () => form.reset('password', 'password_confirmation'),
+            onError: () => form.reset('password', 'password_confirmation')
+        })
+    }
+
 </script>

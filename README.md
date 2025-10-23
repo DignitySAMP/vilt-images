@@ -97,7 +97,7 @@ php artisan storage:link
 
 
 ## todo
-  - add forgot your password page
+
   - make components for select, checkboxes
     - make search partials use the custom inputtext component
     - add Inertia <head> seo, meta and titles in each page (app_name | page_title)

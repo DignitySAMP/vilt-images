@@ -4,9 +4,11 @@
         <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
 
             <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">
+
+                <span v-if="props.status" class="p-2 border border-emerald-200 bg-emerald-100 text-emerald-800 rounded">{{  props.status }}</span>
                 <form @submit.prevent="submit" class="flex flex-col gap-4 w-full lg:px-8">
                     <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
-                        Authenticate
+                        Forgot Password
                     </span>
                     
                     <div class="w-full">
@@ -21,48 +23,23 @@
                             :errors="form.errors.email"
                         />
                     </div>
-                    <div class="w-full">
-                        <InputText
-                            id="empasswordail" 
-                            name="password" 
-                            label="Password"
-                            type="password" 
-                            placeholder="***"
-                            autocomplete="password"
-                            v-model="form.password"
-                            :errors="form.errors.password"
-                        />
-                    </div>
-
-                    <div class="w-full flex items-center gap-4">
-                        <input 
-                            id="remember"
-                            name="remember"
-                            v-model="form.remember"
-                            type="checkbox"
-                            class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
-                        />
-
-                        <label for="remember" class="text-sm text-stone-700 dark:text-stone-300">
-                            Remember me?
-                        </label>
-                    </div>
-
+                   
                     <InputButton
                         :processing="form.processing"
                         :icon="IconClick"
                         type="submit"
+                        class="lg:w-full"
                     >
-                        Login
+                        Request Password
                     </InputButton>
                 
                     <div class="flex justify-between">
-                        <Link :href="route('forgot.password')" class="text-sm underline text-stone-700 dark:text-stone-300">
-                            Forgot your password?
-                        </Link>
-
                         <Link :href="route('register')" class="text-sm underline text-stone-700 dark:text-stone-300">
                             Don't have an account yet?
+                        </Link>
+
+                        <Link :href="route('login')" class="text-sm underline text-stone-700 dark:text-stone-300">
+                            Remember your password?
                         </Link>
                     </div>
                 </form>
@@ -94,17 +71,16 @@
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
 
+    const props = defineProps({
+        status: String,
+    });
+
     const form = useForm({
         email: '',
-        password: '',
-        remember: false
     });
 
     const submit = () => {
-        form.post(route('login'), {
-            onSuccess: () => form.reset(),
-            onError: (errors) => console.log(errors),
-            onFinish: () => form.reset('password'),
-        });
-    };
+        form.post(route('forgot.password.store'));
+    }
+
 </script>
