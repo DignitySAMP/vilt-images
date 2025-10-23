@@ -61,7 +61,9 @@
 </template>
 <script setup lang="js">
     import { ref } from 'vue';
+
     import EditFile from '@/pages/Image/Create/Partials/EditFile.vue';
+    
     import IconTrash from '@/icons/IconTrash.vue'
 
     const props = defineProps({

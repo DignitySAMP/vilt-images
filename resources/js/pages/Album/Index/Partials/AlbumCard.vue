@@ -38,7 +38,7 @@
     import { Link } from '@inertiajs/vue3';
     
     import AppImage from '@/components/AppImage.vue';
-    import IconPhoto from '@/icons/IconPhoto.vue';
+    
     import IconOwner from '@/icons/IconOwner.vue';
     import IconYourFiles from '@/icons/IconYourFiles.vue';
 

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Album;
 
 class AlbumController extends Controller
 {

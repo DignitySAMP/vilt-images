@@ -39,6 +39,7 @@ import { useForm, usePage } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify'
 
 import Layout from '@/layouts/Layout.vue';
+
 import ListFiles from '@/pages/Image/Create/Partials/ListFiles.vue';
 
 const uploadQueue = ref([]);

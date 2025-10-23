@@ -2,14 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Image;
-use App\Models\Album;
 use Illuminate\Database\Seeder;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+use App\Models\User;
+use App\Models\Image;
+use App\Models\Album;
 
 class DatabaseSeeder extends Seeder
 {

@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
-use Inertia\Inertia;
-use Inertia\Response as InertiaResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\MailableWithButton;
-
-use Illuminate\Support\Str;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Validation\Rules;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
+
+use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
+
+use App\Mail\MailableWithButton;
+use App\Models\User;
 
 class ResetPasswordController extends Controller
 {

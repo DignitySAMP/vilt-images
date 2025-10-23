@@ -94,17 +94,18 @@
     import { toast } from 'vue3-toastify'
     
     import Layout from '@/layouts/Layout.vue';
+    
+    import AppImage from '@/components/AppImage.vue';
+    import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
+
     import InputText from '@/components/form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
     import InputLink from '@/components/form/InputLink.vue';
     import InputSelect from '@/components/form/InputSelect.vue';
     import InputCheckbox from '@/components/form/InputCheckbox.vue';
-    import AppImage from '@/components/AppImage.vue';
-    import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
 
     import IconClick from '@/icons/IconClick.vue'
     import IconReturn from '@/icons/IconReturn.vue'
-
 
     const form = useForm({
         name: usePage().props.image.name,

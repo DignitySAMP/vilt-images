@@ -82,14 +82,18 @@
 
 </template>
 <script setup lang="js">
-    import Layout from '@/layouts/Layout.vue'
+    
     import { useForm, usePage, Link } from '@inertiajs/vue3';
-    import IconClick from '@/icons/IconClick.vue'
+    import { toast } from 'vue3-toastify';
+
+    import Layout from '@/layouts/Layout.vue'
+    
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
     import InputCheckbox from '@/components/form/InputCheckbox.vue';
-    import { toast } from 'vue3-toastify';
 
+    import IconClick from '@/icons/IconClick.vue'
+    
     const form = useForm({
         email: '',
         password: '',

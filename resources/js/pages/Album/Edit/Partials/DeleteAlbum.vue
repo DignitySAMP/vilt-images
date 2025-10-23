@@ -58,11 +58,13 @@
     import { toast } from 'vue3-toastify'
     
     import Modal from '@/components/Modal.vue';
-    import IconReturn from '@/icons/IconReturn.vue'
-    import IconTrash from '@/icons/IconTrash.vue'
+    
     import InputButton from '@/components/form/InputButton.vue';
     import InputText from '@/components/form/InputText.vue';
 
+    import IconReturn from '@/icons/IconReturn.vue'
+    import IconTrash from '@/icons/IconTrash.vue'
+    
     const props = defineProps({
         album: {
             type: Object,

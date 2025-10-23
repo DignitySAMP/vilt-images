@@ -13,7 +13,6 @@
     </Link>
 </template>
 <script setup lang="js">
-
     import { Link } from '@inertiajs/vue3';
 
     const props = defineProps({

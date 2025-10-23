@@ -87,10 +87,12 @@
     import { useForm, usePage } from '@inertiajs/vue3';
     import { toast } from 'vue3-toastify'
 
-    import IconClick from '@/icons/IconClick.vue'
     import DeleteProfile from '@/pages/Auth/Profile/Partials/DeleteProfile.vue';
+
     import InputText from '@/components/form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
+
+    import IconClick from '@/icons/IconClick.vue'
 
     const user = usePage().props.auth.user;
     const showDeleteModal = ref(false);

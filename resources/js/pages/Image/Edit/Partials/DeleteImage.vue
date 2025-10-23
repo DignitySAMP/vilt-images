@@ -52,9 +52,12 @@
     import { ref } from 'vue';
     import { useForm } from '@inertiajs/vue3';
     import { toast } from 'vue3-toastify';
+    
     import Modal from '@/components/Modal.vue';
+    
     import InputButton from '@/components/form/InputButton.vue';
     import InputText from '@/components/form/InputText.vue';
+
     import IconReturn from '@/icons/IconReturn.vue';
 
     const props = defineProps({

@@ -29,7 +29,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="js">
 	import { Link } from '@inertiajs/vue3';
     
 	// Important: the prop here must be the full laravel pagination object, not just the links

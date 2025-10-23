@@ -44,7 +44,7 @@
                 </span>
                 <span
                     @click="toggleDarkMode"
-                    class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800 dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
+                    class="flex justify-between px-3 py-1 rounded cursor-pointer transition duration-300 text-indigo-800  dark:text-amber-500 hover:bg-indigo-50 dark:hover:bg-stone-700"
                     aria-label="Toggle dark mode"
                 >
                     <IconMoon v-if="!isDark" class="w-6 h-6" />
@@ -56,12 +56,13 @@
     </div>
 </template>
 <script setup>
-    import { Link, usePage } from '@inertiajs/vue3';
     import { ref } from 'vue';
-    import AppLogo from '@/components/AppLogo.vue';
-    import { useDarkMode } from '@/composables/useDarkMode.js';
+    import { Link, usePage } from '@inertiajs/vue3';
 
+    import AppLogo from '@/components/AppLogo.vue';
     import IconHeaderBreadcrumbs from '@/icons/IconHeaderBreadcrumbs.vue';
+
+    import { useDarkMode } from '@/composables/useDarkMode.js';
     import IconMoon from '@/icons/IconMoon.vue';
     import IconSun from '@/icons/IconSun.vue';
     const showMobileHeader = ref(false);

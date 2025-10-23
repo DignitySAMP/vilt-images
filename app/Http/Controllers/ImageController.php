@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
-use App\Models\Album;
-
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Gate;
-
-use Inertia\Inertia;
-use Inertia\Response as InertiaResponse;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
+use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
 
-use Intervention\Image\ImageManager;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
+use Intervention\Image\ImageManager;
+
+use App\Models\Image;
+use App\Models\Album;
 
 class ImageController extends Controller
 {

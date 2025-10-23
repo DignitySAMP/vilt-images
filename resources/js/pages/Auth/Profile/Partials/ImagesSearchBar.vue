@@ -55,12 +55,14 @@
 <script setup lang="js">
     import { ref, watch } from 'vue';
     import { router } from '@inertiajs/vue3';
+
     import InputButton from '@/components/form/InputButton.vue';
-    import IconFilterRemove from '@/icons/IconFilterRemove.vue';
-    import IconSearch from '@/icons/IconSearch.vue';
     import InputSelect from '@/components/form/InputSelect.vue';
     import InputText from '@/components/form/InputText.vue'
 
+    import IconFilterRemove from '@/icons/IconFilterRemove.vue';
+    import IconSearch from '@/icons/IconSearch.vue';
+    
     const props = defineProps({
         filters: {
             type: Object,

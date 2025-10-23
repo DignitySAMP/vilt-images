@@ -68,12 +68,13 @@
     import { toast } from 'vue3-toastify'
 
     import Layout from '@/layouts/Layout.vue';
-    import InputText from '@/components/form/InputText.vue';
-    import InputCheckbox from '@/components/form/InputCheckbox.vue';
     import DeleteAlbum from '@/pages/Album/Edit/Partials/DeleteAlbum.vue';
 
+    import InputText from '@/components/form/InputText.vue';
+    import InputCheckbox from '@/components/form/InputCheckbox.vue';
     import InputButton from '@/components/form/InputButton.vue'
     import InputLink from '@/components/form/InputLink.vue';
+
     import IconReturn from '@/icons/IconReturn.vue'
 
     const form = useForm({

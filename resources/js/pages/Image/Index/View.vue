@@ -45,9 +45,12 @@
     import { usePage } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
+
     import SearchBar from '@/pages/Image/Index/Partials/SearchBar.vue';
     import ImageCard from '@/pages/Image/Index/Partials/ImageCard.vue';
+    
     import Pagination from '@/components/Pagination.vue';
+    
     import InputButton from '@/components/form/InputButton.vue';
     import InputLink from '@/components/form/InputLink.vue';
 

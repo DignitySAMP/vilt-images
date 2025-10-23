@@ -14,17 +14,16 @@
     </div>
 </template>
 <script setup lang="js">
-
-const model = defineModel();
-const props = defineProps({
-    label: {
-        type: String,
-        required: false,
-        default: ''
-    },
-    name: {
-        type: String,
-        required: true
-    }
-});
+    const model = defineModel();
+    const props = defineProps({
+        label: {
+            type: String,
+            required: false,
+            default: ''
+        },
+        name: {
+            type: String,
+            required: true
+        }
+    });
 </script>

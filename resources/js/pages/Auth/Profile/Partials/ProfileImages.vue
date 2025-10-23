@@ -72,9 +72,11 @@
     import { ref } from 'vue';
     import { usePage, Link } from '@inertiajs/vue3';
 
+    import ImagesSearchBar from '@/pages/Auth/Profile/Partials/ImagesSearchBar.vue'
+
     import Pagination from '@/components/Pagination.vue'
     import AppImage from '@/components/AppImage.vue'
-    import ImagesSearchBar from '@/pages/Auth/Profile/Partials/ImagesSearchBar.vue'
+
     import InputButton from '@/components/form/InputButton.vue'
     import InputLink from '@/components/form/InputLink.vue';
 

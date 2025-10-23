@@ -55,12 +55,14 @@
     import { usePage } from '@inertiajs/vue3';
     
     import Layout from '@/layouts/Layout.vue';
+    
     import AlbumCard from '@/pages/Album/Index/Partials/AlbumCard.vue';
-    import Pagination from '@/components/Pagination.vue';
     import SearchBar from '@/pages/Album/Index/Partials/SearchBar.vue';
+
     import InputButton from '@/components/form/InputButton.vue';
     import InputLink from '@/components/form/InputLink.vue';
-
+    import Pagination from '@/components/Pagination.vue';
+    
     import IconPlus from '@/icons/IconPlus.vue';
     import IconPhoto from '@/icons/IconPhoto.vue';
     import IconFilter from '@/icons/IconFilter.vue';

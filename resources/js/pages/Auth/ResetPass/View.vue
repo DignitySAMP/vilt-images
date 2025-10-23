@@ -93,12 +93,15 @@
 
 </template>
 <script setup lang="js">
-    import Layout from '@/layouts/Layout.vue'
     import { useForm, usePage, Link } from '@inertiajs/vue3';
-    import IconClick from '@/icons/IconClick.vue'
+    
+    import Layout from '@/layouts/Layout.vue'
+    
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
 
+    import IconClick from '@/icons/IconClick.vue'
+    
     const props = defineProps({
         token: String,
         email: String,
