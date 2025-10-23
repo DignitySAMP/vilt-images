@@ -41,20 +41,13 @@
                     />
                 </div>
 
-                <div class="w-full flex items-center gap-2">
-                    <input 
-                        id="is_hidden"
+                <div>
+                    <InputCheckbox
                         name="is_hidden"
+                        label="Make image private"
                         v-model="form.is_hidden"
-                        type="checkbox"
-                        class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
                     />
-
-                    <label for="is_hidden" class="text-sm text-stone-700 dark:text-stone-300">
-                        Make image private
-                    </label>
                 </div>
-
 
                 <div class="w-full">
                     <InputSelect
@@ -104,6 +97,7 @@
     import InputButton from '@/components/form/InputButton.vue';
     import InputLink from '@/components/form/InputLink.vue';
     import InputSelect from '@/components/form/InputSelect.vue';
+    import InputCheckbox from '@/components/form/InputCheckbox.vue';
     import AppImage from '@/components/AppImage.vue';
     import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
 

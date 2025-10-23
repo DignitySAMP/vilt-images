@@ -23,7 +23,7 @@
         </span>
     </div>
 </template>
-<script setup>
+<script setup lang="js">
     const model = defineModel();
     const props = defineProps({
         name: {

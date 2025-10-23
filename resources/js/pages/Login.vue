@@ -34,18 +34,12 @@
                         />
                     </div>
 
-                    <div class="w-full flex items-center gap-4">
-                        <input 
-                            id="remember"
+                    <div>
+                        <InputCheckbox
                             name="remember"
+                            label="Remember me?"
                             v-model="form.remember"
-                            type="checkbox"
-                            class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
                         />
-
-                        <label for="remember" class="text-sm text-stone-700 dark:text-stone-300">
-                            Remember me?
-                        </label>
                     </div>
 
                     <InputButton
@@ -93,6 +87,7 @@
     import IconClick from '@/icons/IconClick.vue'
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputCheckbox from '@/components/form/InputCheckbox.vue';
 
     const form = useForm({
         email: '',

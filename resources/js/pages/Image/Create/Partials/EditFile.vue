@@ -38,23 +38,19 @@
         />
     </div>
 
-    <div class="flex items-center gap-2">
-        <input 
-            :id="'is_hidden_' + props.index"
+    <div>
+        <InputCheckbox
             :name="'is_hidden_' + props.index"
+            label="Make image private"
             v-model="model.is_hidden"
-            type="checkbox"
-            class="w-4 h-4 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 accent-sky-800 dark:accent-sky-600 active:accent-sky-900 transition duration-300"
         />
-        <label :for="'is_hidden_' + props.index" class="text-sm text-stone-700 dark:text-stone-300">
-            Make this image private
-        </label>
     </div>
 </template>
 
 <script setup lang="js">
     import InputText from '@/components/form/InputText.vue';
     import InputSelect from '@/components/form/InputSelect.vue';
+    import InputCheckbox from '@/components/form/InputCheckbox.vue';
 
     const props = defineProps({
         index: {
