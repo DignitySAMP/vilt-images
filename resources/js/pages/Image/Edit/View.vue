@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Public">
+    <Layout tab="Public" title="Edit Image" description="Edit an existing image.">
         <div class="w-full h-full flex flex-col justify-center items-center p-8 bg-white dark:bg-stone-800">
             <form 
                 @submit.prevent="submit" 

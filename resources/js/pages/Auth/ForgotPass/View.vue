@@ -1,6 +1,6 @@
 <template>
 
-    <Layout tab="Login">
+    <Layout tab="Login" title="Forgot Password" description="Request a new password.">
         <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
 
             <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">

@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Public">
+    <Layout tab="Public" title="Image" description="View an existing image.">
 
         <div class="bg-white dark:bg-stone-800 w-full h-full p-6 flex flex-col justify-center items-center gap-2">
             

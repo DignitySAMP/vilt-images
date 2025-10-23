@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Public">
+    <Layout tab="Public" title="Images" description="View all images">
 
         <div class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 dark:bg-stone-800 border border-white dark:border-stone-700 rounded-md">
             <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">

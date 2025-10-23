@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Upload">
+    <Layout tab="Upload" title="Upload" description="Upload a new image.">
         <div class="w-full h-full flex flex-col justify-center items-center">
             <form 
                 @submit.prevent="submit" 

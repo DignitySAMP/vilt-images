@@ -97,8 +97,6 @@ php artisan storage:link
 
 
 ## todo
-  - add Inertia <head> seo, meta and titles in each page (app_name | page_title)
-  - add favicon (take applogo icon, change to indigo-500, convert to favicon)
   - add toasts using toastify
   - move auth login/register/profile into it's own Auth/ folder with proper folder and pages
 

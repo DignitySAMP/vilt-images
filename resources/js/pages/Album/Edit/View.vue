@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Albums">
+    <Layout tab="Albums"  title="Edit Album" description="Edit an existing album.">
         <div class="w-full h-full flex flex-col justify-center items-center p-8 bg-white dark:bg-stone-800">
             <form 
                 @submit.prevent="submit" 

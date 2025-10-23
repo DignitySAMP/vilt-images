@@ -1,6 +1,6 @@
 <template>
 
-    <Layout tab="Login">
+    <Layout tab="Login" title="Login" description="Authenticate yourself to the application.">
         <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
 
             <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">

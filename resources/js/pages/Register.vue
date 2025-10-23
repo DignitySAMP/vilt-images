@@ -1,6 +1,6 @@
 <template>
 
-    <Layout tab="Login">
+    <Layout tab="Login"  title="Register" description="Register a new account to access the application.">
         
         <div class="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
 

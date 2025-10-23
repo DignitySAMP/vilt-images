@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Albums">
+    <Layout tab="Albums"  title="Create Album" description="Create a new album to store images in.">
         <div class="w-full h-full flex flex-col justify-center items-center">
             <form 
                 @submit.prevent="submit" 

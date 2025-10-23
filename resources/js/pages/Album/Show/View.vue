@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Albums">
+    <Layout tab="Albums" title="Album" description="View an existing album.">
 
         <div 
             class="bg-white dark:bg-stone-800 w-full h-full px-4 py-2 grid items-center"

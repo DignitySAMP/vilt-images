@@ -1,5 +1,5 @@
 <template>
-    <Layout tab="Albums">
+    <Layout tab="Albums" :title="usePage().props.showOwnedAlbums ? 'Your albums' : 'Albums' " description="Display a list of albums.">
 
         <div class="w-full h-fit flex justify-between items-center p-4 bg-stone-50 dark:bg-stone-800 border border-white dark:border-stone-700 rounded-md">
             <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
