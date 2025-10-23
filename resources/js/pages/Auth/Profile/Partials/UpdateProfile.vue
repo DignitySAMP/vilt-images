@@ -88,7 +88,7 @@
     import { toast } from 'vue3-toastify'
 
     import IconClick from '@/icons/IconClick.vue'
-    import DeleteProfile from '@/pages/ProfilePartials/DeleteProfile.vue';
+    import DeleteProfile from '@/pages/Auth/Profile/Partials/DeleteProfile.vue';
     import InputText from '@/components/form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
 

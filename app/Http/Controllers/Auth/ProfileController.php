@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -67,7 +68,7 @@ class ProfileController extends Controller
             $images = $query->paginate(8)->withQueryString();
         }
 
-        return Inertia::render('Profile', [
+        return Inertia::render('Auth/Profile/View', [
             'images' => $images,
             'filters' => [
                 'search' => $request->search,
