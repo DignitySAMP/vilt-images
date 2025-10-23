@@ -10,7 +10,6 @@ Route::middleware('guest')->group(function () {
     // authentication
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
     
     // registration
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
@@ -24,6 +23,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
