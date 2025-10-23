@@ -36,7 +36,7 @@
 <script setup lang="js">
 import { ref } from 'vue';
 import { useForm, usePage } from '@inertiajs/vue3';
-import InputButton from '@/components/form/InputButton.vue'
+import { toast } from 'vue3-toastify'
 
 import Layout from '@/layouts/Layout.vue';
 import ListFiles from '@/pages/Image/Create/Partials/ListFiles.vue';
@@ -112,7 +112,7 @@ const submit = () => {
         onSuccess: () => {
             form.reset();
             uploadQueue.value = [];
-            alert('todo: add toast');
+            toast.success('Your upload was successful.');
         },
         onError: (errors) => console.log(errors)
     });

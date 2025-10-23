@@ -1,10 +1,9 @@
-# Image Uploader (VILT Stack)
+# Image Uploader
 
-A simple image uploading platform built with the **VILT** stack. Open source and designed as a showcase of my current full-stack skills.
+A simple image uploading platform built with the **VILT** stack. Open source and designed as a showcase of my current full-stack skills as well as provide a demo for using the stack.
 
-You can access the demo here `url_here` and authenticate using `test@example.com / test@example.com`.
+> If you're interesting in developing an application using VILT, check out my [vilt stack starter kit](https://github.com/DignitySAMP/vilt-stack).
 
-> The demo is automatically wiped every two hours. Any data uploaded is per-user to avoid abuse. The code for this is also included in the `demo` branch.
 
 ---
 
@@ -21,7 +20,7 @@ You can access the demo here `url_here` and authenticate using `test@example.com
 - **Intervention Image** – Thumbnail generation  
 - **Spatie Image Optimizer** – Image optimization  
 - **Toastify (Vue)** – Toast notifications  
-- **Ziggy** – Laravel route access in Vue  
+- **Ziggy.js** – Laravel route access in Vue  
 
 
 ## 🔧 Setup
@@ -45,6 +44,11 @@ Link storage:
 ```bash
 php artisan storage:link
 ```
+
+
+## ✨ Screenshots
+
+[tba]
 
 ## ✨ Features
 
@@ -89,21 +93,3 @@ php artisan storage:link
   - Tests image accesors (image url, thumbnail url, file_size)
   - Tests user authorization (guest vs. authenticated)
   - Tests image authorization (image and album privacy rules / privacy inheritance)
-
-
-
-
-
-
-
-## todo
-  - add toasts using toastify
-  - move auth login/register/profile into it's own Auth/ folder with proper folder and pages
-
-  - implement demo mode
-    - https://github.com/inertiajs/pingcrm/blob/master/app/Http/Controllers/UsersController.php#L83
-    - protect demo users and demo images / albums
-    - automatically wipe 'dirty' content after 1 hour of inactivity
-    - only show uploads to the user who uploaded them
-      - make a config setting for this (protect_demo_application)
-      

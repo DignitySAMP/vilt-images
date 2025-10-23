@@ -91,6 +91,7 @@
 </template>
 <script setup lang="js">
     import { useForm, usePage } from '@inertiajs/vue3';
+    import { toast } from 'vue3-toastify'
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
@@ -113,7 +114,12 @@
     });
 
     const submit = () => {
-        form.patch(route('image.update', usePage().props.image.id));
+        form.patch(route('image.update', usePage().props.image.id), {
+            onSuccess: () => {
+                form.reset();
+                toast.warning('You have updated the image.');
+            }
+        });
     };
 </script>
 

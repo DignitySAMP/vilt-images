@@ -5,7 +5,13 @@
 
             <div class="bg-white dark:bg-stone-800 min-h-196 rounded p-6 flex flex-col justify-center items-center">
 
-                <span v-if="props.status" class="p-2 border border-emerald-200 bg-emerald-100 text-emerald-800 rounded">{{  props.status }}</span>
+                <span 
+                    v-if="props.status" 
+                    class="p-2 border border-emerald-200 bg-emerald-100 text-emerald-800 rounded"
+                >
+                    {{  props.status }}
+                </span>
+                
                 <form @submit.prevent="submit" class="flex flex-col gap-4 w-full lg:px-8">
                     <span class="w-fit text-lg text-indigo-500 dark:text-indigo-400 font-bold">
                         Forgot Password

@@ -55,6 +55,8 @@
 <script setup lang="js">
     import { ref } from 'vue';
     import { useForm } from '@inertiajs/vue3';
+    import { toast } from 'vue3-toastify'
+    
     import Modal from '@/components/Modal.vue';
     import IconReturn from '@/icons/IconReturn.vue'
     import IconTrash from '@/icons/IconTrash.vue'
@@ -69,7 +71,6 @@
     });
 
     const showModal = ref(false);
-
     const form = useForm({
         confirm_name: '',
     });
@@ -79,6 +80,7 @@
             onSuccess: () => {
                 form.reset();
                 showModal.value = false;
+                toast.error('You have deleted an album.');
             }
         });
     };

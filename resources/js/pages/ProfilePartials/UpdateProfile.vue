@@ -85,6 +85,7 @@
 <script setup lang="js">
     import { ref } from 'vue';
     import { useForm, usePage } from '@inertiajs/vue3';
+    import { toast } from 'vue3-toastify'
 
     import IconClick from '@/icons/IconClick.vue'
     import DeleteProfile from '@/pages/ProfilePartials/DeleteProfile.vue';
@@ -103,6 +104,11 @@
     });
 
     const submit = () => {
-        form.patch(route('profile.update'));
+        form.patch(route('profile.update'), {
+            onSuccess: () => {
+                form.reset();
+                toast.error('You have updated your profile.');
+            }
+        });
     };
 </script>

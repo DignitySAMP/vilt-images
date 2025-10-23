@@ -63,6 +63,7 @@
 </template>
 <script setup lang="js">
     import { useForm } from '@inertiajs/vue3';
+    import { toast } from 'vue3-toastify'
     
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
@@ -79,7 +80,10 @@
 
     const submit = () => {
         form.post(route('album.store'), {
-            onSuccess: () => form.reset(),
+            onSuccess: () => {
+                form.reset();
+                toast.success('You have created an album.');
+            }
         });
     };
 </script>

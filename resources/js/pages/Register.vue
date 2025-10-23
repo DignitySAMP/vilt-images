@@ -108,6 +108,7 @@
 </template>
 <script setup lang="js">
     import { useForm, usePage, Link } from '@inertiajs/vue3';
+    import { toast } from 'vue3-toastify';
     import Layout from '@/layouts/Layout.vue'
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
@@ -122,7 +123,10 @@
 
     const submit = () => {
         form.post(route('register'), {
-            onSuccess: () => form.reset(),
+            onSuccess: () => {
+                form.reset();
+                toast.info('You have registered.');
+            },
             onError: (errors) => console.log(errors),
             onFinish: () => form.reset('password', 'password_confirmation'),
         });

@@ -65,7 +65,8 @@
 </template>
 <script setup lang="js">
     import { useForm, usePage } from '@inertiajs/vue3';
-    
+    import { toast } from 'vue3-toastify'
+
     import Layout from '@/layouts/Layout.vue';
     import InputText from '@/components/form/InputText.vue';
     import InputCheckbox from '@/components/form/InputCheckbox.vue';
@@ -82,7 +83,12 @@
     });
 
     const submit = () => {
-        form.patch(route('album.update', usePage().props.album.id));
+        form.patch(route('album.update', usePage().props.album.id), {
+            onSuccess: () => {
+                form.reset();
+                toast.warning('You have edited an album.');
+            }
+        });
     };
 </script>
 

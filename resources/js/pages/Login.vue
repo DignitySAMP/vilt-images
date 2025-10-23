@@ -88,6 +88,7 @@
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
     import InputCheckbox from '@/components/form/InputCheckbox.vue';
+    import { toast } from 'vue3-toastify';
 
     const form = useForm({
         email: '',
@@ -97,7 +98,10 @@
 
     const submit = () => {
         form.post(route('login'), {
-            onSuccess: () => form.reset(),
+            onSuccess: () => {
+                form.reset();
+                toast.info('You have logged in.');
+            },
             onError: (errors) => console.log(errors),
             onFinish: () => form.reset('password'),
         });
