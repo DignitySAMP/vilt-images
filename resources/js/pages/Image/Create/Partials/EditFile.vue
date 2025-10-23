@@ -22,23 +22,20 @@
     </div>
 
     <div class="w-full">
-        <label :for="'album_' + props.index" class="text-sm" :class="getErrorKey('album_id') ? 'text-red-500' : 'text-stone-700 dark:text-stone-300'">
-            Album
-        </label>
-        <select 
-            :id="'album_' + props.index"
+
+        <InputSelect
+            label="Choose album"
+            :name="'album_' + props.index"
             v-model="model.album_id"
-            class="w-full px-4 py-2 bg-stone-50 dark:bg-stone-600 dark:text-stone-200 border rounded text-sm focus:outline-none focus:ring-2"
-            :class="getErrorKey('album_id') ? 'border-red-500 focus:ring-red-600' : 'border-stone-200 dark:border-stone-500 focus:ring-indigo-500'"
-        >
-            <option :value="null">No album</option>
-            <option v-for="album in props.albums" :key="album.id" :value="album.id">
-                {{ album.name }}
-            </option>
-        </select>
-        <span v-if="getErrorKey('album_id')" class="text-sm text-red-500">
-            {{ getErrorKey('album_id') }}
-        </span>
+            :error="getErrorKey('album_id')"
+            :options="[
+                { label: 'No album', value: null },
+                ... props.albums.map(album => ({
+                    label: album.name,
+                    value: album.id
+                }))
+            ]"
+        />
     </div>
 
     <div class="flex items-center gap-2">
@@ -57,6 +54,7 @@
 
 <script setup lang="js">
     import InputText from '@/components/form/InputText.vue';
+    import InputSelect from '@/components/form/InputSelect.vue';
 
     const props = defineProps({
         index: {

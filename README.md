@@ -98,8 +98,7 @@ php artisan storage:link
 
 ## todo
 
-  - make components for select, checkboxes
-    - make search partials use the custom inputtext component
+  - make components for  checkboxes
     - add Inertia <head> seo, meta and titles in each page (app_name | page_title)
     - add favicon (take applogo icon, change to indigo-500, convert to favicon)
   - add toasts using toastify

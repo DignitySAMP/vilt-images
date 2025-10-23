@@ -9,44 +9,43 @@
             Reset Filters
         </InputButton>
 
-        <select 
+        <InputSelect 
+            name="search_order"
             v-model="localFilters.sort"
             @change="handleSearch"
-            class="bg-slate-50 dark:bg-stone-700 text-sm rounded-md w-full lg:w-fit border border-slate-300 dark:border-stone-600 text-slate-700 dark:text-stone-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-            <option value="latest">Sort by latest</option>
-            <option value="oldest">Sort by oldest</option>
-            <option value="most_images">Sort by most images</option>
-            <option value="fewest_images">Sort by fewest images</option>
-        </select>
+            :options="[
+                { label: 'Sort by latest', value: 'latest' },
+                { label: 'Sort by oldest', value: 'oldest' },
+                { label: 'Sort by most images' , value: 'most_images' },
+                { label: 'Sort by fewest images' , value: 'fewest_images' },
+            ]"
+        />
 
         <div class="w-full text-indigo-800 dark:text-indigo-400">
-            <div class="flex w-full items-center">
-                <select 
+            <div class="flex w-full items-center gap-4">
+                <InputSelect 
+                    name="search_type"
                     v-model="localFilters.search_type"
-                    class="bg-indigo-50 dark:bg-stone-700 text-sm border rounded-l-md border-indigo-300 dark:border-stone-600 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                    <option value="author">Author</option>
-                    <option value="name">Name</option>
-                    <option value="description">Description</option>
-                </select>
-                <div class="flex border-l-0 w-full border-indigo-200 dark:border-stone-600 rounded-r-md border items-center bg-stone-50 dark:bg-stone-700 dark:text-stone-200 pr-2">
-                    <input
-                        v-model="localFilters.search"
-                        type="text" 
-                        placeholder="Enter search term..."
-                        class="mr-2 w-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-transparent"
-                        @keyup.enter="handleSearch"
-                    />
-                    <IconSearch />
-                </div>
+                    :options="[
+                        { label: 'Author', value: 'author'},
+                        { label: 'Name', value: 'name'},
+                        { label: 'Description', value: 'description'},
+                    ]"
+                />
+                <InputText 
+                    v-model="localFilters.search"
+                    name="search_term"
+                    type="text" 
+                    placeholder="Enter search term..."
+                    @keyup.enter="handleSearch"
+                />
             </div>
         </div>
 
         <InputButton
             type="button"
             @click="handleSearch"
-            :icon="IconFilter"
+            :icon="IconSearch"
         >
             Search
         </InputButton>
@@ -56,11 +55,11 @@
 <script setup lang="js">
     import { ref, watch } from 'vue';
     import { router } from '@inertiajs/vue3';
-    import IconClick from '@/icons/IconClick.vue';
     import IconFilterRemove from '@/icons/IconFilterRemove.vue';
-    import IconFilter from '@/icons/IconFilter.vue'
     import IconSearch from '@/icons/IconSearch.vue';
     import InputButton from '@/components/form/InputButton.vue';
+    import InputSelect from '@/components/form/InputSelect.vue';
+    import InputText from '@/components/form/InputText.vue';
 
     const props = defineProps({
         filters: {

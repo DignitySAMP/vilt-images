@@ -57,23 +57,19 @@
 
 
                 <div class="w-full">
-                    <label for="album_id" class="text-sm" :class="form.errors.album_id ? 'text-red-500' : 'text-stone-700 dark:text-stone-300'">
-                        Album
-                    </label>
-                    <select 
-                        id="album_id"
+                    <InputSelect
+                        label="Choose album"
+                        name="album_id"
                         v-model="form.album_id"
-                        class="w-full px-4 py-2 bg-stone-50 dark:bg-stone-700 dark:text-stone-200 border rounded text-sm focus:outline-none focus:ring-2"
-                        :class="form.errors.album_id ? 'border-red-500 focus:ring-red-600' : 'border-stone-200 dark:border-stone-600 focus:ring-indigo-500'"
-                    >
-                        <option :value="null">No album</option>
-                        <option v-for="album in usePage().props.albums" :key="album.id" :value="album.id">
-                            {{ album.name }}
-                        </option>
-                    </select>
-                    <span v-if="form.errors.album_id" class="text-sm text-red-500">
-                        {{ form.errors.album_id }}
-                    </span>
+                        :error="form.errors.album_id"
+                        :options="[
+                            { label: 'No album', value: null },
+                            ...usePage().props.albums.map(album => ({
+                                label: album.name,
+                                value: album.id
+                            }))
+                        ]"
+                    />
                 </div>
 
                 <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full justify-end">
@@ -107,6 +103,7 @@
     import InputText from '@/components/form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
     import InputLink from '@/components/form/InputLink.vue';
+    import InputSelect from '@/components/form/InputSelect.vue';
     import AppImage from '@/components/AppImage.vue';
     import DeleteImage from '@/pages/Image/Edit/Partials/DeleteImage.vue';
 
