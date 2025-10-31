@@ -72,7 +72,7 @@ class Image extends Model
     ** Scopes
     */
     
-    public function scopeVisible($query)
+    public function scopeVisible($query): mixed
     {
         return $query->where('is_hidden', 0)
             ->where(function ($q) {

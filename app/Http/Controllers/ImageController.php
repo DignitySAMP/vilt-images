@@ -201,7 +201,7 @@ class ImageController extends Controller
         ]);
     }
 
-    public function update(Request $request, Image $image)
+    public function update(Request $request, Image $image): RedirectResponse
     {
         $this->authorize('update', $image);
 
