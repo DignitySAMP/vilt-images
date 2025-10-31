@@ -7,7 +7,7 @@
 
                 <span 
                     v-if="props.status" 
-                    class="p-2 border border-emerald-200 bg-emerald-100 text-emerald-800 rounded"
+                    class="lg:px-8 p-2 border border-emerald-200 bg-emerald-100 text-emerald-800 rounded w-full mb-4"
                 >
                     {{  props.status }}
                 </span>

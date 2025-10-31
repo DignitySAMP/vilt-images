@@ -48,7 +48,44 @@ php artisan storage:link
 
 ## ✨ Screenshots
 
-[tba]
+<details>
+<summary>🖼️ Click to view screenshots</summary>
+
+<br>
+
+Below are some preview images of the Image Uploader application in action:
+
+<p align="center">
+  <img src=".screenshots/screencapture-127-0-0-1-8000-2025-10-31-15_07_25.png" width="35%" />
+  <img src=".screenshots/screencapture-127-0-0-1-8000-login-2025-10-31-15_08_32.png" width="35%" />
+</p>
+
+<p align="center">
+  <img src=".screenshots/screencapture-127-0-0-1-8000-register-2025-10-31-15_08_39.png" width="35%" />
+  <img src=".screenshots/screencapture-127-0-0-1-8000-profile-2025-10-31-15_13_01.png" width="35%" />
+</p>
+
+<p align="center">
+  <img src=".screenshots/screencapture-127-0-0-1-8000-albums-2025-10-31-15_08_04.png" width="35%" />
+  <img src=".screenshots/screencapture-127-0-0-1-8000-album-2-2025-10-31-15_08_22.png" width="35%" />
+</p>
+
+<p align="center">
+  <img src=".screenshots/screencapture-127-0-0-1-8000-album-2-edit-2025-10-31-15_13_34.png" width="35%" />
+  <img src=".screenshots/screencapture-127-0-0-1-8000-image-create-2025-10-31-15_15_21.png" width="35%" />
+</p>
+
+<p align="center">
+  <img src=".screenshots/screencapture-127-0-0-1-8000-image-11-edit-2025-10-31-15_13_59.png" width="35%" />
+  <img src=".screenshots/screencapture-127-0-0-1-8000-profile-2025-10-31-15_15_54.png" width="35%" />
+</p>
+
+<p align="center">
+  <img src=".screenshots/email.png" />
+</p>
+
+</details>
+
 
 ## ✨ Features
 
