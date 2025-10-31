@@ -20,9 +20,7 @@ class ProfileController extends Controller
 {
     public function index(Request $request): InertiaResponse
     {
-        $user = Auth::user();
-        
-        $query = $user->images()->with('album');
+        $query = Auth::user()->images()->with('album');
 
         // input-based filtering
         if ($request->filled('search')) {
@@ -119,14 +117,12 @@ class ProfileController extends Controller
             'confirm_email' => 'required|email|in:' . $user->email,
         ]);
 
-        $userId = $user->id;
-
         // delete albums and images
         $user->albums()->delete();
         $user->images()->delete();
 
         // purge entire user folder from storage
-        Storage::disk('public')->deleteDirectory("uploads/{$userId}");
+        Storage::disk('public')->deleteDirectory("uploads/{$user->id}");
 
         // destroy session and delete user
         Auth::logout();

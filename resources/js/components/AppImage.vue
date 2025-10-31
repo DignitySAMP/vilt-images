@@ -6,7 +6,7 @@
     />
     <div 
         v-else 
-        class="bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-md border border-indigo-300 text-indigo-400 w-full h-full flex items-center justify-center"
+        class="bg-linear-to-br from-indigo-100 to-indigo-200 rounded-md border border-indigo-300 text-indigo-400 w-full h-full flex items-center justify-center"
     >
         <IconPhoto class="w-16 h-16"/>
     </div>

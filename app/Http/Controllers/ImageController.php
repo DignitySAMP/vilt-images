@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
@@ -237,7 +238,7 @@ class ImageController extends Controller
         return redirect()->route('image.show', $image)->with('success', 'Image updated successfully.');
     }
 
-    public function destroy(Request $request, Image $image)
+    public function destroy(Request $request, Image $image): RedirectResponse
     {
         $this->authorize('delete', $image);
        

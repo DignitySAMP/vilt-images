@@ -29,11 +29,9 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request): RedirectResponse
     {
         $user = $request->createUser();
-
         event(new Registered($user));
 
         Auth::login($user);
-
         $request->session()->regenerate();
 
         return redirect()->intended(route('home', absolute: false));

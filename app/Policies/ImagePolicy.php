@@ -10,7 +10,6 @@ use App\Models\User;
 
 class ImagePolicy
 {
-
     use HandlesAuthorization;
 
     public function show(?User $user, Image $image): bool 

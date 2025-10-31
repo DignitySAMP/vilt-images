@@ -26,11 +26,9 @@ class AlbumController extends Controller
             if(!Auth::check()) {
                 return redirect(route('login'));
             }
-
             $query->where('user_id', Auth::id());
-        } else {
-            $query->visible();
-        }
+        } 
+        else $query->visible();
 
         // input-based filtering
         if ($request->filled('search')) {
