@@ -37,27 +37,7 @@
         },
         options: {
             type: Array,
-            required: true,
-            validator: (value) => {
-
-                if (!Array.isArray(value)) {
-                    console.warn('options must be an array');
-                    return false;
-                }
-                
-                // validate that every option object has label and value
-                return value.every(option => {
-                    const hasLabel = 'label' in option && typeof option.label === 'string';
-                    const hasValue = 'value' in option;
-                    
-                    if (!hasLabel || !hasValue) {
-                        console.warn('each option must have a label (string) and value property', option);
-                        return false;
-                    }
-                    
-                    return true;
-                });
-            }
+            required: true
         },
         error: {
             type: String,
