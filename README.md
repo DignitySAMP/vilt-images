@@ -53,8 +53,6 @@ php artisan storage:link
 
 <br>
 
-Below are some preview images of the Image Uploader application in action:
-
 <p align="center">
   <img src=".screenshots/screencapture-127-0-0-1-8000-2025-10-31-15_07_25.png" width="35%" />
   <img src=".screenshots/screencapture-127-0-0-1-8000-login-2025-10-31-15_08_32.png" width="35%" />
@@ -81,7 +79,7 @@ Below are some preview images of the Image Uploader application in action:
 </p>
 
 <p align="center">
-  <img src=".screenshots/email.png" />
+  <img src=".screenshots/email.png" width="35%" />
 </p>
 
 </details>
