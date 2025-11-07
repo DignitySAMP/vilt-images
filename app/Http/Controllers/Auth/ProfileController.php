@@ -24,8 +24,8 @@ class ProfileController extends Controller
     {
         $query = Auth::user()->images()->with('album');
 
+         // apply search and sort filters, if applicable
         $this->applySearchFilters($query, $request);
-
         $images = $this->applySortFilters($query, $request, 8);
 
         return Inertia::render('Auth/Profile/View', [
@@ -66,6 +66,8 @@ class ProfileController extends Controller
     {
         $sortBy = $request->input('sort', 'latest');
 
+        // because file_size is an accessor, we can't query it into the database. 
+        // this will load all results into memory but for the scale of this application, it is acceptable
         if (in_array($sortBy, ['largest', 'smallest'])) {
             $allImages = $query->get();
 

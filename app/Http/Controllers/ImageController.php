@@ -30,8 +30,8 @@ class ImageController extends Controller
     {
         $query = Image::with('publisher')->visible();
 
+         // apply search and sort filters, if applicable
         $this->applySearchFilters($query, $request);
-
         $images = $this->applySortFilters($query, $request, 10);
 
         return Inertia::render('Image/Index/View', [
@@ -67,7 +67,7 @@ class ImageController extends Controller
             'uploads.*.description' => 'required|string|max:255',
             'uploads.*.is_hidden' => 'required|boolean',
             'uploads.*.album_id' => 'nullable|exists:albums,id',
-        ], [
+        ], [ // return custom error messages to make it exceptions more clear (instead of uploads[0].name must be xxx)
             'uploads.*.file.required' => 'Please select an image file.',
             'uploads.*.file.image' => 'The file must be an image.',
             'uploads.*.file.max' => 'The image must not exceed 5MB.',
@@ -168,7 +168,7 @@ class ImageController extends Controller
             'description' => 'required|string|max:255',
             'album_id' => 'nullable|exists:albums,id',
             'is_hidden' => 'nullable|boolean'
-        ], [
+        ], [// return custom error messages to make it exceptions more clear (instead of uploads[0].name must be xxx)
             'name.required' => 'Image name is required.',
             'name.max' => 'Image name must not exceed 255 characters.',
             'description.required' => 'Image description is required.',
@@ -239,7 +239,9 @@ class ImageController extends Controller
     private function applySortFilters(Builder $query, Request $request, int $perPage): LengthAwarePaginator
     {
         $sortBy = $request->input('sort', 'latest');
-
+        
+        // because file_size is an accessor, we can't query it into the database. 
+        // this will load all results into memory but for the scale of this application, it is acceptable
         if (in_array($sortBy, ['largest', 'smallest'])) {
             $allImages = $query->get();
 

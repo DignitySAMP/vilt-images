@@ -19,10 +19,13 @@ class AlbumController extends Controller
 {
     public function index(Request $request): mixed
     {
+        // get a single child image so we can show it as a thumbnail
         $query = Album::with(['user', 'images' => function ($query) {
             $query->visible()->limit(1);
         }]);
 
+        // if owned_albums is true (by clicking 'show only my albums'), filter the builder
+        // by only showcasing albums that the user owns
         if ($request->boolean('owned_albums')) {
             if(!Auth::check()) {
                 return redirect(route('login'));
@@ -31,6 +34,7 @@ class AlbumController extends Controller
         } 
         else $query->visible();
 
+        // apply the search filters to the above query
         $this->applySearchFilters($query, $request);
 
         return Inertia::render('Album/Index/View', [
