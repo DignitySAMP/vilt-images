@@ -49,32 +49,52 @@ php artisan storage:link
 ## ✨ Screenshots
 
 <details>
-  <summary> 🖼️ Click to view screenshots</summary>
+  <summary>Click to view screenshots</summary>
   <br>
+  <p align="center">
+    Image uploader and custom e-mail template
+  </p>
   <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-image-create-2025-10-31-15_15_21.png" width="35%" />
     <img src=".screenshots/email.png" width="21.25%" />
   </p>
-
+  <p align="center">
+    Authentication
+  </p>
   <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-login-2025-10-31-15_08_32.png" width="35%" />
     <img src=".screenshots/screencapture-127-0-0-1-8000-register-2025-10-31-15_08_39.png" width="35%" />
+  </p>
+    <p align="center">
+    Public images (+ darkmode preview)
   </p>
   <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-2025-10-31-15_07_25.png" width="35%" />
     <img src=".screenshots/screencapture-127-0-0-1-8000-2025-10-31-15_15_39.png" width="35%" />
   </p>
   <p align="center">
+    Album views
+  </p>
+  <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-albums-2025-10-31-15_08_04.png" width="35%" />
     <img src=".screenshots/screencapture-127-0-0-1-8000-albums-2025-10-31-15_13_26.png" width="35%" />
   </p>
   <p align="center">
+    Edit image and album views
+  </p>
+  <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-image-11-edit-2025-10-31-15_13_46.png" width="35%" />
     <img src=".screenshots/screencapture-127-0-0-1-8000-album-2-edit-2025-10-31-15_13_34.png" width="35%" />
-    </p>
+  </p>
+    <p align="center">
+    Profile and image view
+  </p>
   <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-profile-2025-10-31-15_13_01.png" width="35%" />
-    <img src=".screenshots/screencapture-127-0-0-1-8000-image-9-2025-10-31-15_07_44.png" width="35%" />
+    <img src=".screenshots/screencapture-127-0-0-1-8000-image-9-2025-10-31-15_07_44.png" width="32.5%" />
+  </p>
+    <p align="center">
+    Delete image and profile modals
   </p>
   <p align="center">
     <img src=".screenshots/screencapture-127-0-0-1-8000-image-11-edit-2025-10-31-15_13_59.png" width="35%" />
