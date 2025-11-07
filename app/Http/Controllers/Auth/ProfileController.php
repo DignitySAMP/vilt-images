@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,53 +24,9 @@ class ProfileController extends Controller
     {
         $query = Auth::user()->images()->with('album');
 
-        // input-based filtering
-        if ($request->filled('search')) {
-            $searchTerm = $request->search;
-            $searchType = $request->input('search_type', 'name');
+        $this->applySearchFilters($query, $request);
 
-            switch ($searchType) {
-                case 'album': {
-                    $query->whereHas('album', function ($q) use ($searchTerm) {
-                        $q->where('name', 'like', "%{$searchTerm}%");
-                    });
-                    break;
-                }
-                case 'name': $query->where('name', 'like', "%{$searchTerm}%"); break;
-                case 'description': $query->where('description', 'like', "%{$searchTerm}%"); break;
-            }
-        }
-
-        // sorting dropdown filtering
-        $sortBy = $request->input('sort', 'latest');
-        
-        // because file_size is am accessor, we can't query it into the database. 
-        // this will load all results into memory but for the scale of this application, it is acceptable
-        if (in_array($sortBy, ['largest', 'smallest'])) {
-            $allImages = $query->get();
-
-            if($sortBy === 'largest') {
-                $sortedImages = $allImages->sortByDesc(fn($image) => $image->file_size)->values();
-            }
-            else $sortedImages = $allImages->sortBy(fn($image) => $image->file_size)->values();
-            
-            $images = new LengthAwarePaginator(
-                $sortedImages->forPage($request->input('page', 1), 8),
-                $sortedImages->count(),
-                8,
-                $request->input('page', 1),
-                ['path' => $request->url(), 'query' => $request->query()]
-            );
-        } 
-        else {
-            switch ($sortBy) {
-                case 'latest': $query->orderBy('created_at', 'desc'); break;
-                case 'oldest': $query->orderBy('created_at', 'asc'); break;
-                default: $query->orderBy('created_at', 'desc');
-            }
-
-            $images = $query->paginate(8)->withQueryString();
-        }
+        $images = $this->applySortFilters($query, $request, 8);
 
         return Inertia::render('Auth/Profile/View', [
             'images' => $images,
@@ -78,6 +36,59 @@ class ProfileController extends Controller
                 'sort' => $request->sort,
             ],
         ]);
+    }
+
+    private function applySearchFilters(Builder|Relation $query, Request $request): void
+    {
+        if (! $request->filled('search')) {
+            return;
+        }
+
+        $searchTerm = $request->string('search')->value();
+        $searchType = $request->input('search_type', 'name');
+
+        switch ($searchType) {
+            case 'album':
+                $query->whereHas('album', function (Builder $builder) use ($searchTerm) {
+                    $builder->where('name', 'like', "%{$searchTerm}%");
+                });
+                break;
+            case 'name':
+                $query->where('name', 'like', "%{$searchTerm}%");
+                break;
+            case 'description':
+                $query->where('description', 'like', "%{$searchTerm}%");
+                break;
+        }
+    }
+
+    private function applySortFilters(Builder|Relation $query, Request $request, int $perPage): LengthAwarePaginator
+    {
+        $sortBy = $request->input('sort', 'latest');
+
+        if (in_array($sortBy, ['largest', 'smallest'])) {
+            $allImages = $query->get();
+
+            $sortedImages = $sortBy === 'largest'
+                ? $allImages->sortByDesc(fn ($image) => $image->file_size)->values()
+                : $allImages->sortBy(fn ($image) => $image->file_size)->values();
+
+            return new LengthAwarePaginator(
+                $sortedImages->forPage($request->input('page', 1), $perPage),
+                $sortedImages->count(),
+                $perPage,
+                $request->input('page', 1),
+                ['path' => $request->url(), 'query' => $request->query()]
+            );
+        }
+
+        match ($sortBy) {
+            'latest' => $query->orderBy('created_at', 'desc'),
+            'oldest' => $query->orderBy('created_at', 'asc'),
+            default => $query->orderBy('created_at', 'desc'),
+        };
+
+        return $query->paginate($perPage)->withQueryString();
     }
 
     public function update(Request $request): RedirectResponse

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -30,36 +31,10 @@ class AlbumController extends Controller
         } 
         else $query->visible();
 
-        // input-based filtering
-        if ($request->filled('search')) {
-            $searchTerm = $request->search;
-            $searchType = $request->input('search_type', 'name');
-
-            switch ($searchType) {
-                case 'author': {
-                    $query->whereHas('user', function ($q) use ($searchTerm) {
-                        $q->where('name', 'like', "%{$searchTerm}%");
-                    });
-                    break;
-                }
-
-                case 'name': $query->where('name', 'like', "%{$searchTerm}%"); break;
-                case 'description': $query->where('description', 'like', "%{$searchTerm}%"); break;
-            }
-        }
-
-        // sorting dropdown filtering
-        $sortBy = $request->input('sort', 'latest');
-        switch ($sortBy) {
-            case 'latest': $query->orderBy('created_at', 'desc'); break;
-            case 'oldest': $query->orderBy('created_at', 'asc'); break;
-            case 'most_images': $query->withCount('images')->orderBy('images_count', 'desc'); break;
-            case 'fewest_images': $query->withCount('images')->orderBy('images_count', 'asc'); break;
-            default: $query->orderBy('created_at', 'desc'); break;
-        }
+        $this->applySearchFilters($query, $request);
 
         return Inertia::render('Album/Index/View', [
-            'albums' => $query->withCount('images')->paginate(10)->withQueryString(),
+            'albums' => $this->applySortFilters($query, $request, 10),
             'showOwnedAlbums' => $request->boolean('owned_albums'),
             'filters' => [
                 'search' => $request->search,
@@ -175,5 +150,43 @@ class AlbumController extends Controller
         $album->delete();
 
         return redirect()->route('profile');
+    }
+    private function applySearchFilters(Builder $query, Request $request): void
+    {
+        if (! $request->filled('search')) {
+            return;
+        }
+
+        $searchTerm = $request->string('search')->value();
+        $searchType = $request->input('search_type', 'name');
+
+        switch ($searchType) {
+            case 'author':
+                $query->whereHas('user', function (Builder $builder) use ($searchTerm) {
+                    $builder->where('name', 'like', "%{$searchTerm}%");
+                });
+                break;
+            case 'name':
+                $query->where('name', 'like', "%{$searchTerm}%");
+                break;
+            case 'description':
+                $query->where('description', 'like', "%{$searchTerm}%");
+                break;
+        }
+    }
+
+    private function applySortFilters(Builder $query, Request $request, int $perPage): mixed
+    {
+        $sortBy = $request->input('sort', 'latest');
+
+        match ($sortBy) {
+            'latest' => $query->orderBy('created_at', 'desc'),
+            'oldest' => $query->orderBy('created_at', 'asc'),
+            'most_images' => $query->withCount('images')->orderBy('images_count', 'desc'),
+            'fewest_images' => $query->withCount('images')->orderBy('images_count', 'asc'),
+            default => $query->orderBy('created_at', 'desc'),
+        };
+
+        return $query->withCount('images')->paginate($perPage)->withQueryString();
     }
 }
