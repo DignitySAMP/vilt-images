@@ -51,7 +51,7 @@
                     </InputButton>
                 
                     <div class="flex justify-between">
-                        <Link :href="route('forgot.password')" class="text-sm underline text-stone-700 dark:text-stone-300">
+                        <Link :href="route('password.request')" class="text-sm underline text-stone-700 dark:text-stone-300">
                             Forgot your password?
                         </Link>
 

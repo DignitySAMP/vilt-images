@@ -89,7 +89,7 @@
             url: route('image.create'),
             style: 'text-indigo-800 dark:text-indigo-500 hover:bg-green-100 dark:hover:bg-emerald-300  hover:text-green-800 dark:hover:text-emerald-700',
             active_style: 'bg-green-500 text-white hover:bg-green-600',
-            auth: null
+            auth: true
         },
         {
             label: 'Public',

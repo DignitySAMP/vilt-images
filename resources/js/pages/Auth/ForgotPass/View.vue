@@ -91,7 +91,7 @@
     });
 
     const submit = () => {
-        form.post(route('forgot.password.store'));
+        form.post(route('password.email'));
     }
 
 </script>

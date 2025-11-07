@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Inspiring;
 use Inertia\Middleware;
@@ -39,13 +40,16 @@ class HandleInertiaRequests extends Middleware
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
 
+        $user = Auth::user();
+
         return [
             ...parent::share($request),
             'app' => [
                 'name' => config('app.name')
             ],
             'auth' => [
-                'user' => Auth::user() ?? null
+                'user' => $user ?? null,
+                'mustVerifyEmail' => !$user->hasVerifiedEmail(),
             ],
 
             'quote' => [

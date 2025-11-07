@@ -9,6 +9,21 @@
             
             <Header :active_tab="tab"/>
 
+            <div
+                v-if="usePage().props.auth?.mustVerifyEmail"
+                class="mt-4 px-4 py-3 border border-amber-200 bg-amber-100 text-amber-800 rounded flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+            >
+                <span class="text-sm">
+                    Please verify your email address to unlock all features of the application.
+                </span>
+                <Link
+                    :href="route('verification.notice')"
+                    class="text-sm font-semibold underline"
+                >
+                    Manage verification
+                </Link>
+            </div>
+
             <div class="mt-4 flex flex-col gap-4">
                 <slot/>
             </div>
@@ -17,7 +32,7 @@
 
 </template>
 <script setup>
-    import { usePage, Head} from '@inertiajs/vue3'
+    import { usePage, Head, Link } from '@inertiajs/vue3'
     import Header from '@/layouts/Partials/Header.vue'
 
     const props = defineProps({

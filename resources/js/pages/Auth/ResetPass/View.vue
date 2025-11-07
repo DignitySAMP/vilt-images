@@ -105,6 +105,7 @@
     const props = defineProps({
         token: String,
         email: String,
+        status: String,
     })
 
     const form = useForm({
@@ -115,7 +116,7 @@
     });
 
     const submit = () => {
-        form.post(route('reset.password.edit'), {
+        form.post(route('password.update'), {
             preserveScroll: true,
             onSuccess: () => form.reset('password', 'password_confirmation'),
             onError: () => form.reset('password', 'password_confirmation')

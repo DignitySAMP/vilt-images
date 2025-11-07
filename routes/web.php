@@ -9,8 +9,8 @@ Route::get('/', [ImageController::class, 'index'])->name('home'); // images
 Route::get('/albums', [AlbumController::class, 'index'])->name('album.index'); // albums
 
 // resourced resources
-Route::resource('album', AlbumController::class)->middleware('auth')->except(['index', 'show']);
-Route::resource('image', ImageController::class)->middleware('auth')->except(['index', 'show']);
+Route::resource('album', AlbumController::class)->middleware(['auth', 'verified'])->except(['index', 'show']);
+Route::resource('image', ImageController::class)->middleware(['auth', 'verified'])->except(['index', 'show']);
 
 
 // these need to come last
