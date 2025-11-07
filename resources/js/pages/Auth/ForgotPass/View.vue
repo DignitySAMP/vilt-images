@@ -76,22 +76,11 @@
     import { useForm, usePage, Link } from '@inertiajs/vue3';
 
     import Layout from '@/layouts/Layout.vue'
-
     import InputText from '@/components/Form/InputText.vue';
     import InputButton from '@/components/form/InputButton.vue';
-
     import IconClick from '@/icons/IconClick.vue'
 
-    const props = defineProps({
-        status: String,
-    });
-
-    const form = useForm({
-        email: '',
-    });
-
-    const submit = () => {
-        form.post(route('password.email'));
-    }
-
+    const props = defineProps({ status: String });
+    const form = useForm({ email: '' });
+    const submit = () => form.post(route('password.email'));
 </script>

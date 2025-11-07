@@ -70,9 +70,7 @@
     import { useForm, usePage } from '@inertiajs/vue3';
 
     import Layout from '@/layouts/Layout.vue'
-
     import InputButton from '@/components/form/InputButton.vue';
-
     import IconClick from '@/icons/IconClick.vue'
 
     const props = defineProps({
@@ -82,12 +80,7 @@
     const verificationForm = useForm({});
     const logoutForm = useForm({});
 
-    const requestVerification = () => {
-        verificationForm.post(route('verification.send'));
-    };
-
-    const submitLogout = () => {
-        logoutForm.post(route('logout'));
-    };
+    const requestVerification = () => verificationForm.post(route('verification.send'));
+    const submitLogout = () => logoutForm.post(route('logout'));
 </script>
 

@@ -2,43 +2,50 @@
     <Layout tab="Albums" title="Album" description="View an existing album.">
 
         <div 
-            class="bg-white dark:bg-stone-800 w-full h-full px-4 py-2 grid items-center"
-            :class="canEdit ? ' grid-cols-1 gap-4 lg:grid-cols-[auto_auto_auto]' : 'grid-cols-[1fr_auto]'"    
+            class="bg-white dark:bg-stone-800 w-full h-full px-4 py-2 flex gap-2"    
         >
+            <span class="text-2xl text-indigo-700 dark:text-indigo-400">Viewing album:</span>
+            <span class="text-2xl text-indigo-700 dark:text-indigo-400 font-bold"> 
+                {{ usePage().props.album.name }} 
+            </span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <ImageCard v-for="image in usePage().props.images.data" :key="image.id" :image="image"/>
+            </div>
+            <div 
+                class="bg-white dark:bg-stone-800 w-full h-full px-4 py-2 flex flex-col gap-4"    
+            >
 
-            <div class="flex gap-2 h-fit w-full">
-                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
-                    <IconOwner class="w-4 h-4"/>
-                    <span>{{ usePage().props.album.user?.name ?? 'Unknown' }}</span>
+                <div class="flex flex-col w-full justify-self-start">
+                    <span class="text-2xl text-indigo-700 dark:text-indigo-400 font-bold text-center"> {{ usePage().props.album.name }} </span>
+                    <span class="text-indigo-600 dark:text-indigo-300 text-center"> {{ usePage().props.album.description }} </span>
                 </div>
 
-                <div class="w-full lg:w-fit flex gap-2 text-center items-center p-1 text-sm rounded text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
-                    <IconDate class="w-4 h-4"/>
-                    <span>{{ new Date(usePage().props.album.created_at).toLocaleString() }}</span>
+                <div class="flex flex-col gap-2 h-fit w-full">
+                    <div class="w-full flex gap-2 text-center items-center p-1 text-sm rounded text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
+                        <IconOwner class="w-4 h-4"/>
+                        <span>{{ usePage().props.album.user?.name ?? 'Unknown' }}</span>
+                    </div>
+
+                    <div class="w-full flex gap-2 text-center items-center p-1 text-sm rounded text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
+                        <IconDate class="w-4 h-4"/>
+                        <span>{{ new Date(usePage().props.album.created_at).toLocaleString() }}</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex flex-col w-full justify-self-start">
-                <span class="text-2xl text-indigo-700 dark:text-indigo-400 font-bold text-center"> {{ usePage().props.album.name }} </span>
-                <span class="text-indigo-600 dark:text-indigo-300 text-center"> {{ usePage().props.album.description }} </span>
-            </div>
-
-            <div v-if="canEdit" class="flex gap-2 w-full lg:w-fit h-fit justify-self-end">
-                <InputLink
-                    :href="route('album.edit', usePage().props.album.id)"
-                    :icon="IconEdit"
-                    colors="bg-slate-500 hover:bg-slate-600 text-white"
-                >
-                    <span class="w-full text-center">Edit</span>
-                </InputLink>
+                <div class="flex justify-center items-center" v-if="canEdit">
+                    <InputLink
+                        :href="route('album.edit', usePage().props.album.id)"
+                        :icon="IconEdit"
+                        colors="bg-slate-500 hover:bg-slate-600 text-white lg:w-full"
+                    >
+                        <span class="w-full text-center">Edit Album</span>
+                    </InputLink>
+                </div>
             </div>
 
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <ImageCard v-for="image in usePage().props.images.data" :key="image.id" :image="image"/>
-        </div>
-
         <Pagination :links="usePage().props.images"/>
     </Layout>
 </template>
